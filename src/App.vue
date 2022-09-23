@@ -10,12 +10,12 @@ export default {
 <template>
   <q-layout view="hHh lpR fFf">
 
-    <q-header elevated class="bg-primary text-white headerCustomStyle">
+    <q-header elevated class="text-white headerCustomStyle">
       <q-toolbar>
         <q-toolbar-title>
-          <q-avatar>
+          <!-- <q-avatar>
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-          </q-avatar>
+          </q-avatar> -->
           Give Monero
         </q-toolbar-title>
       </q-toolbar>
@@ -33,8 +33,8 @@ export default {
 
   </q-layout>
 </template>
-<style>
-.headerCustomStyle {
+<style lang="sass" scoped>
+.headerCustomStyle
   height: 10vh
-}
+  background: #4c4c4c !important
 </style>

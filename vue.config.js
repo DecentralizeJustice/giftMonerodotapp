@@ -7,38 +7,9 @@ const webpack = require("webpack");
 const CopyPlugin = require("copy-webpack-plugin");
 module.exports = defineConfig({
   configureWebpack: {
-    // entry: {
-    //   main: "./src/main.js",
-    // },
-    module: {
-      rules: [
-        // {
-        //   test: /\.js$/,
-        //   exclude: /node_modules/,
-        //   use: {
-        //     loader: "babel-loader",
-        //   },
-        // },
-        // {
-        //   test: /\.m?js/,
-        //   resolve: {
-        //     fullySpecified: false
-        //   }
-        // },
-        // {
-        //   test: /\.vue$/,
-        //   loader: "vue-loader",
-        // },
-        // {
-        //   test: /\.css$/,
-        //   use: ["style-loader", "css-loader"],
-        //   sideEffects: true
-        // }
-      ],
-    },
+     devtool: 'source-map',
     externals: ['worker_threads','ws','perf_hooks', 'child_process'], // exclude nodejs
     plugins: [
-      // new VueLoaderPlugin(),
       new NodePolyfillPlugin(),
       new webpack.ProvidePlugin({
         process: 'process/browser',
@@ -72,12 +43,7 @@ module.exports = defineConfig({
         util: require.resolve('util'),
         zlib: require.resolve('browserify-zlib')
       }
-    },
-    optimization: {
-      splitChunks: {
-        chunks: "all",
-      },
-    },
+    }
   },
   publicPath: "",
   transpileDependencies: [
