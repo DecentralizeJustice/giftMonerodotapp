@@ -7,13 +7,12 @@
       </q-card-section>
 
       <q-card-section>
-        {{ lorem }}
       </q-card-section>
 
       <q-separator dark />
 
       <q-card-actions>
-        <q-btn flat>Action 1</q-btn>
+        <q-btn flat @click="testr">Action 1</q-btn>
         <q-btn flat>Action 2</q-btn>
       </q-card-actions>
     </q-card>
@@ -21,12 +20,17 @@
 </template>
 
 <script>
+import test from '../assets/test.js'
 export default {
   setup () {
-    return {
-      lorem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+  },
+  methods: {
+    async testr() {
+      console.log('hip')
+      const yes = await test()
+      console.log(yes)
     }
-  }
+  },
 }
 </script>
 
