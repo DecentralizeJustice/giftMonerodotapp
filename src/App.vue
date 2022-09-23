@@ -1,26 +1,40 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-</template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+// import { ref } from 'vue'
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  setup () {
   }
 }
 </script>
 
+
+<template>
+  <q-layout view="hHh lpR fFf">
+
+    <q-header elevated class="bg-primary text-white headerCustomStyle">
+      <q-toolbar>
+        <q-toolbar-title>
+          <q-avatar>
+            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+          </q-avatar>
+          Give Monero
+        </q-toolbar-title>
+      </q-toolbar>
+
+      <q-tabs align="left">
+        <q-route-tab to="/" label="Page One" />
+        <!-- <q-route-tab to="/page2" label="Page Two" />
+        <q-route-tab to="/page3" label="Page Three" /> -->
+      </q-tabs>
+    </q-header>
+
+    <q-page-container>
+      <router-view />
+    </q-page-container>
+
+  </q-layout>
+</template>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.headerCustomStyle {
+  height: 10vh
 }
 </style>
