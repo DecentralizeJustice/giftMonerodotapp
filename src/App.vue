@@ -27,7 +27,7 @@ export default {
       </q-tabs>
     </q-header>
 
-    <q-page-container>
+    <q-page-container style='height:100vh;'>
       <router-view />
     </q-page-container>
 
@@ -35,6 +35,5 @@ export default {
 </template>
 <style lang="sass" scoped>
 .headerCustomStyle
-  height: 10vh
   background: #4c4c4c !important
 </style>
