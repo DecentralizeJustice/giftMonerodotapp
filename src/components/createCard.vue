@@ -1,42 +1,24 @@
 <template>
   <div class="q-pa-md row justify-center align-center full-height full-width text-center back">
     <div class="q-pa-md justify-center">
-    <q-btn label="Reset" push color="white" text-color="primary" @click="step = 1" class="q-mb-md" />
-
     <q-stepper
       v-model="step"
       header-nav
       ref="stepper"
       color="primary"
       animated
-    >
-      <q-step
-        :name="1"
-        title="Custamize"
-        icon="settings"
-        :done="step > 1"
-        :header-nav="step > 1"
-      >
-      <div class="q-pa-md">
-        <q-select rounded standout v-model="model" :options="options" label="Select Theme" />
-      </div>
-      <div class="q-pa-md">
-      <q-input filled v-model="text" label="To:" />
-      </div>
-      <div class="q-pa-md">
-        <q-input
-          label="Message"
-          v-model="message"
-          filled
-          type="textarea"
-        />
-      </div>
-
-        <q-stepper-navigation>
-          <q-btn @click="() => { done1 = true; step = 2 }" color="primary" label="Continue" />
-        </q-stepper-navigation>
-      </q-step>
-
+    >      <q-step
+            :name="1"
+            title="Custamize"
+            icon="settings"
+            :done="step > 1"
+            :header-nav="step > 1"
+          >
+            <customizeCard/>
+            <q-stepper-navigation>
+              <q-btn @click="() => { done1 = true; step = 2 }" color="primary" label="Continue" />
+            </q-stepper-navigation>
+          </q-step>
       <q-step
         :name="2"
         title="Refund Address"
@@ -88,14 +70,18 @@
   </div>
 </template>
 <script>
+import customizeCard from '@/components/customizeCard.vue'
 // import test from '../assets/test.js'
 import { ref } from 'vue'
 export default {
+  components: {
+    customizeCard
+  },
   setup () {
     let step = ref(1)
     let text = ref('')
     let message = ref('')
-    let options = ['Birthday', 'Halloween', 'Secret']
+    let options = ['Birthday', 'Standard']
     let model = ref(null)
     return {
       step, text, options, model, message
