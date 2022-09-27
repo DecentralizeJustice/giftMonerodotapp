@@ -1,16 +1,16 @@
 <template>
   <div class="q-pa-md row justify-center align-center">
-    <div class="q-pa-md justify-center">
+    <div class="q-pa-md justify-center col-12 col-md-8 ">
     <q-stepper
       v-model="step"
       header-nav
       ref="stepper"
-      color="primary"
       animated
       keep-alive
+      class="text-center"
     >      <q-step
             :name="1"
-            title="Custamize"
+            title="Customize"
             icon="settings"
             :done="step > 1"
             :header-nav="step > 1"

@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col">
       <div class="q-pa-md">
-        <q-select rounded standout v-model="model" :options="options" label="Select Theme" />
+        <q-select  v-model="model" :options="options" label="Select Theme" />
       </div>
       <div class="q-pa-md">
       <q-input filled v-model="text" label="To:" />
@@ -23,7 +23,7 @@
         <div class="col-5" v-for="n in 4" :key="`none-${n}`">
           <q-card
           class="text-white text-center"
-          style="background: #F56C3C"
+          style="background: #f9530c"
           >
           <q-card-section class="text-h4 text-left">
             <q-item-label class="">{{n}}.</q-item-label>
