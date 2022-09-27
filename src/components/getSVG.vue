@@ -33,11 +33,11 @@ export default {
         invisible, lollipop, mask, mummy, scarecrow,spider, tombstone,
         trident, vampire, voodoo, witch, zombie
       ]
-      function getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
-      }
+    function getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+    }
     let chosen = getRandomInt(0,20)
     function isThisTheIcon(index) {
       if (this.chosen === index) {
@@ -63,6 +63,6 @@ export default {
   height: 70%
   width: 70%
 .notTheIcon
-  height: .1%
-  width: .1%
+  height: .001%
+  width: .001%
 </style>

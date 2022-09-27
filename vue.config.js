@@ -7,7 +7,14 @@ const webpack = require("webpack");
 const CopyPlugin = require("copy-webpack-plugin");
 module.exports = defineConfig({
   configureWebpack: {
-     devtool: 'source-map',
+    module: {
+      rules: [
+        {
+         test: /\.txt/,
+         type: 'asset/source',
+        }
+      ]
+    },
     externals: ['worker_threads','ws','perf_hooks', 'child_process'], // exclude nodejs
     plugins: [
       new NodePolyfillPlugin(),

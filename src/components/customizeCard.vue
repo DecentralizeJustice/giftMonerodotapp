@@ -19,13 +19,23 @@
       </div>
     </div>
     <div class="col">
-      <div class="row">
-        <div class="col-6"><getSVG /></div>
-        <div class="col-6"><getSVG /></div>
-      </div>
-      <div class="row">
-        <div class="col-6"><getSVG /></div>
-        <div class="col-6"><getSVG /></div>
+      <div class="row q-col-gutter-x-lg q-col-gutter-y-lg justify-center align-center">
+        <div class="col-5" v-for="n in 4" :key="`none-${n}`">
+          <q-card
+          class="text-white"
+          style="background: #F56C3C"
+          >
+          <q-card-section class="text-h4 text-left">
+            <q-item-label class="">{{n}}.</q-item-label>
+          </q-card-section>
+          <q-card-section>
+            <getSVG />
+          </q-card-section>
+            <q-card-section class="q-pt-none text-h4">
+              {{fourLetterWordList[getRandomInt(0,4030)]}}
+            </q-card-section>
+          </q-card>
+        </div>
       </div>
     </div>
   </div>
@@ -37,18 +47,25 @@
 // import test from '../assets/test.js'
 import { ref } from 'vue'
 import getSVG from '@/components/getSVG.vue'
+import textg from '@/assets/4letterWords.txt'
 export default {
   components: {
     getSVG
   },
   setup () {
+    const fourLetterWordList = textg.split('\n')
+    function getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+    }
     let step = ref(1)
     let text = ref('')
     let message = ref('')
     let options = ['Birthday', 'Standard']
     let model = ref(null)
     return {
-      step, text, options, model, message
+      step, text, options, model, message, getRandomInt, fourLetterWordList
     }
   }
 }
