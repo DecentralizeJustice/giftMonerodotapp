@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md row justify-center align-center full-height full-width text-center back">
+  <div class="q-pa-md row justify-center align-center">
     <div class="q-pa-md justify-center">
     <q-stepper
       v-model="step"
@@ -7,6 +7,7 @@
       ref="stepper"
       color="primary"
       animated
+      keep-alive
     >      <q-step
             :name="1"
             title="Custamize"
@@ -94,6 +95,4 @@ export default {
 .my-card
   background: #4c4c4c !important
   width: 50vw
-.back
-  background-color: #f9530c
 </style>

@@ -22,7 +22,7 @@
       <div class="row q-col-gutter-x-lg q-col-gutter-y-lg justify-center align-center">
         <div class="col-5" v-for="n in 4" :key="`none-${n}`">
           <q-card
-          class="text-white"
+          class="text-white text-center"
           style="background: #F56C3C"
           >
           <q-card-section class="text-h4 text-left">

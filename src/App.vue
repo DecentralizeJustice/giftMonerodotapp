@@ -8,7 +8,7 @@ export default {
 
 
 <template>
-  <q-layout view="hHh lpR fFf">
+  <q-layout view="hHh lpR fFf" class="back">
 
     <q-header elevated class="text-white headerCustomStyle">
       <q-toolbar>
@@ -27,7 +27,7 @@ export default {
       </q-tabs>
     </q-header>
 
-    <q-page-container style='height:100vh;'>
+    <q-page-container class=" full-height">
       <router-view />
     </q-page-container>
 
@@ -36,4 +36,6 @@ export default {
 <style lang="sass" scoped>
 .headerCustomStyle
   background: #4c4c4c !important
+.back
+  background-color: #f9530c
 </style>
