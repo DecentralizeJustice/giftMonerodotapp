@@ -1,7 +1,10 @@
 <template>
-  <img v-for="(item, index) in svgArray" :src="svgArray[index]" :key="index"
-  v-bind:class="{'theIcon': isThisTheIcon(index), 'notTheIcon': isNotTheIcon(index)}"
-  />
+  <img
+    v-for="(item, index) in svgArray"
+    :key="index"
+    :src="svgArray[index]"
+    :class="{'theIcon': isThisTheIcon(index), 'notTheIcon': isNotTheIcon(index)}"
+  >
 </template>
 <script>
 // import { ref } from 'vue'

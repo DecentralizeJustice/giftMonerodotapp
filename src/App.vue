@@ -8,9 +8,14 @@ export default {
 
 
 <template>
-  <q-layout view="hHh lpR fFf" class="back">
-
-    <q-header elevated class="text-white headerCustomStyle">
+  <q-layout
+    view="hHh lpR fFf"
+    class="back"
+  >
+    <q-header
+      elevated
+      class="text-white headerCustomStyle"
+    >
       <q-toolbar>
         <q-toolbar-title>
           <!-- <q-avatar>
@@ -21,7 +26,10 @@ export default {
       </q-toolbar>
 
       <q-tabs align="left">
-        <q-route-tab to="/" label="Page One" />
+        <q-route-tab
+          to="/"
+          label="Page One"
+        />
         <!-- <q-route-tab to="/page2" label="Page Two" />
         <q-route-tab to="/page3" label="Page Three" /> -->
       </q-tabs>
@@ -30,7 +38,6 @@ export default {
     <q-page-container class=" full-height">
       <router-view />
     </q-page-container>
-
   </q-layout>
 </template>
 <style lang="sass" scoped>
