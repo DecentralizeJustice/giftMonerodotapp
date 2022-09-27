@@ -107,11 +107,7 @@
 import customizeCard from '@/components/customizeCard.vue'
 // import test from '../assets/test.js'
 import { ref } from 'vue'
-  let step = ref(1)
-  const text = ref('')
-  const message = ref('')
-  const options = ['Birthday', 'Standard']
-  const model = ref(null)
+const step = ref(1)
 
 </script>
 

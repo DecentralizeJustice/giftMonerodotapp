@@ -6,7 +6,6 @@ export default {
 }
 </script>
 
-
 <template>
   <q-layout
     view="hHh lpR fFf"

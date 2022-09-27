@@ -1,54 +1,56 @@
 <template>
-  <img
-    v-for="(item, index) in svgArray"
-    :key="index"
-    :src="svgArray[index]"
-    :class="{'theIcon': isThisTheIcon(index), 'notTheIcon': isNotTheIcon(index)}"
-  >
+  <div>
+    <img
+      v-for="(item, index) in svgArray"
+      :key="index"
+      :src="svgArray[index]"
+      :class="{'theIcon': isThisTheIcon(index), 'notTheIcon': isNotTheIcon(index)}"
+    >
+  </div>
 </template>
 <script>
 // import { ref } from 'vue'
 export default {
   setup () {
-    let basket = require('../assets/svgs/halloween/basket.svg')
-    let bat = require('../assets/svgs/halloween/bat.svg')
-    let cat = require('../assets/svgs/halloween/cat.svg')
-    let devil = require('../assets/svgs/halloween/devil.svg')
-    let eye = require('../assets/svgs/halloween/eye.svg')
-    let frankbride = require('../assets/svgs/halloween/frankbride.svg')
-    let frankenstein = require('../assets/svgs/halloween/frankenstein.svg')
-    let ghost = require('../assets/svgs/halloween/ghost.svg')
-    let invisible = require('../assets/svgs/halloween/invisible.svg')
-    let lollipop = require('../assets/svgs/halloween/lollipop.svg')
-    let mask = require('../assets/svgs/halloween/mask.svg')
-    let mummy = require('../assets/svgs/halloween/mummy.svg')
-    let scarecrow = require('../assets/svgs/halloween/scarecrow.svg')
-    let spider = require('../assets/svgs/halloween/spider.svg')
-    let tombstone = require('../assets/svgs/halloween/tombstone.svg')
-    let trident = require('../assets/svgs/halloween/trident.svg')
-    let vampire = require('../assets/svgs/halloween/vampire.svg')
-    let voodoo = require('../assets/svgs/halloween/voodoo.svg')
-    let witch = require('../assets/svgs/halloween/witch.svg')
-    let zombie = require('../assets/svgs/halloween/zombie.svg')
-    let svgArray =
+    const basket = require('../assets/svgs/halloween/basket.svg')
+    const bat = require('../assets/svgs/halloween/bat.svg')
+    const cat = require('../assets/svgs/halloween/cat.svg')
+    const devil = require('../assets/svgs/halloween/devil.svg')
+    const eye = require('../assets/svgs/halloween/eye.svg')
+    const frankbride = require('../assets/svgs/halloween/frankbride.svg')
+    const frankenstein = require('../assets/svgs/halloween/frankenstein.svg')
+    const ghost = require('../assets/svgs/halloween/ghost.svg')
+    const invisible = require('../assets/svgs/halloween/invisible.svg')
+    const lollipop = require('../assets/svgs/halloween/lollipop.svg')
+    const mask = require('../assets/svgs/halloween/mask.svg')
+    const mummy = require('../assets/svgs/halloween/mummy.svg')
+    const scarecrow = require('../assets/svgs/halloween/scarecrow.svg')
+    const spider = require('../assets/svgs/halloween/spider.svg')
+    const tombstone = require('../assets/svgs/halloween/tombstone.svg')
+    const trident = require('../assets/svgs/halloween/trident.svg')
+    const vampire = require('../assets/svgs/halloween/vampire.svg')
+    const voodoo = require('../assets/svgs/halloween/voodoo.svg')
+    const witch = require('../assets/svgs/halloween/witch.svg')
+    const zombie = require('../assets/svgs/halloween/zombie.svg')
+    const svgArray =
       [
         basket, bat, cat, devil, eye, frankbride, frankenstein, ghost,
-        invisible, lollipop, mask, mummy, scarecrow,spider, tombstone,
+        invisible, lollipop, mask, mummy, scarecrow, spider, tombstone,
         trident, vampire, voodoo, witch, zombie
       ]
-    function getRandomInt(min, max) {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+    function getRandomInt (min, max) {
+      min = Math.ceil(min)
+      max = Math.floor(max)
+      return Math.floor(Math.random() * (max - min) + min) // The maximum is exclusive and the minimum is inclusive
     }
-    let chosen = getRandomInt(0,20)
-    function isThisTheIcon(index) {
+    const chosen = getRandomInt(0, 20)
+    function isThisTheIcon (index) {
       if (this.chosen === index) {
         return true
       }
       return false
     }
-    function isNotTheIcon(index) {
+    function isNotTheIcon (index) {
       if (this.chosen === index) {
         return false
       }

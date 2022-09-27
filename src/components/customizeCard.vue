@@ -55,21 +55,20 @@
   </div>
 </template>
 <script setup>
-  // import test from '../assets/test.js'
-  import { ref } from 'vue'
-  import getSVG from '@/components/getSVG.vue'
-  import textg from '@/assets/4letterWords.txt'
-  const fourLetterWordList = textg.split('\n')
-  function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
-  }
-  let step = ref(1)
-  let text = ref('')
-  let message = ref('')
-  let options = ['Birthday', 'Standard']
-  let model = ref(null)
+// import test from '../assets/test.js'
+import { ref } from 'vue'
+import getSVG from '@/components/getSVG.vue'
+import textg from '@/assets/4letterWords.txt'
+const fourLetterWordList = textg.split('\n')
+function getRandomInt (min, max) {
+  min = Math.ceil(min)
+  max = Math.floor(max)
+  return Math.floor(Math.random() * (max - min) + min) // The maximum is exclusive and the minimum is inclusive
+}
+const text = ref('')
+const message = ref('')
+const options = ['Birthday', 'Standard']
+const model = ref(null)
 </script>
 
 <style lang="sass" scoped>

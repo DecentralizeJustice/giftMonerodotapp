@@ -17,10 +17,12 @@
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@rushstack/eslint-patch": "^1.2.0",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "@vue/eslint-config-standard": "^8.0.1",
     "browserify-zlib": "^0.2.0",
     "crypto-browserify": "^3.12.0",
     "eslint": "^7.32.0",
@@ -51,14 +53,16 @@
     },
     "extends": [
       "plugin:vue/vue3-essential",
+      "eslint:recommended",
+      "@vue/eslint-config-standard",
       "plugin:vue/vue3-strongly-recommended",
       "plugin:vue/vue3-recommended"
     ],
     "parserOptions": {
-      "parser": "@babel/eslint-parser"
+      "parser": "@babel/eslint-parser",
+      "requireConfigFile" : "false"
     },
-    "rules": {
-    }
+    "rules": {}
   },
   "browserslist": [
     "> 1%",
