@@ -11,14 +11,14 @@
         </div>
         <div class="q-pa-md">
           <q-input
-            v-model="text"
+            v-model="to"
             filled
             label="To:(optional)"
           />
         </div>
         <div class="q-pa-md">
           <q-input
-            v-model="text"
+            v-model="from"
             filled
             label="From:(optional)"
           />
@@ -38,13 +38,24 @@
         style="background: #4c4c4c;"
       >
         <div class="row justify-center">
-          <div class="no-margin no-padding" style="background: white;">
+          <q-card
+          class="text-white text-center q-pa-md col-5"
+          style="background: white;"
+          >
+          <div class="no-margin no-padding">
             <img
               :src='moneroFullLogo'
               class="no-margin no-padding theIcon"
             >
           </div>
-          <div class="col-12 justify-center align-center">
+        </q-card>
+        <div class="col-12 text-left text-body1">
+          To: {{ to }}
+        </div>
+        <div class="col-12 text-left text-body1">
+          From: {{ from }}
+        </div>
+          <div class="col-12 text-left text-body1">
             {{ message }}
           </div>
           <div class="col-12">
@@ -77,6 +88,9 @@
               </div>
             </div>
           </div>
+          <div class="col-12 text-center text-body1 q-mt-md">
+            {{ howToRedeem }}
+          </div>
         </div>
         </q-card>
       </div>
@@ -95,10 +109,12 @@ function getRandomInt (min, max) {
   max = Math.floor(max)
   return Math.floor(Math.random() * (max - min) + min) // The maximum is exclusive and the minimum is inclusive
 }
-const text = ref('')
-const message = ref('Happy Birthday. I know youre really into privacy so I decided to gift you some crypto. Hope this B-day is great one!')
-const options = ['Birthday', 'Standard']
-const model = ref(null)
+const to = ref('Satoshi')
+const howToRedeem = 'Head over to givemonero.com/redeem to get your Monero!'
+const from = ref('Fluffy Pony')
+const message = ref('Happy Birthday. I know youre really into privacy so I decided to gift you some monero. Hope this B-day is great one!')
+const options = ['Birthday', 'Standard', 'Halloween']
+const model = ref('Standard')
 </script>
 
 <style lang="sass" scoped>
