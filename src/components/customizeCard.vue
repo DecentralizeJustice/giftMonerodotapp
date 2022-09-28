@@ -34,64 +34,64 @@
       </div>
       <div class="col">
         <q-card
-        class="text-white text-center q-pa-md"
-        style="background: #4c4c4c;"
-      >
-        <div class="row justify-center">
-          <q-card
-          class="text-white text-center q-pa-md col-5"
-          style="background: white;"
-          >
-          <div class="no-margin no-padding">
-            <img
-              :src='moneroFullLogo'
-              class="no-margin no-padding theIcon"
+          class="text-white text-center q-pa-md"
+          style="background: #4c4c4c;"
+        >
+          <div class="row justify-center">
+            <q-card
+              class="text-white text-center q-pa-md col-5"
+              style="background: white;"
             >
-          </div>
-        </q-card>
-        <div class="col-12 text-left text-body1">
-          To: {{ to }}
-        </div>
-        <div class="col-12 text-left text-body1">
-          From: {{ from }}
-        </div>
-          <div class="col-12 text-left text-body1">
-            {{ message }}
-          </div>
-          <div class="col-12">
-            <div class="row q-col-gutter-x-md justify-center align-center">
-              <div
-                v-for="n in 4"
-                :key="`none-${n}`"
-                class="col-3"
-              >
-                <q-card
-                  class="text-white text-center"
-                  style="background: #ff6600"
+              <div class="no-margin no-padding">
+                <img
+                  :src="moneroFullLogo"
+                  class="no-margin no-padding theIcon"
                 >
-                  <div
-                    style="margin-bottom: -5%;"
-                    class="text-left text-h5 q-pt-sm q-pl-sm"
+              </div>
+            </q-card>
+            <div class="col-12 text-left text-body1">
+              To: {{ to }}
+            </div>
+            <div class="col-12 text-left text-body1">
+              From: {{ from }}
+            </div>
+            <div class="col-12 text-left text-body1">
+              {{ message }}
+            </div>
+            <div class="col-12">
+              <div class="row q-col-gutter-x-md justify-center align-center">
+                <div
+                  v-for="n in 4"
+                  :key="`none-${n}`"
+                  class="col-3"
+                >
+                  <q-card
+                    class="text-white text-center"
+                    style="background: #ff6600"
                   >
-                    {{ n }}.
-                  </div>
-                  <q-card-section class="no-margin no-padding">
-                    <getSVG />
-                  </q-card-section>
-                  <q-card-section
-                    class="text-h5 text-weight-regular"
-                    style="margin-top: -10%;"
-                  >
-                    {{ fourLetterWordList[getRandomInt(0,4030)] }}
-                  </q-card-section>
-                </q-card>
+                    <div
+                      style="margin-bottom: -5%;"
+                      class="text-left text-h5 q-pt-sm q-pl-sm"
+                    >
+                      {{ n }}.
+                    </div>
+                    <q-card-section class="no-margin no-padding">
+                      <getSVG />
+                    </q-card-section>
+                    <q-card-section
+                      class="text-h5 text-weight-regular"
+                      style="margin-top: -10%;"
+                    >
+                      {{ fourLetterWordList[wordRandomNumber[n-1]] }}
+                    </q-card-section>
+                  </q-card>
+                </div>
               </div>
             </div>
+            <div class="col-12 text-center text-body1 q-mt-md">
+              {{ howToRedeem }}
+            </div>
           </div>
-          <div class="col-12 text-center text-body1 q-mt-md">
-            {{ howToRedeem }}
-          </div>
-        </div>
         </q-card>
       </div>
     </div>
@@ -103,14 +103,18 @@ import { ref } from 'vue'
 import getSVG from '@/components/getSVG.vue'
 import textg from '@/assets/4letterWords.txt'
 const moneroFullLogo = require('../assets/svgs/monero-xmr-logo-full.svg')
-const fourLetterWordList = textg.split('\n')
 function getRandomInt (min, max) {
   min = Math.ceil(min)
   max = Math.floor(max)
   return Math.floor(Math.random() * (max - min) + min) // The maximum is exclusive and the minimum is inclusive
 }
+const fourLetterWordList = textg.split('\n')
+const wordRandomNumber = []
+for (let i = 0; i <= 3; i++) {
+  wordRandomNumber.push(getRandomInt(0, 4030))
+}
 const to = ref('Satoshi')
-const howToRedeem = 'Head over to givemonero.com/redeem to get your Monero!'
+const howToRedeem = 'Head over to givemonero.com/redeem before September 3rd to get your Monero!'
 const from = ref('Fluffy Pony')
 const message = ref('Happy Birthday. I know youre really into privacy so I decided to gift you some monero. Hope this B-day is great one!')
 const options = ['Birthday', 'Standard', 'Halloween']
