@@ -17,10 +17,10 @@
           :header-nav="step > 1"
         >
           <customizeCard />
-          <q-stepper-navigation>
+          <q-stepper-navigation class='text-right'>
             <q-btn
               color="primary"
-              label="Continue"
+              label="Next"
               @click="() => { done1 = true; step = 2 }"
             />
           </q-stepper-navigation>

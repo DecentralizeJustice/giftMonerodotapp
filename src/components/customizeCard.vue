@@ -63,7 +63,7 @@
                 class="text-white text-center q-ma-sm q-pa-md"
                 style="background: black"
               >
-              <div class='q-mb-sm'>
+              <div class='q-mb-md'>
                 <q-chip icon="lock" :ripple="false" color="red-5" dark>
                   Secret Password: Do Not Share!
                 </q-chip>
@@ -126,12 +126,13 @@ for (let i = 0; i <= 3; i++) {
   wordRandomNumber.push(getRandomInt(0, 4030))
 }
 const to = ref('Satoshi')
-const howToRedeem = `Head over to givemonero.com/redeem before <span class='text-weight-bold' >September 3rd</span>
- to get your Monero!`
+const howToRedeem = `Head over to givemonero.com/redeem before
+<span class='text-weight-bold' style='color:#ff6600;'>
+September 3rd</span> to get your Monero!`
 const from = ref('Fluffy Pony')
 const message = ref('Happy Birthday. I know youre really into privacy so I decided to gift you some monero. Hope this B-day is great one!')
-const options = ['Birthday', 'Standard', 'Halloween']
-const model = ref('Standard')
+const options = ['Funny People', 'Birthday', 'Halloween']
+const model = ref(options[0])
 </script>
 
 <style lang="sass" scoped>

@@ -10,10 +10,11 @@
   </div>
 </template>
 <script>
-import halloweenSVGList from '@/assets/svgs/halloweenSVGList.js'
+// import halloweenSVGList from '@/assets/svgs/halloweenSVGList.js'
+import funnyPeopleSVGList from '@/assets/svgs/funnyPeopleSVGList.js'
 export default {
   setup () {
-    const svgArray = halloweenSVGList
+    const svgArray = funnyPeopleSVGList
     function getRandomInt (min, max) {
       min = Math.ceil(min)
       max = Math.floor(max)
