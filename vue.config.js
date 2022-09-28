@@ -1,21 +1,21 @@
-const { defineConfig } = require("@vue/cli-service");
-const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+const { defineConfig } = require('@vue/cli-service')
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 // const { VueLoaderPlugin } = require("vue-loader");
-const path = require("path");
-const webpack = require("webpack");
+const path = require('path')
+const webpack = require('webpack')
 // const htmlWebpackPlugin = require("html-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
+const CopyPlugin = require('copy-webpack-plugin')
 module.exports = defineConfig({
   configureWebpack: {
     module: {
       rules: [
         {
-         test: /\.txt/,
-         type: 'asset/source',
+          test: /\.txt/,
+          type: 'asset/source'
         }
       ]
     },
-    externals: ['worker_threads','ws','perf_hooks', 'child_process'], // exclude nodejs
+    externals: ['worker_threads', 'ws', 'perf_hooks', 'child_process'], // exclude nodejs
     plugins: [
       new NodePolyfillPlugin(),
       new webpack.ProvidePlugin({
@@ -25,18 +25,18 @@ module.exports = defineConfig({
       new CopyPlugin({
         patterns: [
           {
-            from: "*.*",
-            context: path.resolve(__dirname, "node_modules/monero-javascript/dist"),
-          },
+            from: '*.*',
+            context: path.resolve(__dirname, 'node_modules/monero-javascript/dist')
+          }
         ]
-      }),
+      })
     ],
     resolve: {
       alias: {
         // vue: "vue/dist/vue.esm-bundler.js",
-        fs: "html5-fs",
+        fs: 'html5-fs'
       },
-      extensions: ["*", ".js", ".json"],
+      extensions: ['*', '.js', '.json'],
       fallback: { // browser polyfills
         assert: require.resolve('assert'),
         crypto: require.resolve('crypto-browserify'),
@@ -52,7 +52,7 @@ module.exports = defineConfig({
       }
     }
   },
-  publicPath: "",
+  publicPath: '',
   transpileDependencies: [
     'quasar'
   ],

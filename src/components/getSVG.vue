@@ -1,9 +1,10 @@
 <template>
-  <div>
+  <div class="no-margin no-padding">
     <img
       v-for="(item, index) in svgArray"
       :key="index"
       :src="svgArray[index]"
+      class="no-margin no-padding"
       :class="{'theIcon': isThisTheIcon(index), 'notTheIcon': isNotTheIcon(index)}"
     >
   </div>
@@ -65,8 +66,8 @@ export default {
 
 <style lang="sass" scoped>
 .theIcon
-  height: 70%
-  width: 70%
+  height: 50%
+  width: 50%
 .notTheIcon
   height: .001%
   width: .001%
