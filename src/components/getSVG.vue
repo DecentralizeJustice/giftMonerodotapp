@@ -11,10 +11,11 @@
 </template>
 <script>
 // import halloweenSVGList from '@/assets/svgs/halloweenSVGList.js'
-import funnyPeopleSVGList from '@/assets/svgs/funnyPeopleSVGList.js'
+// import funnyPeopleSVGList from '@/assets/svgs/funnyPeopleSVGList.js'
+import animalsSVGList from '@/assets/svgs/animalsSVGList.js'
 export default {
   setup () {
-    const svgArray = funnyPeopleSVGList
+    const svgArray = animalsSVGList
     function getRandomInt (min, max) {
       min = Math.ceil(min)
       max = Math.floor(max)
