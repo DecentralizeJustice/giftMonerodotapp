@@ -17,7 +17,7 @@
           :header-nav="step > 1"
         >
           <customizeCard />
-          <q-stepper-navigation class='text-right'>
+          <q-stepper-navigation class="text-right">
             <q-btn
               color="primary"
               label="Next"

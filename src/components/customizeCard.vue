@@ -4,7 +4,7 @@
       <div class="col">
         <div class="q-pa-md">
           <q-select
-            v-model="model"
+            v-model="theme"
             :options="options"
             label="Select Theme"
           />
@@ -58,81 +58,40 @@
             <div class="col-12 text-left text-body1">
               {{ message }}
             </div>
-            <div class="col-12">
-              <q-card
-                class="text-white text-center q-ma-sm q-pa-md"
-                style="background: black"
-              >
-              <div class='q-mb-md'>
-                <q-chip icon="lock" :ripple="false" color="red-5" dark>
-                  Secret Password: Do Not Share!!!
-                </q-chip>
-              </div>
-              <div class="row q-col-gutter-x-md justify-center align-center">
-                <div
-                  v-for="n in 4"
-                  :key="`none-${n}`"
-                  class="col-3"
-                >
-                  <q-card
-                    class="text-white text-center"
-                    style="background: #ff6600"
-                  >
-                    <div
-                      style="margin-bottom: -5%;"
-                      class="text-left text-h5 q-pt-sm q-pl-sm"
-                    >
-                      {{ n }}.
-                    </div>
-                    <q-card-section class="no-margin no-padding">
-                      <getSVG />
-                    </q-card-section>
-                    <q-card-section
-                      class="text-h5 text-weight-regular"
-                      style="margin-top: -10%;"
-                    >
-                      {{ fourLetterWordList[wordRandomNumber[n-1]] }}
-                    </q-card-section>
-                  </q-card>
-                </div>
-              </div>
-            </q-card>
-            </div>
-            <div class="col-8 text-center text-body1 q-mt-md" v-html="howToRedeem">
-            </div>
+            <password :theme="theme" />
+            <!-- eslint-disable vue/no-v-html -->
+            <div
+              class="col-8 text-center text-body1 q-mt-md"
+              v-html="howToRedeem"
+            />
           </div>
+          <!-- eslint-enable -->
         </q-card>
-        <div class='q-mt-md'>
-          <q-chip icon="preview" :ripple="false">Gift Preview</q-chip>
+        <div class="q-mt-md">
+          <q-chip
+            icon="preview"
+            :ripple="false"
+          >
+            Gift Preview
+          </q-chip>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script setup>
-// import test from '../assets/test.js'
 import { ref } from 'vue'
-import getSVG from '@/components/getSVG.vue'
-import textg from '@/assets/4letterWords.txt'
+import password from '@/components/pass-word.vue'
 const moneroFullLogo = require('../assets/svgs/monero-xmr-logo-full.svg')
-function getRandomInt (min, max) {
-  min = Math.ceil(min)
-  max = Math.floor(max)
-  return Math.floor(Math.random() * (max - min) + min) // The maximum is exclusive and the minimum is inclusive
-}
-const fourLetterWordList = textg.split('\n')
-const wordRandomNumber = []
-for (let i = 0; i <= 3; i++) {
-  wordRandomNumber.push(getRandomInt(0, 4030))
-}
 const to = ref('Satoshi')
+const from = ref('Fluffy Pony')
+const message = ref(`Happy Birthday. I know youre really into privacy so I
+  decided to gift you some monero. Hope this B-day is great one!`)
+const options = ['People', 'Animals', 'Halloween']
+const theme = ref(options[0])
 const howToRedeem = `Head over to givemonero.com/redeem before
 <span class='text-weight-bold' style='color:#ff6600;'>
 September 3rd</span> to get your Monero!`
-const from = ref('Fluffy Pony')
-const message = ref('Happy Birthday. I know youre really into privacy so I decided to gift you some monero. Hope this B-day is great one!')
-const options = ['Funny People', 'Birthday', 'Halloween']
-const model = ref(options[0])
 </script>
 
 <style lang="sass" scoped>
