@@ -1,7 +1,7 @@
 <template>
-  <div class="q-pa-md">
-    <div class="row q-gutter-md">
-      <div class="col">
+  <div class="">
+    <div class="row justify-around">
+      <div class="col col-12 col-md-5">
         <div class="q-pa-md">
           <q-select
             v-model="theme"
@@ -37,16 +37,25 @@
           color="primary"
           label="Clear All"
           @click="clear"
+          class='desktop-only'
         />
       </div>
-      <div class="col">
+      <div class="col col-12 col-md-6 order-first">
+        <div class="mobile-only" style='margin-top:-15px;margin-bottom:15px;'>
+          <q-chip
+            icon="preview"
+            :ripple="false"
+          >
+            Gift Preview
+          </q-chip>
+        </div>
         <q-card
           class="text-white text-center q-pa-md"
           style="background: #4c4c4c;"
         >
           <div class="row justify-center">
             <q-card
-              class="text-white text-center q-pa-sm q-my-md col-5"
+              class="text-white text-center q-pa-sm q-my-md col-12 col-md-5"
               style="background: white;"
             >
               <img
@@ -68,13 +77,13 @@
             />
             <password :theme="theme" />
             <div
-              class="col-8 text-center text-body1 q-my-md"
+              class="col-12 col-md-8 text-center text-body1 q-my-md"
               v-html="howToRedeem"
             />
           </div>
           <!-- eslint-enable -->
         </q-card>
-        <div class="q-mt-md">
+        <div class="q-mt-md desktop-only">
           <q-chip
             icon="preview"
             :ripple="false"
@@ -92,7 +101,7 @@ import password from '@/components/pass-word.vue'
 const moneroFullLogo = require('../assets/svgs/monero-xmr-logo-full.svg')
 const to = ref('Satoshi')
 const from = ref('Fluffy Pony')
-const message = ref('Happy Birthday. I know youre really into privacy so I decided to gift you some monero. Hope this B-day is great one!')
+const message = ref("Happy Birthday. I know you're really into privacy so here's some monero. Hope this B-day is great one!")
 const options = ['People', 'Animals', 'Halloween']
 const theme = ref(options[0])
 const clear = function () {
@@ -136,7 +145,7 @@ const nth = function (d) {
     default: return 'th'
   }
 }
-const howToRedeem = `Head over to givemonero.com/redeem before <span class='text-weight-bold' style='color:#ff6600;'>${month} ${day}${nth(day)}</span> to get your Monero!`
+const howToRedeem = `Head to givemonero.com/redeem before <span class='text-weight-bold' style='color:#ff6600;'>${month} ${day}${nth(day)}</span> to get your Monero!`
 </script>
 
 <style lang="sass" scoped>

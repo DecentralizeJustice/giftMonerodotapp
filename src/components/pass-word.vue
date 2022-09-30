@@ -4,7 +4,7 @@
       class="text-white text-center q-ma-sm q-pa-md"
       style="background: black"
     >
-      <div class="q-mb-md">
+      <div class="q-mb-md desktop-only">
         <q-chip
           icon="lock"
           :ripple="false"
@@ -14,11 +14,16 @@
           Secret Password: Do Not Share!!!
         </q-chip>
       </div>
-      <div class="row q-col-gutter-x-md justify-center align-center">
+      <q-card class="bg-black text-white mobile-only q-mb-sm">
+        <q-card-section class='bg-red-5' style='border-radius: 10px;'>
+          <div class="text-subtitle2">Secret Password: Don't Share!!!</div>
+        </q-card-section>
+      </q-card>
+      <div class="row q-col-gutter-sm justify-center align-center" >
         <div
           v-for="n in 4"
           :key="`none-${n}`"
-          class="col-3"
+          class="col col-6 col-md-3"
         >
           <q-card
             class="text-white text-center"
