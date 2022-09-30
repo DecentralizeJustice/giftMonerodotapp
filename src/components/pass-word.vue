@@ -37,7 +37,7 @@
               class="text-h5 text-weight-regular"
               style="margin-top: -10%;"
             >
-              {{ fourLetterWordList[wordRandomNumber[n-1]] }}
+              {{ totalWordList[wordRandomNumber[n-1]] }}
             </q-card-section>
           </q-card>
         </div>
@@ -49,7 +49,9 @@
 // import test from '../assets/test.js'
 import { toRef } from 'vue'
 import getSVG from '@/components/getSVG.vue'
-import textg from '@/assets/4letterWords.txt'
+import text3 from '@/assets/Scrabble-3-letters-1063.txt'
+import text4 from '@/assets/Scrabble-4-letters-4030.txt'
+import text5 from '@/assets/Scrabble-5-letters-8938.txt'
 const props = defineProps({
   theme: { type: String, required: true }
 })
@@ -60,19 +62,12 @@ function getRandomInt (min, max) {
   // The maximum is exclusive and the minimum is inclusive
   return Math.floor(Math.random() * (max - min) + min)
 }
-const fourLetterWordList = textg.split('\n')
+let totalWordList = text3.concat(text4, text5)
+totalWordList = (totalWordList.split('\n'))
 const wordRandomNumber = []
 for (let i = 0; i <= 3; i++) {
-  wordRandomNumber.push(getRandomInt(0, 4030))
+  wordRandomNumber.push(getRandomInt(0, totalWordList.length))
 }
-// const options = ['Funny People', 'Birthday', 'Halloween']
-// const avatarStyles = {
-//   'Funny People': ['-5', '-10'],
-//   Halloween: ['-5', '-10'],
-//   Birthday: ['-5', '-10']
-// }
-// const testinfo = theme.value
-// console.log(avatarStyles[testinfo])
 </script>
 
 <style lang="sass" scoped>

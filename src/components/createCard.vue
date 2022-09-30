@@ -17,8 +17,13 @@
           :header-nav="step > 1"
         >
           <customizeCard />
-          <q-stepper-navigation class="text-right">
+          <q-stepper-navigation
+            class="text-right"
+            style="padding-top:0px;"
+          >
             <q-btn
+              no-margin
+              icon-right="navigate_next"
               color="primary"
               label="Next"
               @click="() => { done1 = true; step = 2 }"
@@ -112,7 +117,4 @@ const step = ref(1)
 </script>
 
 <style lang="sass" scoped>
-.my-card
-  background: #4c4c4c !important
-  width: 50vw
 </style>
