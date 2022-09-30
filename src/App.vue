@@ -1,11 +1,3 @@
-<script>
-// import { ref } from 'vue'
-export default {
-  setup () {
-  }
-}
-</script>
-
 <template>
   <q-layout
     view="hHh lpR fFf"
@@ -16,12 +8,17 @@ export default {
       class="text-white headerCustomStyle"
     >
       <q-toolbar>
+          <img src="./assets/moneroGift.png" style='max-width: 50px;' class='q-my-sm'>
         <q-toolbar-title>
-          <!-- <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-          </q-avatar> -->
           Give Monero
         </q-toolbar-title>
+        <q-space />
+        <q-btn-toggle
+        v-model="model"
+        flat stretch
+        toggle-color="yellow"
+        :options="options"
+      />
       </q-toolbar>
 
       <!-- <q-tabs align="left">
@@ -37,6 +34,17 @@ export default {
     </q-page-container>
   </q-layout>
 </template>
+<script setup>
+import { ref } from 'vue'
+const model = ref('')
+const options = [
+  { label: 'Home', value: 'one' },
+  { label: 'Create', value: 'two' },
+  { label: 'Redeem', value: 'three' },
+  { label: 'Manage', value: 'four' },
+  { label: 'Faq', value: 'five' }
+]
+</script>
 <style lang="sass" scoped>
 .headerCustomStyle
   background: #4c4c4c !important
