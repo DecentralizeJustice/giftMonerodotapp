@@ -1,0 +1,4 @@
+[[redirects]]
+from = "https://givemonero.com/*"
+to = "https://giftmonero.app/:splat"
+status = 301

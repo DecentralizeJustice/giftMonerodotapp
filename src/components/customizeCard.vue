@@ -105,7 +105,7 @@ import password from '@/components/pass-word.vue'
 const moneroFullLogo = require('../assets/svgs/monero-xmr-logo-full.svg')
 const to = ref('Satoshi')
 const from = ref('Fluffy Pony')
-const message = ref("Happy Birthday. I know you're really into privacy so here's some monero. Hope this B-day is great one!")
+const message = ref("I know you're really into privacy so here's some monero!")
 const options = ['People', 'Animals', 'Halloween']
 const theme = ref(options[0])
 const clear = function () {
@@ -149,7 +149,7 @@ const nth = function (d) {
     default: return 'th'
   }
 }
-const howToRedeem = `Head to givemonero.com/redeem before <span class='text-weight-bold' style='color:#ff6600;'>${month} ${day}${nth(day)}</span> to get your Monero!`
+const howToRedeem = `Head to giftmonero.app/redeem before <span class='text-weight-bold' style='color:#ff6600;'>${month} ${day}${nth(day)}</span> to get your Monero!`
 </script>
 
 <style lang="sass" scoped>
