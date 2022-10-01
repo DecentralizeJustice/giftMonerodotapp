@@ -11,15 +11,20 @@
           color="red-5"
           dark
         >
-          Secret Password: Do Not Share!!!
+          Secret Password: Don't Share!!!
         </q-chip>
       </div>
       <q-card class="bg-black text-white mobile-only q-mb-sm">
-        <q-card-section class='bg-red-5' style='border-radius: 10px;'>
-          <div class="text-subtitle2">Secret Password: Don't Share!!!</div>
+        <q-card-section
+          class="bg-red-5"
+          style="border-radius: 10px;"
+        >
+          <div class="text-subtitle2">
+            Secret Password: Don't Share!!!
+          </div>
         </q-card-section>
       </q-card>
-      <div class="row q-col-gutter-sm justify-center align-center" >
+      <div class="row q-col-gutter-sm justify-center align-center">
         <div
           v-for="n in 4"
           :key="`none-${n}`"

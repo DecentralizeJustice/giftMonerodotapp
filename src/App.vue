@@ -8,17 +8,30 @@
       class="text-white headerCustomStyle"
     >
       <q-toolbar>
-          <img src="./assets/moneroGift.png" style='max-width: 50px;' class='q-my-sm'>
+        <img
+          src="./assets/moneroGift.png"
+          style="max-width: 50px;"
+          class="q-my-sm"
+        >
         <q-toolbar-title>
           Give Monero
         </q-toolbar-title>
         <q-space />
+        <q-btn
+          flat
+          round
+          dense
+          icon="menu"
+          class="mobile-only"
+        />
         <q-btn-toggle
-        v-model="model"
-        flat stretch
-        toggle-color="yellow"
-        :options="options"
-      />
+          v-model="model"
+          flat
+          stretch
+          toggle-color="yellow"
+          :options="options"
+          class="desktop-only"
+        />
       </q-toolbar>
 
       <!-- <q-tabs align="left">

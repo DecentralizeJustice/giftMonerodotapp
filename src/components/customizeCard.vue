@@ -36,15 +36,19 @@
           icon="backspace"
           color="primary"
           label="Clear All"
+          class="desktop-only"
           @click="clear"
-          class='desktop-only'
         />
       </div>
       <div class="col col-12 col-md-6 order-first">
-        <div class="mobile-only" style='margin-top:-15px;margin-bottom:15px;'>
+        <div
+          class="mobile-only"
+          style="margin-top:-15px;margin-bottom:15px;"
+        >
           <q-chip
             icon="preview"
             :ripple="false"
+            size="md"
           >
             Gift Preview
           </q-chip>
@@ -55,7 +59,7 @@
         >
           <div class="row justify-center">
             <q-card
-              class="text-white text-center q-pa-sm q-my-md col-12 col-md-5"
+              class="text-white text-center q-pa-sm q-my-md col-9 col-md-5"
               style="background: white;"
             >
               <img

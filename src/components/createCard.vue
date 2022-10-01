@@ -1,11 +1,17 @@
 <template>
-  <div class="q-pa-md row justify-center align-center">
-    <div class="q-pa-md justify-center col-12 col-md-8 ">
+  <div
+    class="row justify-center align-center"
+  >
+    <div
+      class=" justify-center col-12 col-md-8"
+    >
       <q-stepper
         ref="stepper"
         v-model="step"
+        style="border-radius: 0px;"
         header-nav
         animated
+        :vertical="$q.screen.lt.md"
         keep-alive
         class="text-center"
       >
