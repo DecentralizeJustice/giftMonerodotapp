@@ -1,6 +1,9 @@
 <template>
-  <div class="justify-center full-height full-width text-center row">
-    <div class="col col-12 col-md-6">
+  <div
+    class="justify-center full-height full-width text-center row"
+    :class="{'justify-around': $q.screen.gt.sm}"
+  >
+    <div class="column col-12 col-md-6">
       <div
         class="mobile-only"
         style="margin-top:-15px;margin-bottom:15px;"
@@ -27,7 +30,7 @@
       >
         <div class="row justify-center">
           <q-card
-            class="text-white text-center q-pa-sm q-my-md col-9 col-md-5"
+            class="text-white text-center q-pa-sm q-my-md col-9 col-md-5 column"
             style="background: white;"
           >
             <img
@@ -56,44 +59,46 @@
         <!-- eslint-enable -->
       </q-card>
     </div>
-    <div class="col col-12 col-md-5">
-      <div class="q-pa-md">
-        <q-select
-          v-model="theme"
-          :options="options"
-          label="Select Theme"
-          filled
+    <div class="column col-12 col-md-5 justify-center">
+      <div>
+        <div class="q-pa-md">
+          <q-select
+            v-model="theme"
+            :options="options"
+            label="Select Theme"
+            filled
+          />
+        </div>
+        <div class="q-pa-md">
+          <q-input
+            v-model="to"
+            filled
+            label="To:(optional)"
+          />
+        </div>
+        <div class="q-pa-md">
+          <q-input
+            v-model="from"
+            filled
+            label="From:(optional)"
+          />
+        </div>
+        <div class="q-pa-md">
+          <q-input
+            v-model="message"
+            label="Message(optional):"
+            filled
+            type="textarea"
+          />
+        </div>
+        <q-btn
+          icon="backspace"
+          color="primary"
+          label="Clear All"
+          class="desktop-only"
+          @click="clear"
         />
       </div>
-      <div class="q-pa-md">
-        <q-input
-          v-model="to"
-          filled
-          label="To:(optional)"
-        />
-      </div>
-      <div class="q-pa-md">
-        <q-input
-          v-model="from"
-          filled
-          label="From:(optional)"
-        />
-      </div>
-      <div class="q-pa-md">
-        <q-input
-          v-model="message"
-          label="Message(optional):"
-          filled
-          type="textarea"
-        />
-      </div>
-      <q-btn
-        icon="backspace"
-        color="primary"
-        label="Clear All"
-        class="desktop-only"
-        @click="clear"
-      />
     </div>
   </div>
 </template>
