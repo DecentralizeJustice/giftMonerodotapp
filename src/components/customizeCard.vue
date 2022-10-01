@@ -105,7 +105,7 @@ import password from '@/components/pass-word.vue'
 const moneroFullLogo = require('../assets/svgs/monero-xmr-logo-full.svg')
 const to = ref('Satoshi')
 const from = ref('Fluffy Pony')
-const message = ref("I know you're really into privacy so here's some monero!")
+const message = ref("I know you're really into privacy, so here's some monero!")
 const options = ['People', 'Animals', 'Halloween']
 const theme = ref(options[0])
 const clear = function () {
