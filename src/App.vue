@@ -14,7 +14,7 @@
           class="q-my-sm"
         >
         <q-toolbar-title>
-          Give Monero
+          Gift Monero
         </q-toolbar-title>
         <q-space />
         <q-btn

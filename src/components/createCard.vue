@@ -39,7 +39,7 @@
         <q-step
           :name="2"
           title="Refund Address"
-          icon="create_new_folder"
+          icon="payments"
           :done="step > 2"
           :header-nav="step > 2"
         >
@@ -62,7 +62,7 @@
         <q-step
           :name="3"
           title="Fund"
-          icon="add_comment"
+          icon="attach_money"
           :header-nav="step > 3"
           :done="step > 3"
         >
@@ -88,7 +88,7 @@
         <q-step
           :name="4"
           title="Share"
-          icon="add_comment"
+          icon="share"
           :header-nav="step > 4"
         >
           Try out different ad text to see what brings in the most customers, and learn how to
