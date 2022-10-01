@@ -42,7 +42,9 @@
       </q-tabs> -->
     </q-header>
 
-    <q-page-container class=" full-height">
+    <q-page-container
+      :class="{'ntp': $q.screen.lt.md}"
+    >
       <router-view />
     </q-page-container>
   </q-layout>
@@ -61,6 +63,6 @@ const options = [
 <style lang="sass" scoped>
 .headerCustomStyle
   background: #4c4c4c !important
-.back
-  background-color: #f9530c
+.ntp
+  padding-top: 20px !important
 </style>

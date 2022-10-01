@@ -1,14 +1,16 @@
 <template>
   <div
     class="row justify-center align-center"
+    :class="{'q-my-sm': $q.screen.gt.sm}"
   >
     <div
-      class=" justify-center col-12 col-md-8"
+      class=" justify-center col-12 col-md-8 "
     >
       <q-stepper
         ref="stepper"
         v-model="step"
-        style="border-radius: 0px;"
+        style=""
+        :class="{'straight-corner': $q.screen.lt.md}"
         header-nav
         animated
         :vertical="$q.screen.lt.md"
@@ -22,9 +24,21 @@
           :done="step > 1"
           :header-nav="step > 1"
         >
+          <q-stepper-navigation
+            class="text-right desktop-only"
+            style="padding-top:0px;"
+          >
+            <q-btn
+              no-margin
+              icon-right="navigate_next"
+              color="primary"
+              label="Next"
+              @click="() => { done1 = true; step = 2 }"
+            />
+          </q-stepper-navigation>
           <customizeCard />
           <q-stepper-navigation
-            class="text-right"
+            class="text-right mobile-only"
             style="padding-top:0px;"
           >
             <q-btn
@@ -123,4 +137,6 @@ const step = ref(1)
 </script>
 
 <style lang="sass" scoped>
+  .straight-corner
+    border-radius: 0px
 </style>

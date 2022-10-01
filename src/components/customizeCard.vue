@@ -1,101 +1,99 @@
 <template>
-  <div class="">
-    <div class="row justify-around">
-      <div class="col col-12 col-md-5">
-        <div class="q-pa-md">
-          <q-select
-            v-model="theme"
-            :options="options"
-            label="Select Theme"
-            filled
+  <div class="justify-center full-height full-width text-center row">
+    <div class="col col-12 col-md-6">
+      <div
+        class="mobile-only"
+        style="margin-top:-15px;margin-bottom:15px;"
+      >
+        <q-chip
+          icon="preview"
+          :ripple="false"
+          size="md"
+        >
+          Gift Preview
+        </q-chip>
+      </div>
+      <div class="q-mb-md desktop-only">
+        <q-chip
+          icon="preview"
+          :ripple="false"
+        >
+          Gift Preview
+        </q-chip>
+      </div>
+      <q-card
+        class="text-white text-center q-pa-md"
+        style="background: #4c4c4c;"
+      >
+        <div class="row justify-center">
+          <q-card
+            class="text-white text-center q-pa-sm q-my-md col-9 col-md-5"
+            style="background: white;"
+          >
+            <img
+              :src="moneroFullLogo"
+              class="moneroLogo"
+            >
+          </q-card>
+          <!-- eslint-disable vue/no-v-html -->
+          <div
+            class="col-12 text-left text-body1"
+            v-html="cardTo"
+          />
+          <div class="col-12 text-left text-h6 q-my-sm">
+            {{ message }}
+          </div>
+          <div
+            class="col-12 text-right text-body1 q-mb-sm"
+            v-html="cardFrom"
+          />
+          <password :theme="theme" />
+          <div
+            class="col-12 col-md-8 text-center text-body1 q-my-md"
+            v-html="howToRedeem"
           />
         </div>
-        <div class="q-pa-md">
-          <q-input
-            v-model="to"
-            filled
-            label="To:(optional)"
-          />
-        </div>
-        <div class="q-pa-md">
-          <q-input
-            v-model="from"
-            filled
-            label="From:(optional)"
-          />
-        </div>
-        <div class="q-pa-md">
-          <q-input
-            v-model="message"
-            label="Message(optional):"
-            filled
-            type="textarea"
-          />
-        </div>
-        <q-btn
-          icon="backspace"
-          color="primary"
-          label="Clear All"
-          class="desktop-only"
-          @click="clear"
+        <!-- eslint-enable -->
+      </q-card>
+    </div>
+    <div class="col col-12 col-md-5">
+      <div class="q-pa-md">
+        <q-select
+          v-model="theme"
+          :options="options"
+          label="Select Theme"
+          filled
         />
       </div>
-      <div class="col col-12 col-md-6 order-first">
-        <div
-          class="mobile-only"
-          style="margin-top:-15px;margin-bottom:15px;"
-        >
-          <q-chip
-            icon="preview"
-            :ripple="false"
-            size="md"
-          >
-            Gift Preview
-          </q-chip>
-        </div>
-        <q-card
-          class="text-white text-center q-pa-md"
-          style="background: #4c4c4c;"
-        >
-          <div class="row justify-center">
-            <q-card
-              class="text-white text-center q-pa-sm q-my-md col-9 col-md-5"
-              style="background: white;"
-            >
-              <img
-                :src="moneroFullLogo"
-                class="moneroLogo"
-              >
-            </q-card>
-            <!-- eslint-disable vue/no-v-html -->
-            <div
-              class="col-12 text-left text-body1"
-              v-html="cardTo"
-            />
-            <div class="col-12 text-left text-h6 q-my-sm">
-              {{ message }}
-            </div>
-            <div
-              class="col-12 text-right text-body1 q-mb-sm"
-              v-html="cardFrom"
-            />
-            <password :theme="theme" />
-            <div
-              class="col-12 col-md-8 text-center text-body1 q-my-md"
-              v-html="howToRedeem"
-            />
-          </div>
-          <!-- eslint-enable -->
-        </q-card>
-        <div class="q-mt-md desktop-only">
-          <q-chip
-            icon="preview"
-            :ripple="false"
-          >
-            Gift Preview
-          </q-chip>
-        </div>
+      <div class="q-pa-md">
+        <q-input
+          v-model="to"
+          filled
+          label="To:(optional)"
+        />
       </div>
+      <div class="q-pa-md">
+        <q-input
+          v-model="from"
+          filled
+          label="From:(optional)"
+        />
+      </div>
+      <div class="q-pa-md">
+        <q-input
+          v-model="message"
+          label="Message(optional):"
+          filled
+          type="textarea"
+        />
+      </div>
+      <q-btn
+        icon="backspace"
+        color="primary"
+        label="Clear All"
+        class="desktop-only"
+        @click="clear"
+      />
     </div>
   </div>
 </template>
