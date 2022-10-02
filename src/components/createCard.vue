@@ -1,7 +1,7 @@
 <template>
   <div
     class="row justify-center align-center"
-    :class="{'q-my-sm': $q.screen.gt.sm}"
+    :class="{'q-my-lg': $q.screen.gt.sm}"
   >
     <div
       class=" justify-center col-12 col-md-8 "
