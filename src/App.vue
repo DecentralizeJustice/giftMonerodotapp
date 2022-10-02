@@ -64,5 +64,5 @@ const options = [
 .headerCustomStyle
   background: #4c4c4c !important
 .ntp
-  padding-top: 20px !important
+  padding-top: 60px !important
 </style>
