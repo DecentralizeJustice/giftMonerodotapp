@@ -16,14 +16,25 @@
         <q-toolbar-title>
           Gift Monero
         </q-toolbar-title>
-        <q-space />
+        <q-space class="desktop-only" />
         <q-btn
-          flat
-          round
-          dense
+          color="primary"
           icon="menu"
           class="mobile-only"
-        />
+        >
+          <q-menu>
+            <q-list style="min-width: 100px">
+              <q-item
+                v-for="(item, index) in options"
+                :key="index"
+                v-close-popup
+                clickable
+              >
+                <q-item-section>{{ options[index].label }}</q-item-section>
+              </q-item>
+            </q-list>
+          </q-menu>
+        </q-btn>
         <q-btn-toggle
           v-model="model"
           flat
@@ -53,11 +64,11 @@
 import { ref } from 'vue'
 const model = ref('')
 const options = [
-  { label: 'Home', value: 'one' },
+  // { label: 'Home', value: 'one' },
   { label: 'Create', value: 'two' },
-  { label: 'Redeem', value: 'three' },
-  { label: 'Manage', value: 'four' },
-  { label: 'Faq', value: 'five' }
+  { label: 'Redeem', value: 'three' }
+  // { label: 'Manage', value: 'four' },
+  // { label: 'Faq', value: 'five' }
 ]
 </script>
 <style lang="sass" scoped>

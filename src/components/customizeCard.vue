@@ -130,29 +130,7 @@ const cardFrom = computed(() => {
   }
   return "<span class='text-weight-bold'>From:</span> " + fromValue
 })
-const sixDaysFromNow = 518400000
-const day = new Date(Date.now() + sixDaysFromNow).toLocaleDateString(
-  'en-gb',
-  {
-    day: 'numeric'
-  }
-)
-const month = new Date(Date.now() + sixDaysFromNow).toLocaleDateString(
-  'en-gb',
-  {
-    month: 'long'
-  }
-)
-const nth = function (d) {
-  if (d > 3 && d < 21) return 'th'
-  switch (d % 10) {
-    case 1: return 'st'
-    case 2: return 'nd'
-    case 3: return 'rd'
-    default: return 'th'
-  }
-}
-const howToRedeem = `Head to giftmonero.app/redeem before <span class='text-weight-bold' style='color:#ff6600;'>${month} ${day}${nth(day)}</span> to get your Monero!`
+const howToRedeem = 'Head to giftmonero.app/redeem within <span class=\'text-weight-bold\' style=\'color:#ff6600;\'>1 Hour</span> to get your Monero!'
 </script>
 
 <style lang="sass" scoped>
