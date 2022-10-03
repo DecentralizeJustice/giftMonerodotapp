@@ -104,8 +104,8 @@
 </template>
 <script setup>
 import { ref, computed } from 'vue'
-import password from '@/components/pass-word.vue'
-const moneroFullLogo = require('../assets/svgs/monero-xmr-logo-full.svg')
+import password from '@/components/customize/pass-word.vue'
+const moneroFullLogo = require('@/assets/svgs/monero-xmr-logo-full.svg')
 const to = ref('Satoshi')
 const from = ref('Fluffy Pony')
 const message = ref("I know you're really into privacy, so here's some monero!")
@@ -130,7 +130,7 @@ const cardFrom = computed(() => {
   }
   return "<span class='text-weight-bold'>From:</span> " + fromValue
 })
-const howToRedeem = 'Head to giftmonero.app/redeem within <span class=\'text-weight-bold\' style=\'color:#ff6600;\'>1 Hour</span> to get your Monero!'
+const howToRedeem = 'Go to giftmonero.app/redeem within <span class=\'text-weight-bold\' style=\'color:#ff6600;\'>1 Hour</span> to get your Monero!'
 </script>
 
 <style lang="sass" scoped>

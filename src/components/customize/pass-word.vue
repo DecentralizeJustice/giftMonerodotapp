@@ -58,7 +58,7 @@
 <script setup>
 // import test from '../assets/test.js'
 import { toRef } from 'vue'
-import getSVG from '@/components/getSVG.vue'
+import getSVG from '@/components/customize/getSVG.vue'
 import text3 from '@/assets/Scrabble-3-letters-1063.txt'
 import text4 from '@/assets/Scrabble-4-letters-4030.txt'
 import text5 from '@/assets/Scrabble-5-letters-8938.txt'

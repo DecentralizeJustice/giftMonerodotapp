@@ -9,7 +9,6 @@
       <q-stepper
         ref="stepper"
         v-model="step"
-        style=""
         :class="{'straight-corner': $q.screen.lt.md}"
         header-nav
         animated
@@ -57,19 +56,43 @@
           :done="step > 2"
           :header-nav="step > 2"
         >
-          <q-stepper-navigation>
-            <q-btn
-              color="primary"
-              label="Continue"
-              @click="() => { done2 = true; step = 3 }"
-            />
-            <q-btn
-              flat
-              color="primary"
-              label="Back"
-              class="q-ml-sm"
-              @click="step = 1"
-            />
+          <q-stepper-navigation
+            class="row"
+            :class="{'justify-between': $q.screen.gt.sm, 'justify-end': $q.screen.lt.md}"
+          >
+            <div
+              :class="{'col-2': $q.screen.gt.sm, 'col-5': $q.screen.lt.md}"
+            >
+              <q-btn
+                icon="navigate_before"
+                color="primary"
+                label="Back"
+                @click="step = 1"
+              />
+            </div>
+            <div
+              class="desktop-only"
+            >
+              <q-btn
+                icon-right="navigate_next"
+                color="primary"
+                label="Next"
+                @click="() => { done2 = true; step = 3 }"
+              />
+            </div>
+          </q-stepper-navigation>
+          <refundAddress />
+          <q-stepper-navigation
+            class="mobile-only row justify-end"
+          >
+            <div>
+              <q-btn
+                icon-right="navigate_next"
+                color="primary"
+                label="Next"
+                @click="() => { done2 = true; step = 3 }"
+              />
+            </div>
           </q-stepper-navigation>
         </q-step>
 
@@ -129,7 +152,8 @@
   </div>
 </template>
 <script setup>
-import customizeCard from '@/components/customizeCard.vue'
+import customizeCard from '@/components/customize/customizeCard.vue'
+import refundAddress from '@/components/refund/refundAddress.vue'
 // import test from '../assets/test.js'
 import { ref } from 'vue'
 const step = ref(1)
