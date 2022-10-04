@@ -1,15 +1,14 @@
 <template>
   <div class="row justify-center">
     <q-card
-      class="text-white q-ma-sm"
+      class="text-white col col-md-6 col-12 my-card text-left"
       style="border-radius: 10px;"
     >
       <q-card-section
-        class="bg-black"
+        class="bg-black q-pa-md"
+        style="white-space: normal"
       >
-        <div class="text-subtitle1 text-left">
-          {{ walletInfo.address }}
-        </div>
+      {{walletInfo.address}}
       </q-card-section>
     </q-card>
   </div>
@@ -23,3 +22,7 @@ async function getInfo () {
 }
 const walletInfo = await getInfo()
 </script>
+  <style lang="sass" scoped>
+.my-card
+  overflow-wrap: break-word
+  </style>
