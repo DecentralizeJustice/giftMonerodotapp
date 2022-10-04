@@ -18,7 +18,7 @@
       >
         <q-step
           :name="1"
-          title="Customize"
+          title="Customize Gift Card"
           icon="settings"
           :done="step > 1"
           :header-nav="step > 1"
@@ -85,7 +85,7 @@
           <q-stepper-navigation
             class="mobile-only row justify-end"
           >
-            <div>
+            <div class='col-5'>
               <q-btn
                 icon-right="navigate_next"
                 color="primary"
@@ -98,33 +98,53 @@
 
         <q-step
           :name="3"
-          title="Fund"
+          title="Fund Gift Card"
           icon="attach_money"
           :header-nav="step > 3"
           :done="step > 3"
         >
-          Try out different ad text to see what brings in the most customers, and learn how to
-          enhance your ads using features like ad extensions. If you run into any problems with
-          your ads, find out how to tell if they're running and how to resolve approval issues.
-
-          <q-stepper-navigation>
+          <q-stepper-navigation
+            class="row"
+            :class="{'justify-between': $q.screen.gt.sm, 'justify-end': $q.screen.lt.md}"
+          >
+            <div
+              :class="{'col-2': $q.screen.gt.sm, 'col-5': $q.screen.lt.md}"
+            >
             <q-btn
-              color="primary"
-              label="Continue"
-              @click="() => { done3 = true; step = 4 }"
-            />
-            <q-btn
-              flat
+              icon="navigate_before"
               color="primary"
               label="Back"
-              class="q-ml-sm"
               @click="step = 2"
             />
+            </div>
+            <div
+              class="desktop-only"
+            >
+              <q-btn
+                icon-right="navigate_next"
+                color="primary"
+                label="Next"
+                @click="() => { done3 = true; step = 4 }"
+              />
+            </div>
+          </q-stepper-navigation>
+          <fundCard/>
+          <q-stepper-navigation
+            class="mobile-only row justify-end"
+          >
+            <div class='col-5'>
+              <q-btn
+                icon-right="navigate_next"
+                color="primary"
+                label="Next"
+                @click="() => { done3 = true; step = 4 }"
+              />
+            </div>
           </q-stepper-navigation>
         </q-step>
         <q-step
           :name="4"
-          title="Share"
+          title="Share Gift Card"
           icon="share"
           :header-nav="step > 4"
         >
@@ -154,7 +174,7 @@
 <script setup>
 import customizeCard from '@/components/customize/customizeCard.vue'
 import refundAddress from '@/components/refund/refundAddress.vue'
-// import test from '../assets/test.js'
+import fundCard from '@/components/fundCard/fundCard.vue'
 import { ref } from 'vue'
 const step = ref(1)
 
