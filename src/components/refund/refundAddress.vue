@@ -14,7 +14,7 @@
     </div>
 
     <q-card
-      class="text-white q-ma-sm"
+      class="text-white q-ma-sm col-12 col-md-8"
       style="border-radius: 10px;"
     >
       <q-card-section
