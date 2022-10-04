@@ -8,11 +8,11 @@
         class="bg-black"
       >
         <div class="text-subtitle1 text-left">
-          {{walletInfo}}
+          {{ walletInfo.address }}
         </div>
       </q-card-section>
     </q-card>
-    </div>
+  </div>
 </template>
 
 <script setup>

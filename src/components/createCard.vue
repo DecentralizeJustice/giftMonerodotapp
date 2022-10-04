@@ -85,7 +85,7 @@
           <q-stepper-navigation
             class="mobile-only row justify-end"
           >
-            <div class='col-5'>
+            <div class="col-5">
               <q-btn
                 icon-right="navigate_next"
                 color="primary"
@@ -108,14 +108,14 @@
             :class="{'justify-between': $q.screen.gt.sm, 'justify-end': $q.screen.lt.md}"
           >
             <div
-              :class="{'col-2': $q.screen.gt.sm, 'col-5': $q.screen.lt.md}"
+              :class="{'col-2': $q.screen.gt.sm, 'col-5  q-mb-lg': $q.screen.lt.md}"
             >
-            <q-btn
-              icon="navigate_before"
-              color="primary"
-              label="Back"
-              @click="step = 2"
-            />
+              <q-btn
+                icon="navigate_before"
+                color="primary"
+                label="Back"
+                @click="step = 2"
+              />
             </div>
             <div
               class="desktop-only"
@@ -128,11 +128,11 @@
               />
             </div>
           </q-stepper-navigation>
-          <fundCard/>
+          <fundCard />
           <q-stepper-navigation
             class="mobile-only row justify-end"
           >
-            <div class='col-5'>
+            <div class="col-5">
               <q-btn
                 icon-right="navigate_next"
                 color="primary"
@@ -163,7 +163,7 @@
               color="primary"
               label="Back"
               class="q-ml-sm"
-              @click="step = 2"
+              @click="step = 3"
             />
           </q-stepper-navigation>
         </q-step>

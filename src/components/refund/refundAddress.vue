@@ -3,13 +3,13 @@
     <div
       class="col-md-8 col-12"
       :class="{'q-pa-sm q-mt-lg': $q.screen.lt.md,
-      'q-pa-sm q-mt-md': $q.screen.gt.sm}"
+               'q-pa-sm q-mt-md': $q.screen.gt.sm}"
     >
       <q-input
         v-model="refundAddress"
         label="Refund Address"
         filled
-      type="textarea"
+        type="textarea"
       />
     </div>
 
@@ -36,11 +36,15 @@
           Here are some donation options:
         </div>
         <div class="q-pa-sm q-gutter-sm">
-           <q-btn color="primary" label="Rhino Fuacet" @click="donateToRhinoStagenet()" />
-         </div>
+          <q-btn
+            color="primary"
+            label="Rhino Fuacet"
+            @click="donateToRhinoStagenet()"
+          />
+        </div>
       </q-card-section>
     </q-card>
-      </div>
+  </div>
 </template>
 
 <script setup>
