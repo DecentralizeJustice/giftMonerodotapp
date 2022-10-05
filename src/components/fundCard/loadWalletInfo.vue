@@ -8,7 +8,7 @@
         class="bg-black q-pa-md"
         style="white-space: normal"
       >
-      {{walletInfo.address}}
+        {{ walletInfo.address }}
       </q-card-section>
     </q-card>
   </div>

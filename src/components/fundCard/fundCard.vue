@@ -1,11 +1,11 @@
 <template>
   <Suspense>
-        <template #default >
-          <loadWalletInfo/>
-        </template>
-        <template #fallback>
-          <loadAnimation/>
-        </template>
+    <template #default>
+      <loadWalletInfo />
+    </template>
+    <template #fallback>
+      <loadAnimation />
+    </template>
   </Suspense>
 </template>
 
