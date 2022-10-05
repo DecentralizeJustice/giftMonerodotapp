@@ -10,6 +10,7 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.8.3",
+    "qrcode": "^1.5.1",
     "quasar": "^2.0.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3"
@@ -61,7 +62,7 @@
     ],
     "parserOptions": {
       "parser": "@babel/eslint-parser",
-      "requireConfigFile" : "false"
+      "requireConfigFile": "false"
     },
     "rules": {
       "vue/script-setup-uses-vars": "error"
