@@ -42,14 +42,14 @@
         <!-- eslint-enable -->
       </q-card>
     </div>
-    <div class='col col-12 q-mt-md'>
-    <q-btn
-      color="black"
-      text-color="white"
-      label="Save"
-      @click="down"
-    />
-  </div>
+    <div class="col col-12 q-mt-md">
+      <q-btn
+        color="black"
+        text-color="white"
+        label="Save"
+        @click="down"
+      />
+    </div>
   </div>
 </template>
 <script setup>
