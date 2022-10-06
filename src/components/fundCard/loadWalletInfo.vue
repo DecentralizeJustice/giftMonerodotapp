@@ -20,14 +20,14 @@
             style=""
           />
         </div>
-        <div class='col col-12 q-mt-md text-center'>
-        <q-btn
-          color="primary"
-          icon="file_copy"
-          label="Copy"
-          @click="copy"
-        />
-      </div>
+        <div class="col col-12 q-mt-md text-center">
+          <q-btn
+            color="primary"
+            icon="file_copy"
+            label="Copy"
+            @click="copy"
+          />
+        </div>
       </q-card-section>
     </q-card>
   </div>
