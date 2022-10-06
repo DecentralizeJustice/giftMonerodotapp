@@ -62,9 +62,9 @@ const message = ref("I know you're really into privacy, so here's some monero!")
 const options = ['People', 'Animals', 'Halloween']
 const theme = ref(options[0])
 function down () {
-  htmlToImage.toPng(document.getElementById('printableCard'))
+  htmlToImage.toSvg(document.getElementById('printableCard'))
     .then(function (dataUrl) {
-      download(dataUrl, 'giftMonero.png')
+      download(dataUrl, 'giftMonero.svg')
     })
 }
 const cardTo = computed(() => {
