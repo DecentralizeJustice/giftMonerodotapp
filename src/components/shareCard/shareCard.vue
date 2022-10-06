@@ -42,12 +42,14 @@
         <!-- eslint-enable -->
       </q-card>
     </div>
+    <div class='col col-12 q-mt-md'>
     <q-btn
-      color="white"
-      text-color="black"
-      label="Standard"
+      color="black"
+      text-color="white"
+      label="Save"
       @click="down"
     />
+  </div>
   </div>
 </template>
 <script setup>
@@ -61,11 +63,21 @@ const from = ref('Fluffy Pony')
 const message = ref("I know you're really into privacy, so here's some monero!")
 const options = ['People', 'Animals', 'Halloween']
 const theme = ref(options[0])
-function down () {
-  htmlToImage.toSvg(document.getElementById('printableCard'))
-    .then(function (dataUrl) {
-      download(dataUrl, 'giftMonero.svg')
-    })
+async function down () {
+  const element = document.getElementById('printableCard')
+  const imageSettings = { quality: 1 }
+  const url = await htmlToImage.toJpeg(element, imageSettings)
+  const img = document.createElement('img')
+  img.src = url
+  const image = await new Promise((resolve) => {
+    img.onload = () => {
+      htmlToImage.toJpeg(element, imageSettings).then((dataUrl) => {
+        resolve(dataUrl)
+      })
+    }
+  })
+  await download(image, 'giftMonero.png')
+  return true
 }
 const cardTo = computed(() => {
   const toValue = to.value
