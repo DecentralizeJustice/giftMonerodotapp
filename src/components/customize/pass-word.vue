@@ -25,7 +25,7 @@
         </q-card-section>
       </q-card>
       <div class="row q-col-gutter-sm justify-center align-center">
-        <div
+        <!-- <div
           v-for="n in 4"
           :key="`none-${n}`"
           class="col col-6 col-md-3"
@@ -50,34 +50,33 @@
               {{ totalWordList[wordRandomNumber[n-1]] }}
             </q-card-section>
           </q-card>
-        </div>
+        </div> -->
       </div>
     </q-card>
   </div>
 </template>
 <script setup>
 // import test from '../assets/test.js'
-import { toRef } from 'vue'
-import getSVG from '@/components/customize/getSVG.vue'
-import text3 from '@/assets/Scrabble-3-letters-1063.txt'
-import text4 from '@/assets/Scrabble-4-letters-4030.txt'
-import text5 from '@/assets/Scrabble-5-letters-8938.txt'
-const props = defineProps({
-  theme: { type: String, required: true }
-})
-const theme = toRef(props, 'theme')
-function getRandomInt (min, max) {
-  min = Math.ceil(min)
-  max = Math.floor(max)
-  // The maximum is exclusive and the minimum is inclusive
-  return Math.floor(Math.random() * (max - min) + min)
-}
-let totalWordList = text3.concat(text4, text5)
-totalWordList = (totalWordList.split('\n'))
-const wordRandomNumber = []
-for (let i = 0; i <= 3; i++) {
-  wordRandomNumber.push(getRandomInt(0, totalWordList.length))
-}
+// import { toRef } from 'vue'
+// import getSVG from '@/components/customize/getSVG.vue'
+import text from '@/assets/word-list-65555.txt'
+// const props = defineProps({
+//   theme: { type: String, required: true }
+// })
+// const theme = toRef(props, 'theme')
+// function getRandomInt (min, max) {
+//   min = Math.ceil(min)
+//   max = Math.floor(max)
+//   // The maximum is exclusive and the minimum is inclusive
+//   return Math.floor(Math.random() * (max - min) + min)
+// }
+let totalWordList = []
+totalWordList = (text.split('\n'))
+// const wordRandomNumber = []
+console.log(totalWordList.length)
+// for (let i = 0; i <= 3; i++) {
+//   wordRandomNumber.push(getRandomInt(0, totalWordList.length))
+// }
 </script>
 
 <style lang="sass" scoped>

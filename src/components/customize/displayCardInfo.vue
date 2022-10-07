@@ -5,7 +5,7 @@
   >
     <div
       id="printableCard"
-      class="column col-12 col-md-6"
+      class="column col-12 col-md-12"
     >
       <q-card
         class="text-white text-center q-pa-md"
@@ -42,20 +42,11 @@
         <!-- eslint-enable -->
       </q-card>
     </div>
-    <div class="col col-12 q-mt-md">
-      <q-btn
-        icon="download"
-        color="black"
-        text-color="white"
-        label="Download"
-        @click="down"
-      />
-    </div>
   </div>
 </template>
 <script setup>
-import * as htmlToImage from 'html-to-image'
-import download from 'downloadjs'
+// import * as htmlToImage from 'html-to-image'
+// import download from 'downloadjs'
 import { ref, computed } from 'vue'
 import password from '@/components/customize/pass-word.vue'
 const moneroFullLogo = require('@/assets/svgs/monero-xmr-logo-full.svg')
@@ -64,22 +55,6 @@ const from = ref('Fluffy Pony')
 const message = ref("I know you're really into privacy, so here's some monero!")
 const options = ['People', 'Animals', 'Halloween']
 const theme = ref(options[0])
-async function down () {
-  const element = document.getElementById('printableCard')
-  const imageSettings = { quality: 1 }
-  const url = await htmlToImage.toJpeg(element, imageSettings)
-  const img = document.createElement('img')
-  img.src = url
-  const image = await new Promise((resolve) => {
-    img.onload = () => {
-      htmlToImage.toJpeg(element, imageSettings).then((dataUrl) => {
-        resolve(dataUrl)
-      })
-    }
-  })
-  await download(image, 'giftMonero.png')
-  return true
-}
 const cardTo = computed(() => {
   const toValue = to.value
   if (toValue.length === 0) {
