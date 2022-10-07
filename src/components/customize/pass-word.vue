@@ -31,7 +31,7 @@
           class="col col-6 col-md-3"
         >
           <q-card
-            class="text-white text-center"
+            class="text-white text-center q-pb-sm"
             style="background: #ff6600"
           >
             <div
@@ -44,8 +44,8 @@
               <getSVG :theme="theme" />
             </q-card-section>
             <q-card-section
-              class="text-h6 text-weight-regular"
-              style="margin-top: -10%;"
+              class="text-subtitle1 text-weight-regular text-center no-padding"
+              style=""
             >
               {{ newList[wordRandomNumber[n-1]] }}
             </q-card-section>
@@ -74,11 +74,9 @@ totalWordList.pop()
 totalWordList.pop()
 const newList = []
 for (let i = 0; i < totalWordList.length; i++) {
-  const tempString = totalWordList[i].split('').reverse().join('')
-  newList[i] = tempString.split(' ')[0].replace(/\s+/g, '')
-  newList[i] = newList[i].split('').reverse().join('')
+  const tempString = totalWordList[i]
+  newList[i] = tempString.split(' ')[2].replace(/\s+/g, '')
 }
-console.log()
 const wordRandomNumber = []
 for (let i = 0; i <= 3; i++) {
   wordRandomNumber.push(getRandomInt(0, 65536)) // 2^16
