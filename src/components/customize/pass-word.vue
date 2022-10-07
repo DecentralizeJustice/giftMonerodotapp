@@ -25,7 +25,7 @@
         </q-card-section>
       </q-card>
       <div class="row q-col-gutter-sm justify-center align-center">
-        <!-- <div
+        <div
           v-for="n in 4"
           :key="`none-${n}`"
           class="col col-6 col-md-3"
@@ -44,39 +44,45 @@
               <getSVG :theme="theme" />
             </q-card-section>
             <q-card-section
-              class="text-h5 text-weight-regular"
+              class="text-h6 text-weight-regular"
               style="margin-top: -10%;"
             >
-              {{ totalWordList[wordRandomNumber[n-1]] }}
+              {{ newList[wordRandomNumber[n-1]] }}
             </q-card-section>
           </q-card>
-        </div> -->
+        </div>
       </div>
     </q-card>
   </div>
 </template>
 <script setup>
-// import test from '../assets/test.js'
-// import { toRef } from 'vue'
-// import getSVG from '@/components/customize/getSVG.vue'
+import { toRef } from 'vue'
+import getSVG from '@/components/customize/getSVG.vue'
 import text from '@/assets/word-list-65555.txt'
-// const props = defineProps({
-//   theme: { type: String, required: true }
-// })
-// const theme = toRef(props, 'theme')
-// function getRandomInt (min, max) {
-//   min = Math.ceil(min)
-//   max = Math.floor(max)
-//   // The maximum is exclusive and the minimum is inclusive
-//   return Math.floor(Math.random() * (max - min) + min)
-// }
-let totalWordList = []
-totalWordList = (text.split('\n'))
-// const wordRandomNumber = []
-console.log(totalWordList.length)
-// for (let i = 0; i <= 3; i++) {
-//   wordRandomNumber.push(getRandomInt(0, totalWordList.length))
-// }
+const props = defineProps({
+  theme: { type: String, required: true }
+})
+const theme = toRef(props, 'theme')
+function getRandomInt (min, max) {
+  min = Math.ceil(min)
+  max = Math.floor(max)
+  // The maximum is exclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (max - min) + min)
+}
+const totalWordList = (text.split('\n'))
+totalWordList.pop()
+totalWordList.pop()
+const newList = []
+for (let i = 0; i < totalWordList.length; i++) {
+  const tempString = totalWordList[i].split('').reverse().join('')
+  newList[i] = tempString.split(' ')[0].replace(/\s+/g, '')
+  newList[i] = newList[i].split('').reverse().join('')
+}
+console.log()
+const wordRandomNumber = []
+for (let i = 0; i <= 3; i++) {
+  wordRandomNumber.push(getRandomInt(0, 65536)) // 2^16
+}
 </script>
 
 <style lang="sass" scoped>
