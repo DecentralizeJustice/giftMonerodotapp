@@ -4,13 +4,13 @@
     :class="{'justify-around': $q.screen.gt.sm}"
   >
     <div class="column col-12 col-md-6">
-      <displayCardInfo />
+      <displayCardInfo :cardinfoobject="cardinfoobject" />
     </div>
     <div class="column col-12 col-md-5 justify-center">
       <div>
         <div class="q-pa-md">
           <q-select
-            v-model="theme"
+            v-model="cardinfoobject.theme"
             :options="options"
             label="Select Theme"
             filled
@@ -18,21 +18,21 @@
         </div>
         <div class="q-pa-md">
           <q-input
-            v-model="to"
+            v-model="cardinfoobject.to"
             filled
             label="To:(optional)"
           />
         </div>
         <div class="q-pa-md">
           <q-input
-            v-model="from"
+            v-model="cardinfoobject.from"
             filled
             label="From:(optional)"
           />
         </div>
         <div class="q-pa-md">
           <q-input
-            v-model="message"
+            v-model="cardinfoobject.message"
             label="Message(optional):"
             filled
             type="textarea"
@@ -51,33 +51,38 @@
 </template>
 <script setup>
 import displayCardInfo from '@/components/customize/displayCardInfo.vue'
-import { ref } from 'vue'
-// import password from '@/components/customize/pass-word.vue'
-const to = ref('Satoshi')
-const from = ref('Fluffy Pony')
-const message = ref("I know you're really into privacy, so here's some monero!")
+import { reactive } from 'vue'
 const options = ['People', 'Animals', 'Halloween']
-const theme = ref(options[0])
 const clear = function () {
-  to.value = ''
-  from.value = ''
-  message.value = ''
+  cardinfoobject.to = ''
+  cardinfoobject.from = ''
+  cardinfoobject.message = ''
 }
-// const cardTo = computed(() => {
-//   const toValue = to.value
-//   if (toValue.length === 0) {
-//     return ''
-//   }
-//   return "<span class='text-weight-bold'>To:</span> " + toValue
-// })
-// const cardFrom = computed(() => {
-//   const fromValue = from.value
-//   if (fromValue.length === 0) {
-//     return ''
-//   }
-//   return "<span class='text-weight-bold'>From:</span> " + fromValue
-// })
-// const howToRedeem = 'Go to giftmonero.app/redeem within <span class=\'text-weight-bold\' style=\'color:#ff6600;\'>1 Hour</span> to get your Monero!'
+let cardinfoobject = {
+  to: 'Satoshi',
+  from: 'Fluffy Pony',
+  message: "I know you're really into privacy, so here's some monero!",
+  theme: options[2],
+  entropyData: {
+    avatars: [0, 0, 0, 0],
+    words: [0, 0, 0, 0]
+  }
+}
+cardinfoobject = reactive(cardinfoobject)
+function getRandomInt (min, max) {
+  min = Math.ceil(min)
+  max = Math.floor(max)
+  // The maximum is exclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (max - min) + min)
+}
+cardinfoobject.entropyData.words[0] = getRandomInt(0, 65536)
+for (let i = 1; i < 4; i++) {
+  cardinfoobject.entropyData.words[i] = getRandomInt(0, 65536)
+}
+for (let i = 0; i < 4; i++) {
+  cardinfoobject.entropyData.avatars[i] = getRandomInt(0, 19)
+}
+console.log(cardinfoobject.entropyData.avatars[0])
 </script>
 
 <style lang="sass" scoped>

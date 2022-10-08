@@ -27,13 +27,13 @@
             v-html="cardTo"
           />
           <div class="col-12 text-left text-h6 q-my-sm">
-            {{ message }}
+            {{ cardInfo.message }}
           </div>
           <div
             class="col-12 text-right text-body1 q-mb-sm"
             v-html="cardFrom"
           />
-          <password :theme="theme" />
+          <password :theme="cardInfo.theme" />
           <div
             class="col-12 col-md-8 text-center text-body1 q-my-md"
             v-html="howToRedeem"
@@ -45,25 +45,23 @@
   </div>
 </template>
 <script setup>
-// import * as htmlToImage from 'html-to-image'
-// import download from 'downloadjs'
-import { ref, computed } from 'vue'
+import { reactive, computed } from 'vue'
 import password from '@/components/customize/pass-word.vue'
 const moneroFullLogo = require('@/assets/svgs/monero-xmr-logo-full.svg')
-const to = ref('Satoshi')
-const from = ref('Fluffy Pony')
-const message = ref("I know you're really into privacy, so here's some monero!")
-const options = ['People', 'Animals', 'Halloween']
-const theme = ref(options[0])
+const props = defineProps({
+  cardinfoobject: { type: Object, required: true }
+})
+const cardinfoobject = reactive(props, 'cardinfoobject')
+const cardInfo = cardinfoobject.cardinfoobject
 const cardTo = computed(() => {
-  const toValue = to.value
+  const toValue = cardInfo.to
   if (toValue.length === 0) {
     return ''
   }
   return "<span class='text-weight-bold'>To:</span> " + toValue
 })
 const cardFrom = computed(() => {
-  const fromValue = from.value
+  const fromValue = cardInfo.from
   if (fromValue.length === 0) {
     return ''
   }
