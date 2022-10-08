@@ -19,7 +19,7 @@
           class="bg-red-5"
           style="border-radius: 10px;"
         >
-          <div class="text-subtitle2">
+          <div class="text-subtitle1">
             Secret Password: Don't Share!!!
           </div>
         </q-card-section>
@@ -75,7 +75,7 @@ totalWordList.pop()
 const newList = []
 for (let i = 0; i < totalWordList.length; i++) {
   const tempString = totalWordList[i]
-  newList[i] = tempString.split(' ')[2].replace(/\s+/g, '')
+  newList[i] = tempString.split(' ')[2]
 }
 const wordRandomNumber = []
 for (let i = 0; i <= 3; i++) {
