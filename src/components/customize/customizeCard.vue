@@ -75,14 +75,13 @@ function getRandomInt (min, max) {
   // The maximum is exclusive and the minimum is inclusive
   return Math.floor(Math.random() * (max - min) + min)
 }
-cardinfoobject.entropyData.words[0] = getRandomInt(0, 65536)
+cardinfoobject.entropyData.words[0] = getRandomInt(0, 65536) // 2^16
 for (let i = 1; i < 4; i++) {
-  cardinfoobject.entropyData.words[i] = getRandomInt(0, 65536)
+  cardinfoobject.entropyData.words[i] = getRandomInt(0, 65536) // 2^16
 }
 for (let i = 0; i < 4; i++) {
   cardinfoobject.entropyData.avatars[i] = getRandomInt(0, 19)
 }
-console.log(cardinfoobject.entropyData.avatars[0])
 </script>
 
 <style lang="sass" scoped>

@@ -13,31 +13,31 @@
 import halloweenSVGList from '@/assets/svgs/halloweenSVGList.js'
 import funnyPeopleSVGList from '@/assets/svgs/funnyPeopleSVGList.js'
 import animalsSVGList from '@/assets/svgs/animalsSVGList.js'
-import { toRef, computed } from 'vue'
+import { reactive, computed, toRef } from 'vue'
 const props = defineProps({
-  theme: { type: String, required: true }
+  cardinfoobject: { type: Object, required: true },
+  chosenavatarindex: { type: Number, required: true }
 })
-const theme = toRef(props, 'theme')
-const themeDict = { People: funnyPeopleSVGList, Animals: animalsSVGList, Halloween: halloweenSVGList }
-const svgArray = computed(() => themeDict[theme.value])
-function getRandomInt (min, max) {
-  min = Math.ceil(min)
-  max = Math.floor(max)
-  return Math.floor(Math.random() * (max - min) + min) // The maximum is exclusive and the minimum is inclusive
-}
-const chosen = getRandomInt(0, 20)
+const cardinfoobject = reactive(props, 'cardinfoobject')
+const cardInfo = cardinfoobject.cardinfoobject
+
+const chosenavatarindex = toRef(props, 'chosenavatarindex')
+const avatarIndex = chosenavatarindex.value
+
 function isThisTheIcon (index) {
-  if (chosen === index) {
+  if (avatarIndex === index) {
     return true
   }
   return false
 }
 function isNotTheIcon (index) {
-  if (chosen === index) {
+  if (avatarIndex === index) {
     return false
   }
   return true
 }
+const themeDict = { People: funnyPeopleSVGList, Animals: animalsSVGList, Halloween: halloweenSVGList }
+const svgArray = computed(() => themeDict[cardInfo.theme])
 </script>
 
 <style lang="sass" scoped>
