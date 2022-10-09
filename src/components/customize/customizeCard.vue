@@ -65,7 +65,7 @@ let cardinfoobject = {
   theme: options[2],
   entropyData: {
     avatars: [0, 0, 0, 0],
-    words: [0, 0, 0, 0]
+    words: [0, 0, 0, 0, 0, 0, 0]
   }
 }
 cardinfoobject = reactive(cardinfoobject)
@@ -76,7 +76,7 @@ function getRandomInt (min, max) {
   return Math.floor(Math.random() * (max - min) + min)
 }
 cardinfoobject.entropyData.words[0] = getRandomInt(0, 65536) // 2^16
-for (let i = 1; i < 4; i++) {
+for (let i = 1; i < 8; i++) {
   cardinfoobject.entropyData.words[i] = getRandomInt(0, 65536) // 2^16
 }
 for (let i = 0; i < 4; i++) {

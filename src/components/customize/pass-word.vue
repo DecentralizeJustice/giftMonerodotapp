@@ -26,7 +26,7 @@
       </q-card>
       <div class="row q-col-gutter-sm justify-center align-center">
         <div
-          v-for="(item, index) in cardInfo.entropyData.words"
+          v-for="(item, index) in wordArrayIterate"
           :key="`none-${item}`"
           class="col col-6 col-md-3"
         >
@@ -48,9 +48,10 @@
             </q-card-section>
             <q-card-section
               class="text-subtitle1 text-weight-regular text-center no-padding"
-              style=""
+              style="line-height: 105%;"
             >
-              {{ newList[cardInfo.entropyData.words[index]] }}
+              {{ newList[cardInfo.entropyData.words[item]] }} <br>
+              {{ newList[cardInfo.entropyData.words[item + 1]] }}
             </q-card-section>
           </q-card>
         </div>
@@ -65,6 +66,7 @@ import text from '@/assets/word-list-65555.txt'
 const props = defineProps({
   cardinfoobject: { type: Object, required: true }
 })
+const wordArrayIterate = [0, 2, 4, 6]
 const cardinfoobjectReactive = reactive(props, 'cardinfoobject')
 const cardInfo = cardinfoobjectReactive.cardinfoobject
 const totalWordList = (text.split('\n'))
