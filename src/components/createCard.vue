@@ -35,7 +35,7 @@
               @click="() => { done1 = true; step = 2 }"
             />
           </q-stepper-navigation>
-          <customizeCard @updateCard="updatePotentialCard" />
+          <customizeCard @update-card="updatePotentialCard" />
           <q-stepper-navigation
             class="text-right mobile-only"
             style="padding-top:0px;"

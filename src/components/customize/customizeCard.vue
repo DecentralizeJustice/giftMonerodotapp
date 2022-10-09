@@ -52,7 +52,7 @@
 <script setup>
 import displayCardInfo from '@/components/customize/displayCardInfo.vue'
 import { reactive, onUpdated, defineEmits, onMounted } from 'vue'
-const emit = defineEmits(['updateCard'])
+const emit = defineEmits(['update-card'])
 const options = ['People', 'Animals', 'Halloween']
 const clear = function () {
   cardinfoobject.to = ''
@@ -84,7 +84,7 @@ for (let i = 0; i < 4; i++) {
   cardinfoobject.entropyData.avatars[i] = getRandomInt(0, 19)
 }
 function updateCardInfo () {
-  emit('updateCard', cardinfoobject)
+  emit('update-card', cardinfoobject)
 }
 onMounted(() => {
   updateCardInfo()
