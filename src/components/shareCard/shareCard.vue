@@ -12,20 +12,44 @@
         color="black"
         text-color="white"
         label="Download"
-        @click="down"
+        @click="alert = true"
       />
     </div>
+    <q-dialog v-model="alert">
+      <q-card>
+        <q-card-section class="bg-red text-white">
+          <div class="text-h4 text-center">
+            This Card Isn't Activated
+          </div>
+        </q-card-section>
+
+        <q-card-section class="text-h6">
+          You have not loaded this new gift card with monero. In order to activate this card go to Manage Gift Card in the menu bar.
+
+          <q-card-actions align="center">
+            <q-btn
+              icon="download"
+              color="black"
+              text-color="white"
+              label="Download Empty Card"
+              @click="down()"
+            />
+          </q-card-actions>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
   </div>
 </template>
 <script setup>
 import displayCardInfo from '@/components/customize/displayCardInfo.vue'
 import * as htmlToImage from 'html-to-image'
 import download from 'downloadjs'
-import { defineProps, reactive } from 'vue'
+import { defineProps, reactive, ref } from 'vue'
 const props = defineProps({
   cardinfoobject: { type: Object, required: true }
 })
 const desiredValue = reactive(props).cardinfoobject
+const alert = ref(false)
 async function down () {
   const element = document.getElementById('printableCard')
   const imageSettings = { quality: 1 }

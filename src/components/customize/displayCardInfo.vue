@@ -1,7 +1,7 @@
 <template>
   <div
     class="justify-center full-height full-width text-center row"
-    :class="{'justify-around': $q.screen.gt.sm}"
+    :class="{'justify-around': $q.screen.gt.sm, 'q-pa-sm': $q.screen.gt.sm}"
   >
     <div
       id="printableCard"
