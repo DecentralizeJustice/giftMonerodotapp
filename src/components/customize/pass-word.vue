@@ -42,13 +42,13 @@
             </div>
             <q-card-section class="no-margin no-padding">
               <getSVG
-                :cardinfoobject="cardinfoobject"
+                :cardinfoobject="cardInfo"
                 :chosenavatarindex="cardInfo.entropyData.avatars[index]"
               />
             </q-card-section>
             <q-card-section
               class="text-subtitle1 text-weight-regular text-center no-padding"
-              style="line-height: 105%;"
+              style="line-height: 115%;"
             >
               {{ newList[cardInfo.entropyData.words[item]] }} <br>
               {{ newList[cardInfo.entropyData.words[item + 1]] }}
@@ -67,7 +67,7 @@ const props = defineProps({
   cardinfoobject: { type: Object, required: true }
 })
 const wordArrayIterate = [0, 2, 4, 6]
-const cardinfoobjectReactive = reactive(props, 'cardinfoobject')
+const cardinfoobjectReactive = reactive(props)
 const cardInfo = cardinfoobjectReactive.cardinfoobject
 const totalWordList = (text.split('\n'))
 totalWordList.pop()

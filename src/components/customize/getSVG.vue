@@ -18,9 +18,8 @@ const props = defineProps({
   cardinfoobject: { type: Object, required: true },
   chosenavatarindex: { type: Number, required: true }
 })
-const cardinfoobject = reactive(props, 'cardinfoobject')
+const cardinfoobject = reactive(props)
 const cardInfo = cardinfoobject.cardinfoobject
-
 const chosenavatarindex = toRef(props, 'chosenavatarindex')
 const avatarIndex = chosenavatarindex.value
 

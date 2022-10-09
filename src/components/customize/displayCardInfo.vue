@@ -33,7 +33,7 @@
             class="col-12 text-right text-body1 q-mb-sm"
             v-html="cardFrom"
           />
-          <password :cardinfoobject="cardinfoobject" />
+          <password :cardinfoobject="cardInfo" />
           <div
             class="col-12 col-md-8 text-center text-body1 q-my-md"
             v-html="howToRedeem"
@@ -51,8 +51,9 @@ const moneroFullLogo = require('@/assets/svgs/monero-xmr-logo-full.svg')
 const props = defineProps({
   cardinfoobject: { type: Object, required: true }
 })
-const cardinfoobjectReactiive = reactive(props, 'cardinfoobject')
-const cardInfo = cardinfoobjectReactiive.cardinfoobject
+
+const cardinfoobjectReactive = reactive(props)
+const cardInfo = cardinfoobjectReactive.cardinfoobject
 const cardTo = computed(() => {
   const toValue = cardInfo.to
   if (toValue.length === 0) {

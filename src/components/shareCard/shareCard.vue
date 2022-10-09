@@ -4,7 +4,7 @@
     :class="{'justify-around': $q.screen.gt.sm}"
   >
     <div class="col col-12 col-md-6">
-      <displayCardInfo />
+      <displayCardInfo :cardinfoobject="desiredValue" />
     </div>
     <div class="col col-12 q-mt-md">
       <q-btn
@@ -21,6 +21,12 @@
 import displayCardInfo from '@/components/customize/displayCardInfo.vue'
 import * as htmlToImage from 'html-to-image'
 import download from 'downloadjs'
+import { defineProps, reactive } from 'vue'
+const props = defineProps({
+  cardinfoobject: { type: Object, required: true }
+})
+const cardinfoobject = reactive(props)
+const desiredValue = cardinfoobject.cardinfoobject
 async function down () {
   const element = document.getElementById('printableCard')
   const imageSettings = { quality: 1 }

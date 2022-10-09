@@ -51,7 +51,8 @@
 </template>
 <script setup>
 import displayCardInfo from '@/components/customize/displayCardInfo.vue'
-import { reactive } from 'vue'
+import { reactive, onUpdated, defineEmits, onMounted } from 'vue'
+const emit = defineEmits(['updateCard'])
 const options = ['People', 'Animals', 'Halloween']
 const clear = function () {
   cardinfoobject.to = ''
@@ -69,6 +70,7 @@ let cardinfoobject = {
   }
 }
 cardinfoobject = reactive(cardinfoobject)
+console.log(cardinfoobject)
 function getRandomInt (min, max) {
   min = Math.ceil(min)
   max = Math.floor(max)
@@ -82,6 +84,15 @@ for (let i = 1; i < 8; i++) {
 for (let i = 0; i < 4; i++) {
   cardinfoobject.entropyData.avatars[i] = getRandomInt(0, 19)
 }
+function updateCardInfo () {
+  emit('updateCard', cardinfoobject)
+}
+onMounted(() => {
+  updateCardInfo()
+})
+onUpdated(() => {
+  updateCardInfo()
+})
 </script>
 
 <style lang="sass" scoped>

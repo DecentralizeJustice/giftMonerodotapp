@@ -35,7 +35,7 @@
               @click="() => { done1 = true; step = 2 }"
             />
           </q-stepper-navigation>
-          <customizeCard />
+          <customizeCard @updateCard="updatePotentialCard" />
           <q-stepper-navigation
             class="text-right mobile-only"
             style="padding-top:0px;"
@@ -128,7 +128,7 @@
               />
             </div>
           </q-stepper-navigation>
-          <shareCard />
+          <shareCard :cardinfoobject="potentialCardObject" />
           <q-stepper-navigation
             class="mobile-only row justify-end"
           >
@@ -152,7 +152,11 @@ import refundAddress from '@/components/refund/refundAddress.vue'
 import shareCard from '@/components/shareCard/shareCard.vue'
 import { ref } from 'vue'
 const step = ref(1)
-
+const potentialCardObject = ref({ hi: 87 })
+function updatePotentialCard (newCardInfo) {
+  potentialCardObject.value = newCardInfo
+  console.log(potentialCardObject.value)
+}
 </script>
 
 <style lang="sass" scoped>
