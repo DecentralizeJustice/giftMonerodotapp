@@ -25,8 +25,7 @@ import { defineProps, reactive } from 'vue'
 const props = defineProps({
   cardinfoobject: { type: Object, required: true }
 })
-const cardinfoobject = reactive(props)
-const desiredValue = cardinfoobject.cardinfoobject
+const desiredValue = reactive(props).cardinfoobject
 async function down () {
   const element = document.getElementById('printableCard')
   const imageSettings = { quality: 1 }

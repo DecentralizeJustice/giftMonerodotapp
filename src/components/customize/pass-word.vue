@@ -67,8 +67,7 @@ const props = defineProps({
   cardinfoobject: { type: Object, required: true }
 })
 const wordArrayIterate = [0, 2, 4, 6]
-const cardinfoobjectReactive = reactive(props)
-const cardInfo = cardinfoobjectReactive.cardinfoobject
+const cardInfo = reactive(props).cardinfoobject
 const totalWordList = (text.split('\n'))
 totalWordList.pop()
 totalWordList.pop()

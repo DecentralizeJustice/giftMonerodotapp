@@ -152,10 +152,9 @@ import refundAddress from '@/components/refund/refundAddress.vue'
 import shareCard from '@/components/shareCard/shareCard.vue'
 import { ref } from 'vue'
 const step = ref(1)
-const potentialCardObject = ref({ hi: 87 })
+const potentialCardObject = ref({})
 function updatePotentialCard (newCardInfo) {
   potentialCardObject.value = newCardInfo
-  console.log(potentialCardObject.value)
 }
 </script>
 

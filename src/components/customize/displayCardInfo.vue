@@ -51,9 +51,7 @@ const moneroFullLogo = require('@/assets/svgs/monero-xmr-logo-full.svg')
 const props = defineProps({
   cardinfoobject: { type: Object, required: true }
 })
-
-const cardinfoobjectReactive = reactive(props)
-const cardInfo = cardinfoobjectReactive.cardinfoobject
+const cardInfo = reactive(props).cardinfoobject
 const cardTo = computed(() => {
   const toValue = cardInfo.to
   if (toValue.length === 0) {

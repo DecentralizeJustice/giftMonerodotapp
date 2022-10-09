@@ -70,7 +70,6 @@ let cardinfoobject = {
   }
 }
 cardinfoobject = reactive(cardinfoobject)
-console.log(cardinfoobject)
 function getRandomInt (min, max) {
   min = Math.ceil(min)
   max = Math.floor(max)
