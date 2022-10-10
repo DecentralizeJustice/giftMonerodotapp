@@ -27,6 +27,7 @@
               <q-item
                 v-for="(item, index) in options"
                 :key="index"
+                @click='test(item.value)'
                 v-close-popup
                 clickable
               >
