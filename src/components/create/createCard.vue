@@ -81,7 +81,7 @@
               />
             </div>
           </q-stepper-navigation>
-          <refundAddress />
+          <refundAddress @updaterefundAddress="updateRefundAddress"/>
           <q-stepper-navigation
             class="mobile-only row justify-end"
           >
@@ -155,6 +155,9 @@ const step = ref(1)
 const potentialCardObject = ref({})
 function updatePotentialCard (newCardInfo) {
   potentialCardObject.value = newCardInfo
+}
+function updateRefundAddress (newAddress) {
+  potentialCardObject.value.refundAddress = newAddress
 }
 </script>
 

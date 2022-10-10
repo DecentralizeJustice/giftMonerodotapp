@@ -6,7 +6,7 @@
 import createCard from '@/components/create/createCard.vue'
 
 export default {
-  name: 'createView',
+  name: 'CreateView',
   components: {
     createCard
   }

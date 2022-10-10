@@ -23,12 +23,15 @@
           class="mobile-only"
         >
           <q-menu>
-            <q-list style="min-width: 100px" separator>
+            <q-list
+              style="min-width: 100px"
+              separator
+            >
               <q-item
                 v-for="(item, index) in options"
                 :key="index"
-                @click='test(item.value)'
                 clickable
+                @click="test(item.value)"
               >
                 <q-item-section>{{ options[index].label }}</q-item-section>
               </q-item>
@@ -36,13 +39,13 @@
           </q-menu>
         </q-btn>
         <q-btn-toggle
-          @update:model-value='test'
           v-model="model"
           flat
           stretch
           toggle-color="primary"
           :options="options"
           class="desktop-only"
+          @update:model-value="test"
         />
       </q-toolbar>
 

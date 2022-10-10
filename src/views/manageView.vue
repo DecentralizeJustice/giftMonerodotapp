@@ -6,7 +6,7 @@
 import manageCards from '@/components/manage/mainPart.vue'
 
 export default {
-  name: 'manageView',
+  name: 'ManageView',
   components: {
     manageCards
   }

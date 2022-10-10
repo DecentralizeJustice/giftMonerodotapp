@@ -67,7 +67,8 @@ let cardinfoobject = {
   entropyData: {
     avatars: [0, 0, 0, 0],
     words: [0, 0, 0, 0, 0, 0, 0]
-  }
+  },
+  refundAddress: ''
 }
 cardinfoobject = reactive(cardinfoobject)
 function getRandomInt (min, max) {

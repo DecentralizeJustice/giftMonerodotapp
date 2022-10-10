@@ -48,9 +48,16 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onUpdated, defineEmits } from 'vue'
+const emit = defineEmits(['updaterefundAddress'])
 const refundAddress = ref('')
 function donateToRhinoStagenet () {
   refundAddress.value = '73a4nWuvkYoYoksGurDjKZQcZkmaxLaKbbeiKzHnMmqKivrCzq5Q2JtJG1UZNZFqLPbQ3MiXCk2Q5bdwdUNSr7X9QrPubkn'
 }
+function updaterefundAddress () {
+  emit('updaterefundAddress', refundAddress.value)
+}
+onUpdated(() => {
+  updaterefundAddress()
+})
 </script>
