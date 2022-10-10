@@ -46,7 +46,7 @@
 </template>
 <script setup>
 import { reactive, computed } from 'vue'
-import password from '@/components/customize/pass-word.vue'
+import password from '@/components/create/customize/pass-word.vue'
 const moneroFullLogo = require('@/assets/svgs/monero-xmr-logo-full.svg')
 const props = defineProps({
   cardinfoobject: { type: Object, required: true }

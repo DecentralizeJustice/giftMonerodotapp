@@ -147,9 +147,9 @@
   </div>
 </template>
 <script setup>
-import customizeCard from '@/components/customize/customizeCard.vue'
-import refundAddress from '@/components/refund/refundAddress.vue'
-import shareCard from '@/components/shareCard/shareCard.vue'
+import customizeCard from '@/components/create/customize/customizeCard.vue'
+import refundAddress from '@/components/create/refund/refundAddress.vue'
+import shareCard from '@/components/create/shareCard/shareCard.vue'
 import { ref } from 'vue'
 const step = ref(1)
 const potentialCardObject = ref({})

@@ -50,7 +50,7 @@
   </div>
 </template>
 <script setup>
-import displayCardInfo from '@/components/customize/displayCardInfo.vue'
+import displayCardInfo from '@/components/create/customize/displayCardInfo.vue'
 import { reactive, onUpdated, defineEmits, onMounted } from 'vue'
 const emit = defineEmits(['update-card'])
 const options = ['People', 'Animals', 'Halloween']

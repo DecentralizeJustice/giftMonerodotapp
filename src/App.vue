@@ -36,10 +36,11 @@
           </q-menu>
         </q-btn>
         <q-btn-toggle
+          @update:model-value='test'
           v-model="model"
           flat
           stretch
-          toggle-color="yellow"
+          toggle-color="primary"
           :options="options"
           class="desktop-only"
         />
@@ -62,12 +63,18 @@
 </template>
 <script setup>
 import { ref } from 'vue'
-const model = ref('')
+import { useRouter } from 'vue-router'
+const router = useRouter()
+const model = ref(window.location.pathname)
+
+function test (newRoute) {
+  router.push(newRoute)
+}
 const options = [
   // { label: 'Home', value: 'one' },
-  { label: 'Create', value: 'two' },
-  { label: 'Redeem', value: 'three' }
-  // { label: 'Manage', value: 'four' },
+  { label: 'Create', value: '/' },
+  { label: 'Manage', value: '/manage' }
+  // { label: 'Redeem', value: 'four' }
   // { label: 'Faq', value: 'five' }
 ]
 </script>

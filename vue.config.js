@@ -7,6 +7,9 @@ const webpack = require('webpack')
 const CopyPlugin = require('copy-webpack-plugin')
 module.exports = defineConfig({
   configureWebpack: {
+    devServer: {
+      historyApiFallback: true
+    },
     module: {
       rules: [
         {

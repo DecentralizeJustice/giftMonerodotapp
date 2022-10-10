@@ -61,7 +61,7 @@
 </template>
 <script setup>
 import { reactive } from 'vue'
-import getSVG from '@/components/customize/getSVG.vue'
+import getSVG from '@/components/create/customize/getSVG.vue'
 import text from '@/assets/word-list-65555.txt'
 const props = defineProps({
   cardinfoobject: { type: Object, required: true }

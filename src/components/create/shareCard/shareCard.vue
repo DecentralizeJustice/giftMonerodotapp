@@ -41,7 +41,7 @@
   </div>
 </template>
 <script setup>
-import displayCardInfo from '@/components/customize/displayCardInfo.vue'
+import displayCardInfo from '@/components/create/customize/displayCardInfo.vue'
 import { useCardStore } from '@/store/stagenetGiftCards.js'
 import * as htmlToImage from 'html-to-image'
 import download from 'downloadjs'

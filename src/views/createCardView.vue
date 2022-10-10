@@ -3,11 +3,10 @@
 </template>
 
 <script>
-// @ is an alias to /src
-import createCard from '@/components/createCard.vue'
+import createCard from '@/components/create/createCard.vue'
 
 export default {
-  name: 'HomeView',
+  name: 'createView',
   components: {
     createCard
   }
