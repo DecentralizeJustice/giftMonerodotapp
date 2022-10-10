@@ -42,18 +42,19 @@
 </template>
 <script setup>
 import displayCardInfo from '@/components/customize/displayCardInfo.vue'
-import { useDraftCardStore } from '@/store/draftGiftCard.js'
+import { useCardStore } from '@/store/stagenetGiftCards.js'
 import * as htmlToImage from 'html-to-image'
 import download from 'downloadjs'
-import { defineProps, reactive, ref } from 'vue'
-import { storeToRefs } from 'pinia'
-const store = useDraftCardStore()
-const { test } = storeToRefs(store)
-console.log(test.value)
+import { defineProps, reactive, ref, toRaw } from 'vue'
+
 const props = defineProps({
   cardinfoobject: { type: Object, required: true }
 })
 const desiredValue = reactive(props).cardinfoobject
+
+const store = useCardStore()
+store.addCard(toRaw(desiredValue))
+
 const alert = ref(false)
 async function down () {
   const element = document.getElementById('printableCard')
