@@ -23,12 +23,11 @@
           class="mobile-only"
         >
           <q-menu>
-            <q-list style="min-width: 100px">
+            <q-list style="min-width: 100px" separator>
               <q-item
                 v-for="(item, index) in options"
                 :key="index"
                 @click='test(item.value)'
-                v-close-popup
                 clickable
               >
                 <q-item-section>{{ options[index].label }}</q-item-section>
