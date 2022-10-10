@@ -45,22 +45,22 @@
   </div>
 </template>
 <script setup>
-import { reactive, computed } from 'vue'
+import { toRef, computed } from 'vue'
 import password from '@/components/create/customize/pass-word.vue'
 const moneroFullLogo = require('@/assets/svgs/monero-xmr-logo-full.svg')
 const props = defineProps({
   cardinfoobject: { type: Object, required: true }
 })
-const cardInfo = reactive(props).cardinfoobject
+const cardInfo = toRef(props, 'cardinfoobject')
 const cardTo = computed(() => {
-  const toValue = cardInfo.to
+  const toValue = cardInfo.value.to
   if (toValue.length === 0) {
     return ''
   }
   return "<span class='text-weight-bold'>To:</span> " + toValue
 })
 const cardFrom = computed(() => {
-  const fromValue = cardInfo.from
+  const fromValue = cardInfo.value.from
   if (fromValue.length === 0) {
     return ''
   }

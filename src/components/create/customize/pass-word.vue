@@ -60,14 +60,14 @@
   </div>
 </template>
 <script setup>
-import { reactive } from 'vue'
+import { toRef } from 'vue'
 import getSVG from '@/components/create/customize/getSVG.vue'
 import text from '@/assets/word-list-65555.txt'
 const props = defineProps({
   cardinfoobject: { type: Object, required: true }
 })
+const cardInfo = toRef(props, 'cardinfoobject')
 const wordArrayIterate = [0, 2, 4, 6]
-const cardInfo = reactive(props).cardinfoobject
 const totalWordList = (text.split('\n'))
 totalWordList.pop()
 totalWordList.pop()

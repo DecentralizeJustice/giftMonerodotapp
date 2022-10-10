@@ -13,28 +13,28 @@
 import halloweenSVGList from '@/assets/svgs/halloweenSVGList.js'
 import funnyPeopleSVGList from '@/assets/svgs/funnyPeopleSVGList.js'
 import animalsSVGList from '@/assets/svgs/animalsSVGList.js'
-import { reactive, computed, toRef } from 'vue'
+import { computed, toRefs } from 'vue'
 const props = defineProps({
   cardinfoobject: { type: Object, required: true },
   chosenavatarindex: { type: Number, required: true }
 })
-const cardInfo = reactive(props).cardinfoobject
-const avatarIndex = toRef(props, 'chosenavatarindex').value
+const cardInfo = toRefs(props).cardinfoobject
+const avatarIndex = toRefs(props).chosenavatarindex
 
 function isThisTheIcon (index) {
-  if (avatarIndex === index) {
+  if (avatarIndex.value === index) {
     return true
   }
   return false
 }
 function isNotTheIcon (index) {
-  if (avatarIndex === index) {
+  if (avatarIndex.value === index) {
     return false
   }
   return true
 }
 const themeDict = { People: funnyPeopleSVGList, Animals: animalsSVGList, Halloween: halloweenSVGList }
-const svgArray = computed(() => themeDict[cardInfo.theme])
+const svgArray = computed(() => { return themeDict[cardInfo.value.theme] })
 </script>
 
 <style lang="sass" scoped>
