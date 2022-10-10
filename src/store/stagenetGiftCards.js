@@ -2,9 +2,9 @@ import { defineStore } from 'pinia'
 
 export const useCardStore = defineStore('cards', {
   state: () => ({ cards: [] }),
-  // getters: {
-  //   doubleCount: (state) => state.count * 2,
-  // },
+  getters: {
+    incompleteCards: (state) => state.cards
+  },
   actions: {
     addCard (cardToAdd) {
       const cardObject = {}

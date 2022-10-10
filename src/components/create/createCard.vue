@@ -81,7 +81,7 @@
               />
             </div>
           </q-stepper-navigation>
-          <refundAddress @updaterefundAddress="updateRefundAddress"/>
+          <refundAddress @updaterefundAddress="updateRefundAddress" />
           <q-stepper-navigation
             class="mobile-only row justify-end"
           >
@@ -120,12 +120,17 @@
             <div
               class="desktop-only"
             >
-              <q-btn
-                icon-right="edit"
-                color="primary"
-                label="Manage Gift Card"
-                @click="() => { }"
-              />
+              <router-link
+                to="/manage"
+                style="text-decoration: none; color: inherit;"
+              >
+                <q-btn
+                  icon-right="edit"
+                  color="primary"
+                  label="Manage Gift Card"
+                  @click="() => { }"
+                />
+              </router-link>
             </div>
           </q-stepper-navigation>
           <shareCard :cardinfoobject="potentialCardObject" />
@@ -133,12 +138,17 @@
             class="mobile-only row justify-end"
           >
             <div class="col-12 text-center">
-              <q-btn
-                icon-right="edit"
-                color="primary"
-                label="Manage Gift Card"
-                @click="() => { }"
-              />
+              <router-link
+                to="/manage"
+                style="text-decoration: none; color: inherit;"
+              >
+                <q-btn
+                  icon-right="edit"
+                  color="primary"
+                  label="Manage Gift Card"
+                  @click="() => { }"
+                />
+              </router-link>
             </div>
           </q-stepper-navigation>
         </q-step>
