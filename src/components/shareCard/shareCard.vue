@@ -42,9 +42,14 @@
 </template>
 <script setup>
 import displayCardInfo from '@/components/customize/displayCardInfo.vue'
+import { useDraftCardStore } from '@/store/draftGiftCard.js'
 import * as htmlToImage from 'html-to-image'
 import download from 'downloadjs'
 import { defineProps, reactive, ref } from 'vue'
+import { storeToRefs } from 'pinia'
+const store = useDraftCardStore()
+const { test } = storeToRefs(store)
+console.log(test.value)
 const props = defineProps({
   cardinfoobject: { type: Object, required: true }
 })
