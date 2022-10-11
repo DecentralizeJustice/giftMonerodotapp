@@ -51,7 +51,7 @@
 </template>
 <script setup>
 import displayCardInfo from '@/components/create/customize/displayCardInfo.vue'
-import { reactive, onUpdated, defineEmits, onMounted } from 'vue'
+import { reactive, onUpdated, defineEmits, onMounted, onActivated, defineProps, toRef, watch } from 'vue'
 const emit = defineEmits(['update-card'])
 const options = ['People', 'Animals', 'Halloween']
 const clear = function () {
@@ -59,6 +59,13 @@ const clear = function () {
   cardinfoobject.from = ''
   cardinfoobject.message = ''
 }
+const props = defineProps({
+  resetEntropy: { type: Number, required: true }
+})
+const resetEntropy = toRef(props, 'resetEntropy')
+watch(resetEntropy, () => {
+  genRandomData()
+})
 let cardinfoobject = {
   to: 'Satoshi',
   from: 'Fluffy Pony',
@@ -77,13 +84,6 @@ function getRandomInt (min, max) {
   // The maximum is exclusive and the minimum is inclusive
   return Math.floor(Math.random() * (max - min) + min)
 }
-cardinfoobject.entropyData.words[0] = getRandomInt(0, 65536) // 2^16
-for (let i = 1; i < 8; i++) {
-  cardinfoobject.entropyData.words[i] = getRandomInt(0, 65536) // 2^16
-}
-for (let i = 0; i < 4; i++) {
-  cardinfoobject.entropyData.avatars[i] = getRandomInt(0, 19)
-}
 function updateCardInfo () {
   emit('update-card', cardinfoobject)
 }
@@ -93,6 +93,18 @@ onMounted(() => {
 onUpdated(() => {
   updateCardInfo()
 })
+onActivated(() => {
+  genRandomData()
+})
+function genRandomData () {
+  cardinfoobject.entropyData.words[0] = getRandomInt(0, 65536) // 2^16
+  for (let i = 1; i < 8; i++) {
+    cardinfoobject.entropyData.words[i] = getRandomInt(0, 65536) // 2^16
+  }
+  for (let i = 0; i < 4; i++) {
+    cardinfoobject.entropyData.avatars[i] = getRandomInt(0, 19)
+  }
+}
 </script>
 
 <style lang="sass" scoped>

@@ -15,8 +15,9 @@
           horizontal
           class="row jusitfy-center"
           style='max-height:65vh;'
+          v-if="incompleteCards.length !== 0"
         >
-          <q-card-section class="col col-3 justify-center text-center row" style='overflow: scroll;overflow-x: hidden;'>
+          <q-card-section class="col col-3 text-center row content-start" style='overflow: scroll;overflow-x: hidden;'>
             <div
               v-for="(item, index) in incompleteCards"
               :key="item"
@@ -35,8 +36,11 @@
           <q-separator vertical />
           <q-card-section class="col col-9">
             <div class='row'>
-            <div class="col col-md-9">
-              <displayCardInfo :cardinfoobject="testk" />
+            <div class="col col-md-8 q-pa-sm">
+              <displayCardInfo :cardinfoobject="properProp" />
+            </div>
+            <div class="col col-md-4 q-pa-sm">
+              {{incompleteCards[model].card}}
             </div>
           </div>
           </q-card-section>
@@ -56,9 +60,10 @@ function getButtonColor (index) {
   if (index === model.value) { return 'primary' }
   return 'secondary'
 }
-const testk = ref(incompleteCards[model.value].card)
+let properProp = ''
+if (incompleteCards[model.value] !== undefined) { properProp = ref(incompleteCards[model.value].card) }
 watch(model, () => {
-  testk.value = incompleteCards[model.value].card
+  properProp.value = incompleteCards[model.value].card
 })
 </script>
 

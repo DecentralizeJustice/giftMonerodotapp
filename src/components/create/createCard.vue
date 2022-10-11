@@ -35,7 +35,8 @@
               @click="() => { done1 = true; step = 2 }"
             />
           </q-stepper-navigation>
-          <customizeCard @update-card="updatePotentialCard" />
+          <customizeCard @update-card="updatePotentialCard"
+          :resetEntropy='resetEntropy' />
           <q-stepper-navigation
             class="text-right mobile-only"
             style="padding-top:0px;"
@@ -114,7 +115,7 @@
                 icon="navigate_before"
                 color="primary"
                 label="Back"
-                @click="step = 2"
+                @click="lastBack()"
               />
             </div>
             <div
@@ -163,6 +164,11 @@ import shareCard from '@/components/create/shareCard/shareCard.vue'
 import { ref } from 'vue'
 const step = ref(1)
 const potentialCardObject = ref({})
+const resetEntropy = ref(0)
+function lastBack () {
+  resetEntropy.value = resetEntropy.value + 1
+  step.value = 2
+}
 function updatePotentialCard (newCardInfo) {
   potentialCardObject.value = newCardInfo
 }
