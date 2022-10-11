@@ -128,7 +128,7 @@ const value = computed(() => {
 })
 onMounted(() => {
   const canvas = document.getElementById('canvas')
-  QRCode.toCanvas(canvas, depositAddress.value, { errorCorrectionLevel: 'M' }, function (error) {
+  QRCode.toCanvas(canvas, depositAddress.value, { errorCorrectionLevel: 'L' }, function (error) {
     if (error) console.error(error)
   })
 })
