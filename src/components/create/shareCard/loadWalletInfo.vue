@@ -43,21 +43,21 @@ async function getInfo () {
   return result
 }
 const walletInfo = await getInfo()
-onMounted(() => {
-  const canvas = document.getElementById('canvas')
-  QRCode.toCanvas(canvas, walletInfo.address, { errorCorrectionLevel: 'M' }, function (error) {
-    if (error) console.error(error)
-  })
-})
-function copy () {
-  copyToClipboard(walletInfo.address)
-    .then(() => {
-    // success!
-    })
-    .catch(() => {
-    // fail
-    })
-}
+// onMounted(() => {
+//   const canvas = document.getElementById('canvas')
+//   QRCode.toCanvas(canvas, walletInfo.address, { errorCorrectionLevel: 'M' }, function (error) {
+//     if (error) console.error(error)
+//   })
+// })
+// function copy () {
+//   copyToClipboard(walletInfo.address)
+//     .then(() => {
+//     // success!
+//     })
+//     .catch(() => {
+//     // fail
+//     })
+// }
 
 </script>
   <style lang="sass" scoped>

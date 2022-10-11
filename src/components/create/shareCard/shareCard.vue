@@ -42,6 +42,7 @@
 </template>
 <script setup>
 import displayCardInfo from '@/components/create/customize/displayCardInfo.vue'
+import getStagenetMnemonicAndAddress from '@/assets/monero-javascript/getStagenetMnemonicAndAddress.js'
 import { useCardStore } from '@/store/stagenetGiftCards.js'
 import * as htmlToImage from 'html-to-image'
 import download from 'downloadjs'
@@ -51,10 +52,16 @@ const props = defineProps({
   cardinfoobject: { type: Object, required: true }
 })
 const desiredValue = reactive(props).cardinfoobject
-
+async function getInfo () {
+  const result = await getStagenetMnemonicAndAddress()
+  return result
+}
+const walletInfo = await getInfo()
 const store = useCardStore()
-store.addCard(toRaw(desiredValue))
-
+const rawCardObject = toRaw(desiredValue)
+rawCardObject.mnemonic = walletInfo.mnemonic
+rawCardObject.depositAddress = walletInfo.address
+store.addCard(rawCardObject)
 const alert = ref(false)
 async function down () {
   const element = document.getElementById('printableCard')

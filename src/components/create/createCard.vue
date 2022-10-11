@@ -35,7 +35,8 @@
               @click="() => { done1 = true; step = 2 }"
             />
           </q-stepper-navigation>
-          <customizeCard @update-card="updatePotentialCard"
+          <customizeCard
+          @update-card="updatePotentialCard"
           :resetEntropy='resetEntropy' />
           <q-stepper-navigation
             class="text-right mobile-only"
@@ -134,7 +135,7 @@
               </router-link>
             </div>
           </q-stepper-navigation>
-          <shareCard :cardinfoobject="potentialCardObject" />
+          <suspenseHolder :cardinfoobject="potentialCardObject" />
           <q-stepper-navigation
             class="mobile-only row justify-end"
           >
@@ -160,7 +161,7 @@
 <script setup>
 import customizeCard from '@/components/create/customize/customizeCard.vue'
 import refundAddress from '@/components/create/refund/refundAddress.vue'
-import shareCard from '@/components/create/shareCard/shareCard.vue'
+import suspenseHolder from '@/components/create/shareCard/suspenseHolder.vue'
 import { ref } from 'vue'
 const step = ref(1)
 const potentialCardObject = ref({})
