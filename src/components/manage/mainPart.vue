@@ -40,7 +40,7 @@
               <displayCardInfo :cardinfoobject="properProp" />
             </div>
             <div class="col col-md-4 q-pa-sm">
-              {{incompleteCards[model].card}}
+              <cardProgression :singleCardInfo='incompleteCards[model].card'/>
             </div>
           </div>
           </q-card-section>
@@ -50,6 +50,7 @@
   </div>
 </template>
 <script setup>
+import cardProgression from '@/components/manage/cardProgression.vue'
 import { ref, watch } from 'vue'
 import { useCardStore } from '@/store/stagenetGiftCards.js'
 import displayCardInfo from '@/components/create/customize/displayCardInfo.vue'

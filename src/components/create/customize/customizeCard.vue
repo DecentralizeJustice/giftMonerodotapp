@@ -75,7 +75,8 @@ let cardinfoobject = {
     avatars: [0, 0, 0, 0],
     words: [0, 0, 0, 0, 0, 0, 0]
   },
-  refundAddress: ''
+  refundAddress: '',
+  funded: false
 }
 cardinfoobject = reactive(cardinfoobject)
 function getRandomInt (min, max) {
