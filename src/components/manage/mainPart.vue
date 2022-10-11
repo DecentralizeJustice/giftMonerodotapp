@@ -4,7 +4,7 @@
     :class="{'q-my-lg': $q.screen.gt.sm, 'q-mt-xl': $q.screen.gt.sm}"
   >
     <div
-      class=" justify-center col-12 col-md-8 "
+      class=" justify-center col-12 col-md-11 "
     >
       <q-card
         class="my-card"

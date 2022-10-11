@@ -65,11 +65,47 @@
          />
        </div>
      </div>
+     <div v-if='value === 90'>
+       <div class="row justify-center q-mt-sm">
+         <q-card
+           class="text-white col col-md-6 col-12 text-left"
+           style="border-radius: 10px;"
+         >
+           <q-card-section
+             class="bg-secondary  q-pa-md row justify-center "
+             style="white-space: normal"
+           >
+             <div class="text-center text-h6 text-white q-mb-md col-12">
+               Send Stagnet Monero Here to Load Gift Card:
+             </div>
+             <!-- <div class="text-weight-medium text-white col-12 my-card">
+               {{ depositAddress }}
+             </div> -->
+             <div class="col col-12 text-center q-mt-md">
+               <canvas
+                 id="canvas"
+                 style=""
+               />
+             </div>
+             <div class="col col-12 q-mt-md text-center">
+               <q-btn
+                 color="primary"
+                 icon="file_copy"
+                 label="Copy Address"
+                 @click="copy"
+               />
+             </div>
+           </q-card-section>
+         </q-card>
+       </div>
+       </div>
   </div>
 </template>
 
 <script setup>
-import { defineProps, defineEmits, toRef, computed, ref } from 'vue'
+import { defineProps, defineEmits, toRef, computed, ref, onMounted } from 'vue'
+import { copyToClipboard } from 'quasar'
+import QRCode from 'qrcode'
 const emit = defineEmits(['update-refund-address'])
 const props = defineProps({
   singleCardInfo: { type: Object, required: true }
@@ -82,6 +118,7 @@ function donateToRhinoStagenet () {
 function updaterefundAddress () {
   emit('update-refund-address', refundAddress.value)
 }
+const depositAddress = computed(() => { return singleCardInfo.value.depositAddress })
 const refundAddressCompleted = computed(() => { return singleCardInfo.value.refundAddress !== '' })
 const isFunded = computed(() => { return singleCardInfo.value.funded })
 const value = computed(() => {
@@ -89,4 +126,19 @@ const value = computed(() => {
   if (!isFunded.value) { return 90 }
   return 100
 })
+onMounted(() => {
+  const canvas = document.getElementById('canvas')
+  QRCode.toCanvas(canvas, depositAddress.value, { errorCorrectionLevel: 'M' }, function (error) {
+    if (error) console.error(error)
+  })
+})
+function copy () {
+  copyToClipboard(depositAddress.value)
+    .then(() => {
+    // success!
+    })
+    .catch(() => {
+    // fail
+    })
+}
 </script>
