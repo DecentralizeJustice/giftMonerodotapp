@@ -11,6 +11,9 @@ export const useCardStore = defineStore('cards', {
       cardObject.createdAt = Date.now()
       cardObject.card = cardToAdd
       this.cards.unshift(cardObject)
+    },
+    addrefundToCard (cardIndex, address) {
+      this.cards[cardIndex].card.refundAddress = address
     }
   },
   persist: {
