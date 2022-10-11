@@ -42,7 +42,7 @@
           v-model="model"
           flat
           stretch
-          color='white'
+          color="white"
           toggle-color="white"
           :options="options"
           class="desktop-only"

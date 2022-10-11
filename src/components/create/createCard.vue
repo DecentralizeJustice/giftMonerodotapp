@@ -36,8 +36,9 @@
             />
           </q-stepper-navigation>
           <customizeCard
-          @update-card="updatePotentialCard"
-          :resetEntropy='resetEntropy' />
+            :reset-entropy="resetEntropy"
+            @update-card="updatePotentialCard"
+          />
           <q-stepper-navigation
             class="text-right mobile-only"
             style="padding-top:0px;"
@@ -83,7 +84,7 @@
               />
             </div>
           </q-stepper-navigation>
-          <refundAddress @updaterefundAddress="updateRefundAddress" />
+          <refundAddress @updaterefundAddress="updaterefundAddress" />
           <q-stepper-navigation
             class="mobile-only row justify-end"
           >
@@ -173,7 +174,7 @@ function lastBack () {
 function updatePotentialCard (newCardInfo) {
   potentialCardObject.value = newCardInfo
 }
-function updateRefundAddress (newAddress) {
+function updaterefundAddress (newAddress) {
   potentialCardObject.value.refundAddress = newAddress
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <Suspense>
     <template #default>
-      <shareCard :cardinfoobject="desiredValue"/>
+      <shareCard :cardinfoobject="desiredValue" />
     </template>
     <template #fallback>
       <loadAnimation />

@@ -12,12 +12,15 @@
         bordered
       >
         <q-card-section
+          v-if="incompleteCards.length !== 0"
           horizontal
           class="row jusitfy-center"
-          style=''
-          v-if="incompleteCards.length !== 0"
+          style=""
         >
-          <q-card-section class="col col-3 text-center row content-start" style='overflow: scroll;overflow-x: hidden;'>
+          <q-card-section
+            class="col col-3 text-center row content-start"
+            style="overflow: scroll;overflow-x: hidden;"
+          >
             <div
               v-for="(item, index) in incompleteCards"
               :key="item"
@@ -35,14 +38,17 @@
           </q-card-section>
           <q-separator vertical />
           <q-card-section class="col col-9">
-            <div class='row'>
-            <div class="col col-md-6 q-pa-sm">
-              <displayCardInfo :cardinfoobject="properProp" />
+            <div class="row">
+              <div class="col col-md-6 q-pa-sm">
+                <displayCardInfo :cardinfoobject="properProp" />
+              </div>
+              <div class="col col-md-6 q-pa-sm">
+                <cardProgression
+                  :single-card-info="incompleteCards[model].card"
+                  @update-refund-address="updateRefund"
+                />
+              </div>
             </div>
-            <div class="col col-md-6 q-pa-sm">
-              <cardProgression :singleCardInfo='incompleteCards[model].card' @update-refund-address='updateRefund'/>
-            </div>
-          </div>
           </q-card-section>
         </q-card-section>
       </q-card>
