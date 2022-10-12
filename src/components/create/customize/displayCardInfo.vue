@@ -66,7 +66,7 @@ const cardFrom = computed(() => {
   }
   return "<span class='text-weight-bold'>From:</span> " + fromValue
 })
-const howToRedeem = 'Go to giftmonero.app/redeem within <span class=\'text-weight-bold\' style=\'color:#ff6600;\'>1 Hour</span> to get your Monero!'
+const howToRedeem = 'Go to giftmonero.app/redeem within <span class=\'text-weight-bold\' style=\'color:#ff6600;\'>2 Hours</span> to get your Monero!'
 </script>
 
 <style lang="sass" scoped>

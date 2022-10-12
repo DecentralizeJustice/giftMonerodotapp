@@ -81,7 +81,7 @@
             style="white-space: normal"
           >
             <div class="text-center text-h6 text-white q-mb-md col-12">
-              Send Stagnet Monero Here to Load Gift Card:
+              Send Stagenet Monero Here to Load Gift Card:
             </div>
             <!-- <div class="text-weight-medium text-white col-12 my-card">
                {{ depositAddress }}
@@ -100,6 +100,13 @@
                 @click="copy"
               />
             </div>
+            <div class="col col-12 q-mt-md text-center">
+              <q-btn
+                color="accent"
+                label="Confirm Deposit"
+                @click="confirmDeposit(singleCardInfo)"
+              />
+            </div>
           </q-card-section>
         </q-card>
       </div>
@@ -108,7 +115,7 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits, toRef, computed, ref, onMounted } from 'vue'
+import { defineProps, defineEmits, toRef, computed, ref, onUpdated, onMounted } from 'vue'
 import { copyToClipboard } from 'quasar'
 import QRCode from 'qrcode'
 const emit = defineEmits(['update-refund-address'])
@@ -131,11 +138,21 @@ const value = computed(() => {
   if (!isFunded.value) { return 90 }
   return 100
 })
-onMounted(() => {
+function confirmDeposit (card) {
+  console.log(card.mnemonic)
+}
+function createQRCode () {
   const canvas = document.getElementById('canvas')
+  if (canvas === null) { return }
   QRCode.toCanvas(canvas, depositAddress.value, { errorCorrectionLevel: 'L' }, function (error) {
     if (error) console.error(error)
   })
+}
+onUpdated(() => {
+  createQRCode()
+})
+onMounted(() => {
+  createQRCode()
 })
 function copy () {
   copyToClipboard(depositAddress.value)
