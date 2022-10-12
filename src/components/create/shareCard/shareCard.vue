@@ -43,6 +43,7 @@
 <script setup>
 import displayCardInfo from '@/components/create/customize/displayCardInfo.vue'
 import getStagenetMnemonicAndAddress from '@/assets/monero-javascript/getStagenetMnemonicAndAddress.js'
+import getBlockHeight from '@/assets/monero-javascript/getBlockHeight.js'
 import { useCardStore } from '@/store/stagenetGiftCards.js'
 import * as htmlToImage from 'html-to-image'
 import download from 'downloadjs'
@@ -57,10 +58,13 @@ async function getInfo () {
   return result
 }
 const walletInfo = await getInfo()
+let height = await getBlockHeight()
+height = height.height - 720 // days worth of blocks
 const store = useCardStore()
 const rawCardObject = toRaw(desiredValue)
 rawCardObject.mnemonic = walletInfo.mnemonic
 rawCardObject.depositAddress = walletInfo.address
+rawCardObject.startSearchHeight = height
 store.addCard(rawCardObject)
 const alert = ref(false)
 async function down () {
