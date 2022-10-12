@@ -1,27 +1,33 @@
 <template>
-      <q-card>
-        <q-card-section>
-          <div class="text-h6">Alert</div>
-        </q-card-section>
+  <q-card>
+    <q-card-section>
+      <div class="text-h6">
+        Alert
+      </div>
+    </q-card-section>
 
-        <q-card-section class="q-pt-none">
-          Wallet Connected: {{walletConnected}}
-        </q-card-section>
-        <q-card-section class="q-pt-none">
-          Percent Done: {{percentSynced}}
-        </q-card-section>
-        <q-card-section class="q-pt-none">
-          Current Blockheight: {{blockHeight}}
-        </q-card-section>
-        <q-card-section class="q-pt-none">
-          Balance: {{balance}}
-        </q-card-section>
+    <q-card-section class="q-pt-none">
+      Wallet Connected: {{ walletConnected }}
+    </q-card-section>
+    <q-card-section class="q-pt-none">
+      Percent Done: {{ percentSynced }}
+    </q-card-section>
+    <q-card-section class="q-pt-none">
+      Current Blockheight: {{ blockHeight }}
+    </q-card-section>
+    <q-card-section class="q-pt-none">
+      Balance: {{ balance }}
+    </q-card-section>
 
-        <q-card-actions align="right">
-          <q-btn flat label="Cancel" color="primary" v-close-popup />
-        </q-card-actions>
-      </q-card>
-
+    <q-card-actions align="right">
+      <q-btn
+        v-close-popup
+        flat
+        label="Cancel"
+        color="primary"
+      />
+    </q-card-actions>
+  </q-card>
 </template>
 
 <script setup>

@@ -84,7 +84,9 @@
               />
             </div>
           </q-stepper-navigation>
+          <!-- eslint-disable -->
           <refundAddress @updaterefundAddress="updaterefundAddress" />
+          <!-- eslint-enable -->
           <q-stepper-navigation
             class="mobile-only row justify-end"
           >

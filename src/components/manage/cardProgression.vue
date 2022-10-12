@@ -115,7 +115,7 @@
     </div>
   </div>
   <q-dialog v-model="alert">
-      <checkDeposit :singleCardInfo='singleCardInfo'/>
+    <checkDeposit :single-card-info="singleCardInfo" />
   </q-dialog>
 </template>
 
