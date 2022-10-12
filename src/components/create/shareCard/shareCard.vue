@@ -48,6 +48,7 @@ import { useCardStore } from '@/store/stagenetGiftCards.js'
 import * as htmlToImage from 'html-to-image'
 import download from 'downloadjs'
 import { defineProps, reactive, ref, toRaw } from 'vue'
+const node = 'https://stagenet.xmr.ditatompel.com:443'
 
 const props = defineProps({
   cardinfoobject: { type: Object, required: true }
@@ -58,7 +59,7 @@ async function getInfo () {
   return result
 }
 const walletInfo = await getInfo()
-let height = await getBlockHeight()
+let height = await getBlockHeight(node)
 height = height.height - 720 // days worth of blocks
 const store = useCardStore()
 const rawCardObject = toRaw(desiredValue)

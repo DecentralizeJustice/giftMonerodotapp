@@ -94,6 +94,7 @@
             </div>
             <div class="col col-12 q-mt-md text-center">
               <q-btn
+                no-caps
                 color="primary"
                 icon="file_copy"
                 label="Copy Address"
@@ -102,9 +103,10 @@
             </div>
             <div class="col col-12 q-mt-md text-center">
               <q-btn
+                no-caps
                 color="accent"
                 label="Confirm Deposit"
-                @click="confirmDeposit(singleCardInfo)"
+                @click="confirmDeposit()"
               />
             </div>
           </q-card-section>
@@ -112,12 +114,17 @@
       </div>
     </div>
   </div>
+  <q-dialog v-model="alert">
+      <checkDeposit :singleCardInfo='singleCardInfo'/>
+  </q-dialog>
 </template>
 
 <script setup>
+import checkDeposit from '@/components/misc/checkDeposit.vue'
 import { defineProps, defineEmits, toRef, computed, ref, onUpdated, onMounted } from 'vue'
 import { copyToClipboard } from 'quasar'
 import QRCode from 'qrcode'
+const alert = ref(false)
 const emit = defineEmits(['update-refund-address'])
 const props = defineProps({
   singleCardInfo: { type: Object, required: true }
@@ -138,8 +145,8 @@ const value = computed(() => {
   if (!isFunded.value) { return 90 }
   return 100
 })
-function confirmDeposit (card) {
-  console.log(card.mnemonic)
+function confirmDeposit () {
+  alert.value = true
 }
 function createQRCode () {
   const canvas = document.getElementById('canvas')
