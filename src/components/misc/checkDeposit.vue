@@ -1,28 +1,60 @@
 <template>
-  <q-card>
-    <q-card-section>
-      <div class="text-h6">
-        Alert
+  <q-card class='q-pa-md'>
+    <q-card-section class="text-h6">
+      <div class='text-center' v-if='!walletConnected'>
+        <div class='text-center'>
+          <q-spinner-rings
+            color="primary"
+            size="6em"
+          />
+          <q-tooltip :offset="[0, 8]">QSpinnerRings</q-tooltip>
+        </div>
+      Connecting To Nodes...
+      </div>
+      <div class='text-center' v-if='walletConnected'>
+        <q-icon name="done" color="green" size="32px" />
+        <br>Wallet Connected
       </div>
     </q-card-section>
 
-    <q-card-section class="q-pt-none">
-      Wallet Connected: {{ walletConnected }}
-    </q-card-section>
-    <q-card-section class="q-pt-none">
-      Percent Done: {{ percentSynced }}
-    </q-card-section>
-    <q-card-section class="q-pt-none">
-      Current Blockheight: {{ blockHeight }}
-    </q-card-section>
-    <q-card-section class="q-pt-none">
-      Balance: {{ balance }}
+    <q-card-section class="text-h6" v-if='walletConnected'>
+      <div class='text-center' v-if='percentSynced !== 1'>
+        <div class='text-center'>
+          <q-spinner-rings
+            color="primary"
+            size="6em"
+          />
+          <q-tooltip :offset="[0, 8]">QSpinnerRings</q-tooltip>
+        </div>
+      Syncing Wallet
+      </div>
+      <div class='text-center' v-if='percentSynced === 1'>
+        <q-icon name="done" color="green" size="32px" />
+        <br>Wallet Synced
+      </div>
     </q-card-section>
 
+    <q-card-section class="text-h6" v-if='percentSynced === 1'>
+      <div class='text-center' v-if="balance.toString() === '0'">
+        <q-icon name="close" color="red" size="32px" />
+        <br>
+        Wallet Empty
+      </div>
+      <div class='text-center' v-if="balance.toString() !== '0'">
+        <q-icon name="done" color="green" size="32px" />
+        <br>
+        Wallet Funded!
+      </div>
+    </q-card-section>
     <q-card-actions align="right">
       <q-btn
+        v-if="walletConnected && percentSynced === 1 && balance.toString() === '0'"
+        @click='confirmDeposit()'
+        label="Check Again"
+        color="green"
+      />
+      <q-btn
         v-close-popup
-        flat
         label="Cancel"
         color="primary"
       />
@@ -42,9 +74,11 @@ const mnemonic = card.value.mnemonic
 const restoreHeight = card.value.startSearchHeight
 const walletConnected = ref(false)
 const percentSynced = ref(0)
-const blockHeight = ref(0)
 const balance = ref(0)
 async function confirmDeposit () {
+  walletConnected.value = false
+  percentSynced.value = 0
+  balance.value = 0
   const walletFull = await monerojs.createWalletFull({
     networkType: 'stagenet',
     password: '0',
@@ -58,7 +92,7 @@ async function confirmDeposit () {
   await walletFull.sync(new class extends monerojs.MoneroWalletListener {
     onSyncProgress (height, startHeight, endHeight, percentDone, message) {
       percentSynced.value = percentDone
-      blockHeight.value = height
+      // blockHeight.value = height
     }
   }())
   await walletFull.startSyncing(10000000)
@@ -68,7 +102,7 @@ async function confirmDeposit () {
   const totalBalance = await walletFull.getBalance()
   balance.value = totalBalance
   console.log('unlockedBalance: ' + unlockedBalance.toString())
-  // console.log('total balance:  ' + totalBalance)
+  console.log('total balance:  ' + totalBalance)
   console.log('blocks for funds to unlock: ' + blockTillFundsUnlock[1])
 }
 onMounted(() => {
