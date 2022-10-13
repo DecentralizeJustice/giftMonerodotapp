@@ -53,7 +53,7 @@
 import displayCardInfo from '@/components/create/customize/displayCardInfo.vue'
 import { reactive, onUpdated, defineEmits, onMounted, onActivated, defineProps, toRef, watch } from 'vue'
 const emit = defineEmits(['update-card'])
-const options = ['People', 'Animals', 'Halloween']
+const options = ['People', 'Animals', 'Halloween', 'Christmas']
 const clear = function () {
   cardinfoobject.to = ''
   cardinfoobject.from = ''

@@ -13,6 +13,7 @@
 import halloweenSVGList from '@/assets/svgs/halloweenSVGList.js'
 import funnyPeopleSVGList from '@/assets/svgs/funnyPeopleSVGList.js'
 import animalsSVGList from '@/assets/svgs/animalsSVGList.js'
+import christmasSVGList from '@/assets/svgs/christmasSVGList.js'
 import { computed, toRefs } from 'vue'
 const props = defineProps({
   cardinfoobject: { type: Object, required: true },
@@ -33,7 +34,7 @@ function isNotTheIcon (index) {
   }
   return true
 }
-const themeDict = { People: funnyPeopleSVGList, Animals: animalsSVGList, Halloween: halloweenSVGList }
+const themeDict = { People: funnyPeopleSVGList, Animals: animalsSVGList, Halloween: halloweenSVGList, Christmas: christmasSVGList }
 const svgArray = computed(() => { return themeDict[cardInfo.value.theme] })
 </script>
 
