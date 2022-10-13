@@ -56,7 +56,7 @@
       <q-btn
         v-close-popup
         label="Cancel"
-        color="primary"
+        color="red"
       />
     </q-card-actions>
   </q-card>
