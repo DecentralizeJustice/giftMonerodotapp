@@ -53,6 +53,7 @@ const node = 'https://stagenet.xmr.ditatompel.com:443'
 const props = defineProps({
   cardinfoobject: { type: Object, required: true }
 })
+const store = useCardStore()
 const desiredValue = reactive(props).cardinfoobject
 async function getInfo () {
   const result = await getStagenetMnemonicAndAddress()
@@ -61,7 +62,6 @@ async function getInfo () {
 const walletInfo = await getInfo()
 let height = await getBlockHeight(node)
 height = height.height - 720 // days worth of blocks
-const store = useCardStore()
 const rawCardObject = toRaw(desiredValue)
 rawCardObject.mnemonic = walletInfo.mnemonic
 rawCardObject.depositAddress = walletInfo.address
