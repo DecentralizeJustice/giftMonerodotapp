@@ -68,7 +68,7 @@
   </div>
   <q-dialog v-model="previewCard" class='text-center'>
         <displayCardInfo :cardinfoobject="properProp" />
-        <q-btn label="Close" color="red" v-close-popup />
+        <q-btn label="Close" color="red" v-close-popup class='q-mt-sm' />
   </q-dialog>
 </template>
 <script setup>
