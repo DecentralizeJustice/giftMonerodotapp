@@ -1,47 +1,91 @@
 <template>
-  <q-card class='q-pa-md'>
+  <q-card class="q-pa-md">
     <q-card-section class="text-h6">
-      <div class='text-center' v-if='!walletConnected'>
-        <div class='text-center'>
+      <div
+        v-if="!walletConnected"
+        class="text-center"
+      >
+        <div class="text-center">
           <q-spinner-rings
             color="primary"
             size="6em"
           />
-          <q-tooltip :offset="[0, 8]">QSpinnerRings</q-tooltip>
+          <q-tooltip :offset="[0, 8]">
+            QSpinnerRings
+          </q-tooltip>
         </div>
-      Connecting To Nodes...
+        Connecting To Nodes...
       </div>
-      <div class='text-center' v-if='walletConnected'>
-        <q-icon name="done" color="green" size="32px" />
+      <div
+        v-if="walletConnected"
+        class="text-center"
+      >
+        <q-icon
+          name="done"
+          color="green"
+          size="32px"
+        />
         <br>Wallet Connected
       </div>
     </q-card-section>
 
-    <q-card-section class="text-h6" v-if='walletConnected'>
-      <div class='text-center' v-if='percentSynced !== 1'>
-        <div class='text-center'>
+    <q-card-section
+      v-if="walletConnected"
+      class="text-h6"
+    >
+      <div
+        v-if="percentSynced !== 1"
+        class="text-center"
+      >
+        <div class="text-center">
           <q-spinner-rings
             color="primary"
             size="6em"
           />
-          <q-tooltip :offset="[0, 8]">QSpinnerRings</q-tooltip>
+          <q-tooltip :offset="[0, 8]">
+            QSpinnerRings
+          </q-tooltip>
         </div>
-      Syncing Wallet
+        Syncing Wallet
       </div>
-      <div class='text-center' v-if='percentSynced === 1'>
-        <q-icon name="done" color="green" size="32px" />
+      <div
+        v-if="percentSynced === 1"
+        class="text-center"
+      >
+        <q-icon
+          name="done"
+          color="green"
+          size="32px"
+        />
         <br>Wallet Synced
       </div>
     </q-card-section>
 
-    <q-card-section class="text-h6" v-if='percentSynced === 1'>
-      <div class='text-center' v-if="balance.toString() === '0'">
-        <q-icon name="close" color="red" size="32px" />
+    <q-card-section
+      v-if="percentSynced === 1"
+      class="text-h6"
+    >
+      <div
+        v-if="balance.toString() === '0'"
+        class="text-center"
+      >
+        <q-icon
+          name="close"
+          color="red"
+          size="32px"
+        />
         <br>
         Wallet Empty
       </div>
-      <div class='text-center' v-if="balance.toString() !== '0'">
-        <q-icon name="done" color="green" size="32px" />
+      <div
+        v-if="balance.toString() !== '0'"
+        class="text-center"
+      >
+        <q-icon
+          name="done"
+          color="green"
+          size="32px"
+        />
         <br>
         Wallet Funded!
       </div>
@@ -49,9 +93,9 @@
     <q-card-actions align="right">
       <q-btn
         v-if="walletConnected && percentSynced === 1 && balance.toString() === '0'"
-        @click='confirmDeposit()'
         label="Check Again"
         color="green"
+        @click="confirmDeposit()"
       />
       <q-btn
         v-close-popup

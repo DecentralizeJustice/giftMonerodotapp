@@ -27,8 +27,8 @@
               class="col col-12"
             >
               <q-btn
+                v-if="$q.screen.gt.sm"
                 no-caps
-                v-if='$q.screen.gt.sm'
                 size="20px"
                 class="q-my-sm col-12"
                 :color="getButtonColor(index)"
@@ -36,8 +36,8 @@
                 @click="model = index"
               />
               <q-btn
+                v-if="$q.screen.lt.md"
                 no-caps
-                v-if='$q.screen.lt.md'
                 size="20px"
                 class="q-my-sm col-12"
                 :color="getButtonColor(index)"
@@ -49,16 +49,27 @@
           <q-separator vertical />
           <q-card-section class="col col-9">
             <div class="row">
-              <div class="col col-md-6 q-pa-sm" v-if='$q.screen.gt.sm'>
+              <div
+                v-if="$q.screen.gt.sm"
+                class="col col-md-6 q-pa-sm"
+              >
                 <displayCardInfo :cardinfoobject="properProp" />
               </div>
-              <div class="col col-md-6 text-center" :class="{ 'q-pa-sm': $q.screen.gt.sm }">
+              <div
+                class="col col-md-6 text-center"
+                :class="{ 'q-pa-sm': $q.screen.gt.sm }"
+              >
                 <cardProgression
                   :single-card-info="incompleteCards[model].card"
                   @update-refund-address="updateRefund"
                 />
-                <q-btn label="Preview Card" color="primary" @click="previewCard = true" class='q-mt-sm'
-                v-if='$q.screen.lt.md'/>
+                <q-btn
+                  v-if="$q.screen.lt.md"
+                  label="Preview Card"
+                  color="primary"
+                  class="q-mt-sm"
+                  @click="previewCard = true"
+                />
               </div>
             </div>
           </q-card-section>
@@ -66,9 +77,17 @@
       </q-card>
     </div>
   </div>
-  <q-dialog v-model="previewCard" class='text-center'>
-        <displayCardInfo :cardinfoobject="properProp" />
-        <q-btn label="Close" color="red" v-close-popup class='q-mt-sm' />
+  <q-dialog
+    v-model="previewCard"
+    class="text-center"
+  >
+    <displayCardInfo :cardinfoobject="properProp" />
+    <q-btn
+      v-close-popup
+      label="Close"
+      color="red"
+      class="q-mt-sm"
+    />
   </q-dialog>
 </template>
 <script setup>
