@@ -48,7 +48,7 @@
 </template>
 
 <script setup>
-import { ref, onUpdated, defineEmits } from 'vue'
+import { ref, onUpdated } from 'vue'
 const emit = defineEmits(['updaterefundAddress'])
 const refundAddress = ref('')
 function donateToRhinoStagenet () {
