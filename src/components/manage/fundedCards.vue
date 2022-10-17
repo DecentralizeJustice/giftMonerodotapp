@@ -31,7 +31,7 @@
                 size="20px"
                 class="q-my-sm col-12"
                 :color="getButtonColor(index)"
-                :label="`Draft Card ${index + 1}`"
+                :label="`Funded Card ${index + 1}`"
                 @click="model = index"
               />
               <q-btn
@@ -58,11 +58,6 @@
                 class="col col-md-6 text-center"
                 :class="{ 'q-pa-sm': $q.screen.gt.sm }"
               >
-                <cardProgression
-                  :single-card-info="incompleteCards[model].card"
-                  @update-refund-address="updateRefund"
-                  @wallet-funded="walletFunded()"
-                />
                 <q-btn
                   v-if="$q.screen.lt.md"
                   label="Preview Card"
@@ -91,14 +86,13 @@
   </div>
 </template>
 <script setup>
-import cardProgression from '@/components/manage/cardProgression.vue'
 import { ref, watch } from 'vue'
 import { useCardStore } from '@/store/stagenetGiftCards.js'
 import displayCardInfo from '@/components/create/customize/displayCardInfo.vue'
 const previewCard = ref(false)
 const model = ref(0)
 const store = useCardStore()
-const incompleteCards = store.incompleteCards
+const incompleteCards = store.fundedCards
 function getButtonColor (index) {
   if (index === model.value) { return 'primary' }
   return 'secondary'
@@ -108,12 +102,6 @@ if (incompleteCards[model.value] !== undefined) { properProp = ref(incompleteCar
 watch(model, () => {
   properProp.value = incompleteCards[model.value].card
 })
-function updateRefund (address) {
-  store.addrefundToCard(model.value, address)
-}
-function walletFunded () {
-  store.cardFunded(model.value)
-}
 </script>
 
 <style lang="sass" scoped>
