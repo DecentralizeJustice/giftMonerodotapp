@@ -113,10 +113,13 @@
         </q-card>
       </div>
     </div>
+    <q-dialog v-model="alert">
+      <checkDeposit
+        :single-card-info="singleCardInfo"
+        @wallet-funded="walletFunded()"
+      />
+    </q-dialog>
   </div>
-  <q-dialog v-model="alert">
-    <checkDeposit :single-card-info="singleCardInfo" />
-  </q-dialog>
 </template>
 
 <script setup>
@@ -125,7 +128,7 @@ import { defineProps, defineEmits, toRef, computed, ref, onUpdated, onMounted } 
 import { copyToClipboard } from 'quasar'
 import QRCode from 'qrcode'
 const alert = ref(false)
-const emit = defineEmits(['update-refund-address'])
+const emit = defineEmits(['update-refund-address', 'wallet-funded'])
 const props = defineProps({
   singleCardInfo: { type: Object, required: true }
 })
@@ -136,6 +139,10 @@ function donateToRhinoStagenet () {
 }
 function updaterefundAddress () {
   emit('update-refund-address', refundAddress.value)
+}
+function walletFunded () {
+  alert.value = false
+  emit('wallet-funded')
 }
 const depositAddress = computed(() => { return singleCardInfo.value.depositAddress })
 const refundAddressCompleted = computed(() => { return singleCardInfo.value.refundAddress !== '' })

@@ -62,6 +62,7 @@
                 <cardProgression
                   :single-card-info="incompleteCards[model].card"
                   @update-refund-address="updateRefund"
+                  @wallet-funded="walletFunded()"
                 />
                 <q-btn
                   v-if="$q.screen.lt.md"
@@ -76,19 +77,19 @@
         </q-card-section>
       </q-card>
     </div>
+    <q-dialog
+      v-model="previewCard"
+      class="text-center"
+    >
+      <displayCardInfo :cardinfoobject="properProp" />
+      <q-btn
+        v-close-popup
+        label="Close"
+        color="red"
+        class="q-mt-sm"
+      />
+    </q-dialog>
   </div>
-  <q-dialog
-    v-model="previewCard"
-    class="text-center"
-  >
-    <displayCardInfo :cardinfoobject="properProp" />
-    <q-btn
-      v-close-popup
-      label="Close"
-      color="red"
-      class="q-mt-sm"
-    />
-  </q-dialog>
 </template>
 <script setup>
 import cardProgression from '@/components/manage/cardProgression.vue'
@@ -110,6 +111,9 @@ watch(model, () => {
 })
 function updateRefund (address) {
   store.addrefundToCard(model.value, address)
+}
+function walletFunded () {
+  store.cardFunded(model.value)
 }
 </script>
 

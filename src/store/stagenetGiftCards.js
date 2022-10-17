@@ -14,6 +14,9 @@ export const useCardStore = defineStore('cards', {
     },
     addrefundToCard (cardIndex, address) {
       this.cards[cardIndex].card.refundAddress = address
+    },
+    cardFunded (cardIndex) {
+      this.cards[cardIndex].card.funded = true
     }
   },
   persist: {

@@ -107,9 +107,10 @@
 </template>
 
 <script setup>
-import { onMounted, toRef, ref } from 'vue'
+import { onMounted, toRef, ref, watch } from 'vue'
 const monerojs = require('monero-javascript')
 const node = 'https://stagenet.xmr.ditatompel.com:443'
+const emit = defineEmits(['wallet-funded'])
 const props = defineProps({
   singleCardInfo: { type: Object, required: true }
 })
@@ -119,6 +120,12 @@ const restoreHeight = card.value.startSearchHeight
 const walletConnected = ref(false)
 const percentSynced = ref(0)
 const balance = ref(0)
+function walletFunded () {
+  emit('wallet-funded')
+}
+watch(balance, () => {
+  if (balance.value.toString() !== '0') { walletFunded() }
+})
 async function confirmDeposit () {
   walletConnected.value = false
   percentSynced.value = 0
@@ -154,6 +161,4 @@ onMounted(() => {
 })
 </script>
 <style lang="sass" scoped>
-.q-dialog__backdrop
-  backdrop-filter: blur(7px)
 </style>
