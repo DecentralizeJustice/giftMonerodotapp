@@ -3,7 +3,26 @@ import { defineStore } from 'pinia'
 export const useCardStore = defineStore('cards', {
   state: () => ({ cards: [] }),
   getters: {
-    incompleteCards: (state) => state.cards
+    incompleteCards (state) {
+      const cards = state.cards
+      const incompleteCards = []
+      cards.forEach(element => {
+        if (element.card.funded === false) {
+          incompleteCards.push(element)
+        }
+      })
+      return incompleteCards
+    },
+    fundedCards (state) {
+      const cards = state.cards
+      const fundedCards = []
+      cards.forEach(element => {
+        if (element.card.funded === true) {
+          fundedCards.push(element)
+        }
+      })
+      return fundedCards
+    }
   },
   actions: {
     addCard (cardToAdd) {
