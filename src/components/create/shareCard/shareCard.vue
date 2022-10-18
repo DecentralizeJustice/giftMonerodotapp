@@ -60,23 +60,29 @@ async function getInfo () {
   const result = await getStagenetMnemonicAndAddress()
   return result
 }
+function getShaData (entropyData) {
+  let shaString = ''
+  for (let index = 0; index < entropyData.avatars.length; index++) {
+    const element = entropyData.avatars[index]
+    shaString = shaString.concat(element.toString())
+  }
+  for (let index = 0; index < entropyData.words.length; index++) {
+    const element = entropyData.words[index]
+    shaString = shaString.concat(element.toString())
+  }
+  return shaString
+}
 const walletInfo = await getInfo()
 let height = await getBlockHeight(node)
-height = height.height - 720 // days worth of blocks
+height = height.height - 720 // 1 day worth of blocks
 const rawCardObject = toRaw(desiredValue)
 rawCardObject.mnemonic = walletInfo.mnemonic
 rawCardObject.depositAddress = walletInfo.address
 rawCardObject.startSearchHeight = height
-const hash = crypto.createHash('sha512').update(height).digest('base64')
+const shaData = getShaData(rawCardObject.entropyData)
+const hash = crypto.createHash('sha512').update(shaData).digest('base64')
 rawCardObject.cardID = hash
 rawCardObject.createdAt = Date.now()
-const array = new Uint8Array(10)
-self.crypto.getRandomValues(array)
-
-console.log('Your lucky numbers:')
-for (const num of array) {
-  console.log(num)
-}
 store.addCard(rawCardObject)
 const alert = ref(false)
 async function down () {

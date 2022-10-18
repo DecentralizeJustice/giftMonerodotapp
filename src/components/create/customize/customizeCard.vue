@@ -1,8 +1,8 @@
 <template>
   <div
+    v-if="dataReady"
     class="justify-center full-height full-width text-center row"
     :class="{'justify-around': $q.screen.gt.sm}"
-    v-if="dataReady"
   >
     <div class="column col-12 col-md-6">
       <displayCardInfo :cardinfoobject="cardinfoobject" />
