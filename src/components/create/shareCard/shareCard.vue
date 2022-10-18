@@ -48,6 +48,7 @@ import { useCardStore } from '@/store/stagenetGiftCards.js'
 import * as htmlToImage from 'html-to-image'
 import download from 'downloadjs'
 import { defineProps, reactive, ref, toRaw } from 'vue'
+import { getShaData } from '@/assets/misc.js'
 const crypto = require('crypto')
 const node = 'https://stagenet.xmr.ditatompel.com:443'
 
@@ -59,18 +60,6 @@ const desiredValue = reactive(props).cardinfoobject
 async function getInfo () {
   const result = await getStagenetMnemonicAndAddress()
   return result
-}
-function getShaData (entropyData) {
-  let shaString = ''
-  for (let index = 0; index < entropyData.avatars.length; index++) {
-    const element = entropyData.avatars[index]
-    shaString = shaString.concat(element.toString())
-  }
-  for (let index = 0; index < entropyData.words.length; index++) {
-    const element = entropyData.words[index]
-    shaString = shaString.concat(element.toString())
-  }
-  return shaString
 }
 const walletInfo = await getInfo()
 let height = await getBlockHeight(node)

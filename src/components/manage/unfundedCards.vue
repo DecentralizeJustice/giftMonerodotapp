@@ -114,8 +114,8 @@ function updateRefund (address) {
 }
 async function walletFunded () {
   const cardID = incompleteCards[model.value].cardID
-  const user = { bucket: cardID, payload: { box: 'nombre' } }
-  const test = await axios.post('/.netlify/functions/uploadCard', user)
+  const data = { bucket: cardID, payload: { box: 'nombre' } }
+  const test = await axios.post('/.netlify/functions/uploadCard', data)
   console.log(test)
   // store.cardFunded(model.value)
 }
