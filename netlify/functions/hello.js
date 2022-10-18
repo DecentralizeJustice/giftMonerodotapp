@@ -13,6 +13,6 @@ exports.handler = async (event, context) => {
 
 async function getContent (params) {
   pantryClient.basket
-    .get('test', options)
+    .get('newBasket39', options)
     .then((contents) => { return contents })
 }
