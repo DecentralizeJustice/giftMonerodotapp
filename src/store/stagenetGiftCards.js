@@ -7,7 +7,7 @@ export const useCardStore = defineStore('cards', {
       const cards = state.cards
       const incompleteCards = []
       cards.forEach(element => {
-        if (element.card.funded === false) {
+        if (element.funded === false) {
           incompleteCards.push(element)
         }
       })
@@ -17,7 +17,7 @@ export const useCardStore = defineStore('cards', {
       const cards = state.cards
       const fundedCards = []
       cards.forEach(element => {
-        if (element.card.funded === true) {
+        if (element.funded === true) {
           fundedCards.push(element)
         }
       })
@@ -26,15 +26,13 @@ export const useCardStore = defineStore('cards', {
   },
   actions: {
     addCard (cardToAdd) {
-      const cardObject = {}
-      cardObject.card = cardToAdd
-      this.cards.unshift(cardObject)
+      this.cards.unshift(cardToAdd)
     },
     addrefundToCard (cardIndex, address) {
-      this.cards[cardIndex].card.refundAddress = address
+      this.cards[cardIndex].refundAddress = address
     },
     cardFunded (cardIndex) {
-      this.cards[cardIndex].card.funded = true
+      this.cards[cardIndex].funded = true
     }
   },
   persist: {

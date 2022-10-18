@@ -98,9 +98,9 @@ function getButtonColor (index) {
   return 'secondary'
 }
 let properProp = ''
-if (incompleteCards[model.value] !== undefined) { properProp = ref(incompleteCards[model.value].card) }
+if (incompleteCards[model.value] !== undefined) { properProp = ref(incompleteCards[model.value]) }
 watch(model, () => {
-  properProp.value = incompleteCards[model.value].card
+  properProp.value = incompleteCards[model.value]
 })
 </script>
 

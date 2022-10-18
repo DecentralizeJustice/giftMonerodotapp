@@ -59,7 +59,7 @@
                 :class="{ 'q-pa-sm': $q.screen.gt.sm }"
               >
                 <cardProgression
-                  :single-card-info="incompleteCards[model].card"
+                  :single-card-info="incompleteCards[model]"
                   @update-refund-address="updateRefund"
                   @wallet-funded="walletFunded()"
                 />
@@ -104,9 +104,9 @@ function getButtonColor (index) {
   return 'secondary'
 }
 let properProp = ''
-if (incompleteCards[model.value] !== undefined) { properProp = ref(incompleteCards[model.value].card) }
+if (incompleteCards[model.value] !== undefined) { properProp = ref(incompleteCards[model.value]) }
 watch(model, () => {
-  properProp.value = incompleteCards[model.value].card
+  properProp.value = incompleteCards[model.value]
 })
 function updateRefund (address) {
   store.addrefundToCard(model.value, address)
