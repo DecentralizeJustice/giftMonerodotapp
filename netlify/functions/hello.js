@@ -14,5 +14,5 @@ exports.handler = async (event, context) => {
 async function getContent (params) {
   pantryClient.basket
     .get('test', options)
-    .then((contents) => console.log(contents))
+    .then((contents) => { return contents })
 }
