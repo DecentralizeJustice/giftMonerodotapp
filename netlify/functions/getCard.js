@@ -24,6 +24,5 @@ exports.handler = async (event, context) => {
 
 async function getContent (bucket) {
   const results = await pantryClient.basket.get(bucket, options)
-  console.log(results)
   return results
 }

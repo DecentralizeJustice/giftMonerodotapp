@@ -18,12 +18,12 @@ exports.handler = async (event, context) => {
   const results = await uploadContent(bucket, payload)
   return {
     statusCode: 200,
-    body: results
+    body: JSON.stringify(results)
   }
 }
 
 async function uploadContent (bucket, payload) {
   payload = JSON.parse(payload)
-  const results = await pantryClient.basket.create(bucket, payload)
+  const results = await pantryClient.basket.update(bucket, payload)
   return results
 }
