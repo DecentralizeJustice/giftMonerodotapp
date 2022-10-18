@@ -101,11 +101,11 @@ onActivated(() => {
   genRandomData()
 })
 function genRandomData () {
-  cardinfoobject.entropyData.words[0] = getRandomInt(0, 65536) // 2^16
-  for (let i = 1; i < 8; i++) {
+  cardinfoobject.entropyData.avatars[0] = 0 // constant first avatar to encode template type
+  for (let i = 0; i < 8; i++) {
     cardinfoobject.entropyData.words[i] = getRandomInt(0, 65536) // 2^16
   }
-  for (let i = 0; i < 4; i++) {
+  for (let i = 1; i < 4; i++) {
     cardinfoobject.entropyData.avatars[i] = getRandomInt(0, 19)
   }
 }

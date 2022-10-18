@@ -67,9 +67,16 @@ const rawCardObject = toRaw(desiredValue)
 rawCardObject.mnemonic = walletInfo.mnemonic
 rawCardObject.depositAddress = walletInfo.address
 rawCardObject.startSearchHeight = height
-const hash = crypto.createHash('sha256').update(height).digest('base64')
+const hash = crypto.createHash('sha512').update(height).digest('base64')
 rawCardObject.cardID = hash
 rawCardObject.createdAt = Date.now()
+const array = new Uint8Array(10)
+self.crypto.getRandomValues(array)
+
+console.log('Your lucky numbers:')
+for (const num of array) {
+  console.log(num)
+}
 store.addCard(rawCardObject)
 const alert = ref(false)
 async function down () {
