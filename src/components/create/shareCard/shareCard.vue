@@ -80,7 +80,7 @@ rawCardObject.mnemonic = walletInfo.mnemonic
 rawCardObject.depositAddress = walletInfo.address
 rawCardObject.startSearchHeight = height
 const shaData = getShaData(rawCardObject.entropyData)
-const hash = crypto.createHash('sha512').update(shaData).digest('base64')
+const hash = crypto.createHash('sha256').update(shaData).digest('hex')
 rawCardObject.cardID = hash
 rawCardObject.createdAt = Date.now()
 store.addCard(rawCardObject)

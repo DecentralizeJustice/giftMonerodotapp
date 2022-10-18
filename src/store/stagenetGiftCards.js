@@ -32,6 +32,7 @@ export const useCardStore = defineStore('cards', {
       this.cards[cardIndex].refundAddress = address
     },
     cardFunded (cardIndex) {
+      this.cards[cardIndex].fundedAt = Date.now
       this.cards[cardIndex].funded = true
     }
   },

@@ -14,7 +14,7 @@
           v-if="incompleteCards.length !== 0"
           horizontal
           class="row jusitfy-center"
-          style=""
+          style="max-height: 75vh;"
         >
           <q-card-section
             class="col col-3 text-center row content-start"
@@ -95,6 +95,7 @@ import cardProgression from '@/components/manage/cardProgression.vue'
 import { ref, watch } from 'vue'
 import { useCardStore } from '@/store/stagenetGiftCards.js'
 import displayCardInfo from '@/components/create/customize/displayCardInfo.vue'
+const axios = require('axios')
 const previewCard = ref(false)
 const model = ref(0)
 const store = useCardStore()
@@ -111,8 +112,12 @@ watch(model, () => {
 function updateRefund (address) {
   store.addrefundToCard(model.value, address)
 }
-function walletFunded () {
-  store.cardFunded(model.value)
+async function walletFunded () {
+  const cardID = incompleteCards[model.value].cardID
+  const user = { bucket: cardID, payload: { box: 'nombre' } }
+  const test = await axios.post('/.netlify/functions/uploadCard', user)
+  console.log(test)
+  // store.cardFunded(model.value)
 }
 </script>
 

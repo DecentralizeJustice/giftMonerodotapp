@@ -11,7 +11,7 @@
         style="border-radius: 0px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;"
       >
         <q-card-section
-          v-if="incompleteCards.length !== 0"
+          v-if="fundedCards.length !== 0"
           horizontal
           class="row jusitfy-center"
           style=""
@@ -21,7 +21,7 @@
             style="overflow: scroll;overflow-x: hidden;"
           >
             <div
-              v-for="(item, index) in incompleteCards"
+              v-for="(item, index) in fundedCards"
               :key="item"
               class="col col-12"
             >
@@ -92,15 +92,15 @@ import displayCardInfo from '@/components/create/customize/displayCardInfo.vue'
 const previewCard = ref(false)
 const model = ref(0)
 const store = useCardStore()
-const incompleteCards = store.fundedCards
+const fundedCards = store.fundedCards
 function getButtonColor (index) {
   if (index === model.value) { return 'primary' }
   return 'secondary'
 }
 let properProp = ''
-if (incompleteCards[model.value] !== undefined) { properProp = ref(incompleteCards[model.value]) }
+if (fundedCards[model.value] !== undefined) { properProp = ref(fundedCards[model.value]) }
 watch(model, () => {
-  properProp.value = incompleteCards[model.value]
+  properProp.value = fundedCards[model.value]
 })
 </script>
 

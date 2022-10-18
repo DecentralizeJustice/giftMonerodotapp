@@ -127,6 +127,7 @@ watch(balance, () => {
   if (balance.value.toString() !== '0') { walletFunded() }
 })
 async function confirmDeposit () {
+  emit('wallet-funded') // node not working
   walletConnected.value = false
   percentSynced.value = 0
   balance.value = 0

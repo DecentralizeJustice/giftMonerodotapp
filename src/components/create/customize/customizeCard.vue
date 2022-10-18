@@ -82,7 +82,8 @@ let cardinfoobject = {
   funded: false,
   startSearchHeight: 0,
   cardID: '',
-  createdAt: 0
+  createdAt: 0,
+  fundedAt: 0
 }
 cardinfoobject = reactive(cardinfoobject)
 function updateCardInfo () {
