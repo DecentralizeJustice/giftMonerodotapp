@@ -27,7 +27,6 @@ export const useCardStore = defineStore('cards', {
   actions: {
     addCard (cardToAdd) {
       const cardObject = {}
-      cardObject.createdAt = Date.now()
       cardObject.card = cardToAdd
       this.cards.unshift(cardObject)
     },

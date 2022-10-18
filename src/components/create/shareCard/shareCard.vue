@@ -48,6 +48,7 @@ import { useCardStore } from '@/store/stagenetGiftCards.js'
 import * as htmlToImage from 'html-to-image'
 import download from 'downloadjs'
 import { defineProps, reactive, ref, toRaw } from 'vue'
+const crypto = require('crypto')
 const node = 'https://stagenet.xmr.ditatompel.com:443'
 
 const props = defineProps({
@@ -66,6 +67,9 @@ const rawCardObject = toRaw(desiredValue)
 rawCardObject.mnemonic = walletInfo.mnemonic
 rawCardObject.depositAddress = walletInfo.address
 rawCardObject.startSearchHeight = height
+const hash = crypto.createHash('sha256').update(height).digest('base64')
+rawCardObject.cardID = hash
+rawCardObject.createdAt = Date.now()
 store.addCard(rawCardObject)
 const alert = ref(false)
 async function down () {

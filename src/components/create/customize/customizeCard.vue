@@ -77,7 +77,9 @@ let cardinfoobject = {
   },
   refundAddress: '',
   funded: false,
-  startSearchHeight: 0
+  startSearchHeight: 0,
+  cardID: '',
+  createdAt: 0
 }
 cardinfoobject = reactive(cardinfoobject)
 function getRandomInt (min, max) {
