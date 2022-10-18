@@ -1,6 +1,18 @@
+const pantry = require('pantry-node')
+const pantryID = process.env.pantryID
+const pantryClient = new pantry(pantryID) // eslint-disable-line new-cap
+const options = { parseJSON: true } // optionaldotenv
+
 exports.handler = async (event, context) => {
+  const results = await getContent()
   return {
     statusCode: 200,
-    body: 'Hello, World'
+    body: results
   }
+}
+
+async function getContent (params) {
+  pantryClient.basket
+    .get('test', options)
+    .then((contents) => console.log(contents))
 }
