@@ -75,10 +75,10 @@ function test (newRoute) {
   router.push(newRoute)
 }
 const options = [
-  // { label: 'Home', value: 'one' },
-  { label: 'Create', value: '/' },
-  { label: 'Manage', value: '/manage' }
-  // { label: 'Redeem', value: 'four' }
+  { label: 'Home', value: '/' },
+  { label: 'Create', value: '/create' },
+  { label: 'Manage', value: '/manage' },
+  { label: 'Redeem', value: '/redeem' }
   // { label: 'Faq', value: 'five' }
 ]
 </script>

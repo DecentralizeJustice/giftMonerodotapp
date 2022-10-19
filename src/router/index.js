@@ -1,10 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import createCardView from '../views/createCardView.vue'
 import manageCardView from '../views/manageView.vue'
+import redeemCardView from '../views/redeemView.vue'
+import landingPageView from '../views/landingPageView.vue'
 
 const routes = [
   {
     path: '/',
+    name: 'landingPage',
+    component: landingPageView
+  },
+  {
+    path: '/create',
     name: 'createCard',
     component: createCardView
   },
@@ -12,6 +19,11 @@ const routes = [
     path: '/manage',
     name: 'manageCards',
     component: manageCardView
+  },
+  {
+    path: '/redeem',
+    name: 'redeem',
+    component: redeemCardView
   }
   // {
   //   path: '/about',
