@@ -66,19 +66,6 @@
       class="text-h6"
     >
       <div
-        v-if="balance.toString() === '0'"
-        class="text-center"
-      >
-        <q-icon
-          name="close"
-          color="red"
-          size="32px"
-        />
-        <br>
-        Wallet Empty
-      </div>
-      <div
-        v-if="balance.toString() !== '0'"
         class="text-center"
       >
         <q-icon
@@ -87,16 +74,10 @@
           size="32px"
         />
         <br>
-        Wallet Funded!
+        Balance Checked
       </div>
     </q-card-section>
     <q-card-actions align="right">
-      <q-btn
-        v-if="walletConnected && percentSynced === 1 && balance.toString() === '0'"
-        label="Check Again"
-        color="green"
-        @click="confirmDeposit()"
-      />
       <q-btn
         v-close-popup
         label="Cancel"
@@ -107,10 +88,10 @@
 </template>
 
 <script setup>
-import { onMounted, toRef, ref, watch } from 'vue'
+import { onMounted, toRef, ref, defineEmits, unref } from 'vue'
 const monerojs = require('monero-javascript')
 const node = 'https://stagenet.xmr.ditatompel.com:443'
-const emit = defineEmits(['wallet-funded'])
+const emit = defineEmits(['new-balance'])
 const props = defineProps({
   singleCardInfo: { type: Object, required: true }
 })
@@ -119,18 +100,21 @@ const mnemonic = card.value.mnemonic
 const restoreHeight = card.value.startSearchHeight
 const walletConnected = ref(false)
 const percentSynced = ref(0)
-const balance = ref(0)
+const totalBalance = ref(0)
+const unlockedBalance = ref(0)
+const blocksTillFundsUnlock = ref(0)
 function walletFunded () {
-  emit('wallet-funded')
+  emit('new-balance', {
+    unlockedBalnce: unref(unlockedBalance.value),
+    blocksTillFundsUnlock: unref(blocksTillFundsUnlock.value),
+    totalBalance: unref(totalBalance.value)
+  })
 }
-watch(balance, () => {
-  if (balance.value.toString() !== '0') { walletFunded() }
-})
-async function confirmDeposit () {
+async function checkBalance () {
   // emit('wallet-funded') // node not working
   walletConnected.value = false
   percentSynced.value = 0
-  balance.value = 0
+  totalBalance.value = 0
   const walletFull = await monerojs.createWalletFull({
     networkType: 'stagenet',
     password: '0',
@@ -149,16 +133,16 @@ async function confirmDeposit () {
   }())
   await walletFull.startSyncing(10000000)
   console.log(' ')
-  const unlockedBalance = await walletFull.getUnlockedBalance()
-  const blockTillFundsUnlock = await walletFull.getNumBlocksToUnlock()
-  const totalBalance = await walletFull.getBalance()
-  balance.value = totalBalance
-  console.log('unlockedBalance: ' + unlockedBalance.toString())
-  console.log('total balance:  ' + totalBalance)
-  console.log('blocks for funds to unlock: ' + blockTillFundsUnlock[1])
+  unlockedBalance.value = await walletFull.getUnlockedBalance()
+  blocksTillFundsUnlock.value = await walletFull.getNumBlocksToUnlock()
+  totalBalance.value = await walletFull.getBalance()
+  walletFunded()
+  console.log('unlockedBalance: ' + unlockedBalance.value.toString())
+  console.log('total balance:  ' + totalBalance.value)
+  console.log('blocks for funds to unlock: ' + blocksTillFundsUnlock.value)
 }
 onMounted(() => {
-  confirmDeposit()
+  checkBalance()
 })
 </script>
 <style lang="sass" scoped>

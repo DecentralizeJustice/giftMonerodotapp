@@ -58,6 +58,7 @@
                 class="col col-md-6 text-center"
                 :class="{ 'q-pa-sm': $q.screen.gt.sm }"
               >
+                <fundedActions :single-card-info="fundedCards[model]" />
                 <q-btn
                   v-if="$q.screen.lt.md"
                   label="Preview Card"
@@ -86,6 +87,7 @@
   </div>
 </template>
 <script setup>
+import fundedActions from '@/components/manage/fundedActions.vue'
 import { ref, watch } from 'vue'
 import { useCardStore } from '@/store/stagenetGiftCards.js'
 import displayCardInfo from '@/components/create/customize/displayCardInfo.vue'
