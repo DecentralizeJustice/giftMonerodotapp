@@ -1,5 +1,4 @@
 const _sodium = require('libsodium-wrappers')
-
 function getShaData (entropyData) {
   let shaString = ''
   for (let index = 0; index < entropyData.avatars.length; index++) {
@@ -44,5 +43,18 @@ async function decrypt (hexNonceAndCiphertext, stringKey) {
   return Buffer.from(resultsUint8).toString('utf-8')
 }
 
+function getWordListArray (text) {
+  const newList = []
+  const totalWordList = (text.split('\n'))
+  totalWordList.pop()
+  totalWordList.pop()
+  for (let i = 0; i < totalWordList.length; i++) {
+    const tempString = totalWordList[i]
+    newList[i] = tempString.split(' ')[2]
+    newList[i] = newList[i].replace(/\s/g, '')
+  }
+  return newList
+}
 exports.getShaData = getShaData
 exports.encrypt = encrypt
+exports.getWordListArray = getWordListArray

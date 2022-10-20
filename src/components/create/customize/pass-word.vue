@@ -63,19 +63,14 @@
 import { toRef } from 'vue'
 import getSVG from '@/components/create/customize/getSVG.vue'
 import text from '@/assets/word-list-65555.txt'
+import { getWordListArray } from '@/assets/misc.js'
 const props = defineProps({
   cardinfoobject: { type: Object, required: true }
 })
 const cardInfo = toRef(props, 'cardinfoobject')
 const wordArrayIterate = [0, 2, 4, 6]
-const totalWordList = (text.split('\n'))
-totalWordList.pop()
-totalWordList.pop()
-const newList = []
-for (let i = 0; i < totalWordList.length; i++) {
-  const tempString = totalWordList[i]
-  newList[i] = tempString.split(' ')[2]
-}
+const newList = getWordListArray(text)
+
 </script>
 
 <style lang="sass" scoped>
