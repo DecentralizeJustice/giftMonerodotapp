@@ -16,6 +16,21 @@
           </div>
         </q-card-section>
         <q-separator dark />
+        <q-card-section>
+          <q-linear-progress
+            size="25px"
+            :value="progress"
+            color="$primary"
+          >
+            <div class="absolute-full flex flex-center">
+              <q-badge
+                color="white"
+                text-color="accent"
+                :label="progressLabel"
+              />
+            </div>
+          </q-linear-progress>
+        </q-card-section>
         <q-card-section
           v-if="selectedTheme === ''"
           class="q-pt-sm text-black text-h6"
@@ -171,6 +186,7 @@ import christmasSVGList from '@/assets/svgs/christmasSVGList.js'
 import text from '@/assets/word-list-65555.txt'
 import getSVG from '@/components/create/customize/getSVG.vue'
 import { getWordListArray } from '@/assets/misc.js'
+const progressLabel = computed(() => (progress.value * 100).toFixed(2) + '%')
 const selectedTheme = ref('')
 const text1 = ref('')
 const text2 = ref('')
@@ -192,6 +208,22 @@ function selectAvatar (avatarIndex) {
 }
 const themeDict = { People: funnyPeopleSVGList, Animals: animalsSVGList, Halloween: halloweenSVGList, Christmas: christmasSVGList }
 const wordList = getWordListArray(text)
+const progress = computed(() => {
+  const firstStageProgress = 0
+  if (completedCardsInfo.value.length === 0) {
+    if (selectedTheme.value === '') { return firstStageProgress } // start with zero
+    if (text1.value === '') { return (firstStageProgress + 0.08) } // credit for selecting theme
+    if (text2.value === '') { return (firstStageProgress + 0.08 + 0.085) } // add textInput1
+    if (text2.value !== '') { return (firstStageProgress + 0.08 + 0.085 + 0.085) } // add textInput2
+    return
+  }
+  let percentDone = (completedCardsInfo.value.length * 0.25) // setback to normal operation
+  if (avatars.value[currentIncompleteCardIndex.value] !== null) { percentDone += 0.08 } // add theme
+  if (text1.value !== '') { percentDone += 0.085 } // add textInput1
+  if (text2.value !== '') { percentDone += 0.085 } // add textInput2
+  if (percentDone >= 0.98) { return 0.95 }
+  return percentDone
+})
 function checkInputs () {
   const firstIndex = findWordListIndex(text1.value)
   const secondIndex = findWordListIndex(text2.value)
@@ -218,7 +250,6 @@ const completedCardsInfo = computed(() => {
     const element = avatars.value[index / 2]
     if (words.value[index + 1] !== null) { completedCards.push({ avatar: element, words: [words.value[index], words.value[index + 1]] }) }
   }
-  console.log(completedCards)
   return completedCards
 })
 const currentIncompleteWordsIndex = computed(() => {
