@@ -11,19 +11,27 @@
   </div>
 </template>
 <script setup>
-import { toRef } from 'vue'
+import { toRef, toRaw } from 'vue'
+import { getShaData } from '@/assets/misc.js'
 const props = defineProps({
   theme: { type: String, required: true },
   entropy: { type: Object, required: true }
 })
-const theme = toRef(props, 'theme')
+// const theme = toRef(props, 'theme')
 const entropy = toRef(props, 'entropy')
-function timeout (ms) {
-  return new Promise(resolve => setTimeout(resolve, ms))
+function getEntropyString () {
+  const entropyData = { avatars: [], words: [] }
+  for (let index = 0; index < entropy.value.length; index++) {
+    const element = entropy.value[index]
+    entropyData.avatars.push(toRaw(element.avatar))
+    entropyData.words.push(toRaw(element.words[0]))
+    entropyData.words.push(toRaw(element.words[1]))
+  }
+  const entropyString = getShaData(entropyData)
+  return entropyString
 }
-await timeout(1000)
-console.log(theme.value)
-console.log(entropy.value)
+const entropyString = getEntropyString()
+console.log(entropyString)
 </script>
 
 <style lang="sass" scoped>
