@@ -19,6 +19,8 @@
         <q-card-section>
           <q-linear-progress
             size="25px"
+            stripe
+            rounded
             :value="progress"
             color="$primary"
           >
@@ -181,7 +183,6 @@
 import { ref, watch, computed, reactive } from 'vue'
 import halloweenSVGList from '@/assets/svgs/halloweenSVGList.js'
 import funnyPeopleSVGList from '@/assets/svgs/funnyPeopleSVGList.js'
-import animalsSVGList from '@/assets/svgs/animalsSVGList.js'
 import christmasSVGList from '@/assets/svgs/christmasSVGList.js'
 import text from '@/assets/word-list-65555.txt'
 import getSVG from '@/components/create/customize/getSVG.vue'
@@ -206,7 +207,7 @@ function selectTheme (theme) {
 function selectAvatar (avatarIndex) {
   avatars.value[currentIncompleteCardIndex.value] = avatarIndex
 }
-const themeDict = { People: funnyPeopleSVGList, Animals: animalsSVGList, Halloween: halloweenSVGList, Christmas: christmasSVGList }
+const themeDict = { People: funnyPeopleSVGList, Halloween: halloweenSVGList, Christmas: christmasSVGList }
 const wordList = getWordListArray(text)
 const progress = computed(() => {
   const firstStageProgress = 0

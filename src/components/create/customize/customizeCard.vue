@@ -56,7 +56,7 @@ import { reactive, onUpdated, defineEmits, onMounted, onActivated, defineProps, 
 const _sodium = require('libsodium-wrappers')
 const dataReady = ref(false)
 const emit = defineEmits(['update-card'])
-const options = ['People', 'Animals', 'Halloween', 'Christmas']
+const options = ['People', 'Halloween', 'Christmas']
 const clear = function () {
   cardinfoobject.to = ''
   cardinfoobject.from = ''
