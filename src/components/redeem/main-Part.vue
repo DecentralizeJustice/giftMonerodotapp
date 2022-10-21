@@ -18,7 +18,7 @@
         <q-separator dark />
         <q-card-section>
           <q-linear-progress
-            size="25px"
+            size="30px"
             stripe
             rounded
             :value="progress"
@@ -27,7 +27,7 @@
             <div class="absolute-full flex flex-center">
               <q-badge
                 color="white"
-                text-color="accent"
+                text-color="black"
                 :label="progressLabel"
               />
             </div>
@@ -187,7 +187,7 @@ import christmasSVGList from '@/assets/svgs/christmasSVGList.js'
 import text from '@/assets/word-list-65555.txt'
 import getSVG from '@/components/create/customize/getSVG.vue'
 import { getWordListArray } from '@/assets/misc.js'
-const progressLabel = computed(() => (progress.value * 100).toFixed(2) + '%')
+const progressLabel = computed(() => (progress.value * 100).toFixed(0) + '%')
 const selectedTheme = ref('')
 const text1 = ref('')
 const text2 = ref('')
