@@ -1,7 +1,10 @@
 <template>
   <Suspense>
     <template #default>
-      <encryptionData :cardinfoobject="desiredValue" />
+      <encryptionData
+        :entropy="entropy"
+        :theme="theme"
+      />
     </template>
     <template #fallback>
       <loadingServerData />
@@ -12,9 +15,11 @@
 <script setup>
 import encryptionData from '@/components/redeem/getEncryptionData.vue'
 import loadingServerData from '@/components/redeem/loadingServerData.vue'
-/* import { defineProps, toRef } from 'vue'
+import { toRef } from 'vue'
 const props = defineProps({
-  cardinfoobject: { type: Object, required: true }
+  theme: { type: String, required: true },
+  entropy: { type: Object, required: true }
 })
-const desiredValue = toRef(props, 'cardinfoobject') */
+const theme = toRef(props, 'theme')
+const entropy = toRef(props, 'entropy')
 </script>

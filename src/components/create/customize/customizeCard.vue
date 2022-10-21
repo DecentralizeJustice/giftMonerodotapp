@@ -56,7 +56,7 @@ import { reactive, onUpdated, defineEmits, onMounted, onActivated, defineProps, 
 const _sodium = require('libsodium-wrappers')
 const dataReady = ref(false)
 const emit = defineEmits(['update-card'])
-const options = ['People', 'Halloween', 'Christmas']
+const options = ['Halloween', 'People', 'Christmas']
 const clear = function () {
   cardinfoobject.to = ''
   cardinfoobject.from = ''
@@ -73,7 +73,7 @@ let cardinfoobject = {
   to: 'Satoshi',
   from: 'Fluffy Pony',
   message: "I know you're really into privacy, so here's some monero!",
-  theme: options[2],
+  theme: options[0],
   entropyData: {
     avatars: [0, 0, 0, 0],
     words: [0, 0, 0, 0, 0, 0, 0]
