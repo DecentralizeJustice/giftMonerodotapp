@@ -87,9 +87,10 @@
           size="32px"
         />
         <br>
-        Wallet Funded, but Funds Locked.
+        Wallet Funded, but Funds Locked. <br>
+        Wait ~{{ blockTillFundsUnlock * 2 }} Minutes More.
       </div>
-      <div v-if="unlockedBalance > 0" class="text-center">
+      <div v-if="unlockedBalance.toString() === balance.toString() && unlockedBalance > 0" class="text-center">
         <q-icon name="done" color="green" size="32px" />
         <br>
         Wallet Funded, and Funds Unlocked!
@@ -97,7 +98,7 @@
     </q-card-section>
     <q-card-actions align="right">
       <q-btn
-        v-if="walletConnected && percentSynced === 1 && balance.toString() === '0'"
+        v-if="percentSynced === 1 && tx.length === 0"
         label="Check Again"
         color="green"
         @click="confirmDeposit()"
@@ -112,7 +113,7 @@
 </template>
 
 <script setup>
-import { onMounted, toRef, ref, watch, toRaw } from 'vue'
+import { onMounted, toRef, ref, watchEffect } from 'vue'
 const monerojs = require('monero-javascript')
 const node = 'https://stagenet.xmr.ditatompel.com:443'
 const emit = defineEmits(['wallet-funded'])
@@ -128,12 +129,12 @@ const percentSynced = ref(0)
 const balance = ref(0)
 const blockTillFundsUnlock = ref(0)
 const unlockedBalance = ref(0)
-const tx = ref([])
+const tx = ref('')
 function walletFunded () {
-  emit('wallet-funded', toRaw(tx.value[0]))
+  emit('wallet-funded', tx.value)
 }
-watch(tx, () => {
-  if (tx.value.length > 0) { walletFunded() }
+watchEffect(() => {
+  if (tx.value !== '' && unlockedBalance.value.toString() === balance.value.toString() && unlockedBalance.value > 0) { walletFunded() }
 })
 async function confirmDeposit () {
   // emit('wallet-funded') // node not working
@@ -142,7 +143,7 @@ async function confirmDeposit () {
   balance.value = 0
   blockTillFundsUnlock.value = 0
   unlockedBalance.value = 0
-  tx.value = []
+  tx.value = ''
   console.log()
   const walletFull = await monerojs.createWalletFull({
     networkType: 'stagenet',
@@ -169,13 +170,14 @@ async function confirmDeposit () {
   unlockedBalance.value = unlockedBalanceLocal
   blockTillFundsUnlock.value = blockTillFundsUnlockLocal[1]
   if (totalBalance.toString() === unlockedBalanceLocal.toString()) {
-    tx.value = await walletFull.sweepUnlocked({ address: refundAddress, relay: false })
+    const txFull = await walletFull.sweepUnlocked({ address: refundAddress, relay: false })
+    tx.value = txFull[0].state.fullHex
     console.log('swept transction made')
   }
   console.log('unlockedBalance: ' + unlockedBalanceLocal.toString())
   console.log('total balance:  ' + totalBalance)
   console.log('blocks for funds to unlock: ' + blockTillFundsUnlockLocal[1])
-  console.log('tx:', tx.value)
+  // console.log('tx:', tx.value)
 }
 onMounted(() => {
   confirmDeposit()

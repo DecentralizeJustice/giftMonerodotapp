@@ -84,7 +84,8 @@ let cardinfoobject = {
   cardID: '',
   createdAt: 0,
   fundedAt: 0,
-  refundTransaction: ''
+  refundTransaction: '',
+  expires: 0
 }
 cardinfoobject = reactive(cardinfoobject)
 function updateCardInfo () {
