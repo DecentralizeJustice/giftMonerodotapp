@@ -78,16 +78,21 @@
         Wallet Empty
       </div>
       <div
-        v-if="balance.toString() !== '0'"
+        v-if="blockTillFundsUnlock > 0"
         class="text-center"
       >
         <q-icon
-          name="done"
-          color="green"
+          name="close"
+          color="red"
           size="32px"
         />
         <br>
-        Wallet Funded!
+        Wallet Funded, but Funds Locked.
+      </div>
+      <div v-if="unlockedBalance > 0" class="text-center">
+        <q-icon name="done" color="green" size="32px" />
+        <br>
+        Wallet Funded, and Funds Unlocked!
       </div>
     </q-card-section>
     <q-card-actions align="right">
@@ -107,7 +112,7 @@
 </template>
 
 <script setup>
-import { onMounted, toRef, ref, watch } from 'vue'
+import { onMounted, toRef, ref, watch, toRaw } from 'vue'
 const monerojs = require('monero-javascript')
 const node = 'https://stagenet.xmr.ditatompel.com:443'
 const emit = defineEmits(['wallet-funded'])
@@ -117,20 +122,28 @@ const props = defineProps({
 const card = toRef(props, 'singleCardInfo')
 const mnemonic = card.value.mnemonic
 const restoreHeight = card.value.startSearchHeight
+const refundAddress = card.value.refundAddress
 const walletConnected = ref(false)
 const percentSynced = ref(0)
 const balance = ref(0)
+const blockTillFundsUnlock = ref(0)
+const unlockedBalance = ref(0)
+const tx = ref([])
 function walletFunded () {
-  emit('wallet-funded')
+  emit('wallet-funded', toRaw(tx.value[0]))
 }
-watch(balance, () => {
-  if (balance.value.toString() !== '0') { walletFunded() }
+watch(tx, () => {
+  if (tx.value.length > 0) { walletFunded() }
 })
 async function confirmDeposit () {
   // emit('wallet-funded') // node not working
   walletConnected.value = false
   percentSynced.value = 0
   balance.value = 0
+  blockTillFundsUnlock.value = 0
+  unlockedBalance.value = 0
+  tx.value = []
+  console.log()
   const walletFull = await monerojs.createWalletFull({
     networkType: 'stagenet',
     password: '0',
@@ -149,13 +162,20 @@ async function confirmDeposit () {
   }())
   await walletFull.startSyncing(10000000)
   console.log(' ')
-  const unlockedBalance = await walletFull.getUnlockedBalance()
-  const blockTillFundsUnlock = await walletFull.getNumBlocksToUnlock()
+  const unlockedBalanceLocal = await walletFull.getUnlockedBalance()
+  const blockTillFundsUnlockLocal = await walletFull.getNumBlocksToUnlock()
   const totalBalance = await walletFull.getBalance()
   balance.value = totalBalance
-  console.log('unlockedBalance: ' + unlockedBalance.toString())
+  unlockedBalance.value = unlockedBalanceLocal
+  blockTillFundsUnlock.value = blockTillFundsUnlockLocal[1]
+  if (totalBalance.toString() === unlockedBalanceLocal.toString()) {
+    tx.value = await walletFull.sweepUnlocked({ address: refundAddress, relay: false })
+    console.log('swept transction made')
+  }
+  console.log('unlockedBalance: ' + unlockedBalanceLocal.toString())
   console.log('total balance:  ' + totalBalance)
-  console.log('blocks for funds to unlock: ' + blockTillFundsUnlock[1])
+  console.log('blocks for funds to unlock: ' + blockTillFundsUnlockLocal[1])
+  console.log('tx:', tx.value)
 }
 onMounted(() => {
   confirmDeposit()

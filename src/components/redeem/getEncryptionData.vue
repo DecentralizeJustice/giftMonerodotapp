@@ -27,6 +27,7 @@ function getEntropyString () {
     entropyData.words.push(toRaw(element.words[0]))
     entropyData.words.push(toRaw(element.words[1]))
   }
+  console.log(entropyData)
   const entropyString = getShaData(entropyData)
   return entropyString
 }

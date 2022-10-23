@@ -61,7 +61,7 @@
                 <cardProgression
                   :single-card-info="incompleteCards[model]"
                   @update-refund-address="updateRefund"
-                  @wallet-funded="walletFunded()"
+                  @wallet-funded="walletFunded"
                 />
                 <q-btn
                   v-if="$q.screen.lt.md"
@@ -96,7 +96,7 @@ import { ref, watch, toRaw } from 'vue'
 import { useCardStore } from '@/store/stagenetGiftCards.js'
 import displayCardInfo from '@/components/create/customize/displayCardInfo.vue'
 import { encrypt, getShaData } from '@/assets/misc.js'
-const axios = require('axios')
+// const axios = require('axios')
 const previewCard = ref(false)
 const model = ref(0)
 const store = useCardStore()
@@ -113,14 +113,18 @@ watch(model, () => {
 function updateRefund (address) {
   store.addrefundToCard(model.value, address)
 }
-async function walletFunded () {
+async function walletFunded (tx) {
   const selectedCard = incompleteCards[model.value]
+  const rawSelectedCard = toRaw(selectedCard)
+  // rawSelectedCard.refundTransaction = tx
+  console.log(rawSelectedCard)
   const cardID = incompleteCards[model.value].cardID
   const shaData = getShaData(selectedCard.entropyData)
-  const boxString = await encrypt(JSON.stringify(toRaw(selectedCard)), shaData)
+  const boxString = await encrypt(JSON.stringify(rawSelectedCard), shaData)
   const data = { bucket: cardID, payload: { box: boxString, expires: (Date.now() + 7200000) } }
-  await axios.post('/.netlify/functions/uploadCard', data)
-  store.cardFunded(model.value)
+  console.log(data)
+  // await axios.post('/.netlify/functions/uploadCard', data)
+  // store.cardFunded(model.value, tx)
 }
 </script>
 

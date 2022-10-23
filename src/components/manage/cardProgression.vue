@@ -116,7 +116,7 @@
     <q-dialog v-model="alert">
       <checkDeposit
         :single-card-info="singleCardInfo"
-        @wallet-funded="walletFunded()"
+        @wallet-funded="walletFunded"
       />
     </q-dialog>
   </div>
@@ -140,9 +140,9 @@ function donateToRhinoStagenet () {
 function updaterefundAddress () {
   emit('update-refund-address', refundAddress.value)
 }
-function walletFunded () {
+function walletFunded (tx) {
   alert.value = false
-  emit('wallet-funded')
+  emit('wallet-funded', tx)
 }
 const depositAddress = computed(() => { return singleCardInfo.value.depositAddress })
 const refundAddressCompleted = computed(() => { return singleCardInfo.value.refundAddress !== '' })

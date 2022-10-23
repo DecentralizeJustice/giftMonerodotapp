@@ -31,9 +31,10 @@ export const useCardStore = defineStore('cards', {
     addrefundToCard (cardIndex, address) {
       this.cards[cardIndex].refundAddress = address
     },
-    cardFunded (cardIndex) {
+    cardFunded (cardIndex, tx) {
       this.cards[cardIndex].fundedAt = Date.now()
       this.cards[cardIndex].expires = Date.now() + 7200000
+      this.cards[cardIndex].refundTransaction = tx
       this.cards[cardIndex].funded = true
     }
   },
