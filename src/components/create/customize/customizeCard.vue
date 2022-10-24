@@ -76,7 +76,7 @@ let cardinfoobject = {
   theme: options[0],
   entropyData: {
     avatars: [0, 0, 0, 0],
-    words: [0, 0, 0, 0, 0, 0, 0]
+    words: [0, 0, 0, 0, 0, 0, 0, 0]
   },
   refundAddress: '',
   funded: false,
