@@ -12,13 +12,14 @@
 </template>
 <script setup>
 import { toRef, toRaw } from 'vue'
-import { getShaData } from '@/assets/misc.js'
+import { getShaData, getCardId, decrypt } from '@/assets/misc.js'
 const props = defineProps({
   theme: { type: String, required: true },
   entropy: { type: Object, required: true }
 })
 // const theme = toRef(props, 'theme')
 const entropy = toRef(props, 'entropy')
+const axios = require('axios')
 function getEntropyString () {
   const entropyData = { avatars: [], words: [] }
   for (let index = 0; index < entropy.value.length; index++) {
@@ -27,12 +28,20 @@ function getEntropyString () {
     entropyData.words.push(toRaw(element.words[0]))
     entropyData.words.push(toRaw(element.words[1]))
   }
-  console.log(entropyData)
   const entropyString = getShaData(entropyData)
   return entropyString
 }
 const entropyString = getEntropyString()
-console.log(entropyString)
+const cardID = getCardId(entropyString)
+const data = { bucket: cardID }
+const results = await axios.post('/.netlify/functions/getCard', data)
+const encryptedData = results.data.box
+const plainText = await decrypt(encryptedData, entropyString)
+const object = JSON.parse(plainText)
+console.log(results.data)
+object.refundTransaction = results.data.refundTransaction
+object.refundTransaction = results.data.expires
+console.log(object)
 </script>
 
 <style lang="sass" scoped>

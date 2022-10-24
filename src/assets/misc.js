@@ -1,4 +1,5 @@
 const _sodium = require('libsodium-wrappers')
+const crypto = require('crypto')
 function getShaData (entropyData) {
   let shaString = ''
   for (let index = 0; index < entropyData.avatars.length; index++) {
@@ -31,6 +32,10 @@ async function encrypt (stringMessage, stringKey) {
 function toArrayBuffer (buffer) {
   return buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength)
 }
+function getCardId (entropyString) {
+  const id = crypto.createHash('sha256').update(entropyString).digest('hex')
+  return id
+}
 async function decrypt (hexNonceAndCiphertext, stringKey) {
   await _sodium.ready
   const sodium = _sodium
@@ -58,3 +63,5 @@ function getWordListArray (text) {
 exports.getShaData = getShaData
 exports.encrypt = encrypt
 exports.getWordListArray = getWordListArray
+exports.getCardId = getCardId
+exports.decrypt = decrypt

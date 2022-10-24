@@ -1,4 +1,3 @@
-const querystring = require('querystring')
 const pantry = require('pantry-node')
 const pantryID = process.env.pantryID
 const pantryClient = new pantry(pantryID) // eslint-disable-line new-cap
@@ -9,8 +8,9 @@ exports.handler = async (event, context) => {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' }
   }
-  const params = querystring.parse(event.body)
-  const bucket = params.bucket
+  const params = event.body
+  const parsed = JSON.parse(params)
+  const bucket = parsed.bucket
   // check for correct param
   if (bucket === undefined) {
     return { statusCode: 406, body: 'Not Valid Bucket' }
