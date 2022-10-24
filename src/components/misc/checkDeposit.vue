@@ -90,8 +90,15 @@
         Wallet Funded, but Funds Locked. <br>
         Wait ~{{ blockTillFundsUnlock * 2 }} Minutes More.
       </div>
-      <div v-if="unlockedBalance.toString() === balance.toString() && unlockedBalance > 0" class="text-center">
-        <q-icon name="done" color="green" size="32px" />
+      <div
+        v-if="unlockedBalance.toString() === balance.toString() && unlockedBalance > 0"
+        class="text-center"
+      >
+        <q-icon
+          name="done"
+          color="green"
+          size="32px"
+        />
         <br>
         Wallet Funded, and Funds Unlocked!
       </div>

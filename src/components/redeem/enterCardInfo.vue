@@ -148,36 +148,36 @@
           v-if="words[0] !== null"
           class="row q-col-gutter-sm justify-center align-center q-pb-md"
         >
-        <div class="col-8">
-          <div class="row">
-          <div
-            v-for=" (element, index) in completedCardsInfo"
-            :key="index"
-            class="text-white text-center q-pb-sm q-ma-sm col col-5 col-md-5"
-            style="background: #ff6600;  border-radius: 25px;"
-          >
-            <div
-              style="margin-bottom: -5%;"
-              class="text-left text-h5 q-pt-sm q-pl-sm"
-            >
-              {{ index + 1 }}.
-            </div>
-            <div class="no-margin no-padding">
-              <getSVG
-                :cardinfoobject="reactive({ theme: selectedTheme })"
-                :chosenavatarindex="element.avatar"
-              />
-            </div>
-            <div
-              class="text-subtitle1 text-weight-regular text-center no-padding"
-              style="line-height: 115%;"
-            >
-              {{ wordList[element.words[0]] }} <br>
-              {{ wordList[element.words[1]] }}
+          <div class="col-8">
+            <div class="row">
+              <div
+                v-for=" (element, index) in completedCardsInfo"
+                :key="index"
+                class="text-white text-center q-pb-sm q-ma-sm col col-5 col-md-5"
+                style="background: #ff6600;  border-radius: 25px;"
+              >
+                <div
+                  style="margin-bottom: -5%;"
+                  class="text-left text-h5 q-pt-sm q-pl-sm"
+                >
+                  {{ index + 1 }}.
+                </div>
+                <div class="no-margin no-padding">
+                  <getSVG
+                    :cardinfoobject="reactive({ theme: selectedTheme })"
+                    :chosenavatarindex="element.avatar"
+                  />
+                </div>
+                <div
+                  class="text-subtitle1 text-weight-regular text-center no-padding"
+                  style="line-height: 115%;"
+                >
+                  {{ wordList[element.words[0]] }} <br>
+                  {{ wordList[element.words[1]] }}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        </div>
         </q-card-section>
       </q-card>
     </div>
