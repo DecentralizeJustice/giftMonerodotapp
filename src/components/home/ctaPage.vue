@@ -1,9 +1,17 @@
 <template>
- <div class="'text-center'">
+  <div class="'text-center'">
     <div class="text-center">
-        <q-btn color="secondary" label="Create Card!" />
+      <router-link
+        to="/create"
+        style="text-decoration: none; color: inherit;"
+      >
+        <q-btn
+          color="secondary"
+          label="Create Card!"
+        />
+      </router-link>
     </div>
- </div>
+  </div>
 </template>
 <script setup>
 </script>

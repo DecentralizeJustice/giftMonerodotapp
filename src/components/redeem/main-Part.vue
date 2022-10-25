@@ -8,6 +8,7 @@
     v-if="theme !== ''"
     :entropy="entropy"
     :theme="theme"
+    @gotCardData="gotCardData"
   />
 </template>
 <script setup>
@@ -19,6 +20,9 @@ const theme = ref('')
 function caredEntered (entropyParam, themeParam) {
   entropy.value = entropyParam
   theme.value = themeParam
+}
+function gotCardData (params) {
+  console.log(params)
 }
 </script>
 

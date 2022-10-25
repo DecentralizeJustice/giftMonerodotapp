@@ -3,50 +3,74 @@
     <!-- Stack the columns on mobile by making one full-width and the other half-width -->
     <div class="row justify-evenly">
       <div class="col col-md-6 justify-evenly">
-            <div class="column justify-evenly" style="height: 100%">
-                <div class="row">
-                            <q-card class="my-card text-center col-12" style="">
-                                <q-card-section>
-                                    <div class="text-h2">
-                                        A Easy and Fun Way To Gift Monero Without KYC
-                                    </div>
-                                    <!--             <div class="text-subtitle1">
+        <div
+          class="column justify-evenly"
+          style="height: 100%"
+        >
+          <div class="row">
+            <q-card
+              class="my-card text-center col-12"
+              style=""
+            >
+              <q-card-section>
+                <div class="text-h2">
+                  A Easy and Fun Way To Gift Monero Without KYC
+                </div>
+                <!--             <div class="text-subtitle1">
                                           My Web app lets you gift monero in a way that will make your friends and family happy to recive it!
                                         </div> -->
-                                </q-card-section>
-                            </q-card>
+              </q-card-section>
+            </q-card>
+          </div>
+          <div class="row">
+            <q-card
+              class="my-card text-center col-12"
+              style=""
+            >
+              <q-card-section>
+                <div class="text-h4">
+                  How It Works:
                 </div>
-                <div class="row">
-                                    <q-card class="my-card text-center col-12" style="">
-                                        <q-card-section>
-                                            <div class="text-h4">
-                                                How It Works:
-                                            </div>
-                                            <div class="text-subtitle1 q-mt-md">
-                                                <div class="">
-                                                    <div class="row">
-                                                        <div class="col">Step 1.
-                                                            <br> Create and Fund Gift Card
-                                                            <br><br><q-icon name="payments" color="primary" size="70px" />
-                                                        </div>
-                                                        <div class="col">Step 2.
-                                                            <br> Give the Monero Gift Card
-                                                            <br><br><q-icon name="send" color="primary" size="70px" />
-                                                        </div>
-                                                        <div class="col">Step 3.
-                                                            <br> They claim the Monero!
-                                                            <br><br><q-icon name="redeem" color="primary" size="70px" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </q-card-section>
-                                    </q-card>
+                <div class="text-subtitle1 q-mt-md">
+                  <div class="">
+                    <div class="row">
+                      <div class="col">
+                        Step 1.
+                        <br> Create and Fund Gift Card
+                        <br><br><q-icon
+                          name="payments"
+                          color="primary"
+                          size="70px"
+                        />
+                      </div>
+                      <div class="col">
+                        Step 2.
+                        <br> Give the Monero Gift Card
+                        <br><br><q-icon
+                          name="send"
+                          color="primary"
+                          size="70px"
+                        />
+                      </div>
+                      <div class="col">
+                        Step 3.
+                        <br> They claim the Monero!
+                        <br><br><q-icon
+                          name="redeem"
+                          color="primary"
+                          size="70px"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-            </div>
+              </q-card-section>
+            </q-card>
+          </div>
+        </div>
       </div>
       <div class="col col-md-4 q-mt-md">
-          <displayCardInfo :cardinfoobject="cardinfoobject" />
+        <displayCardInfo :cardinfoobject="cardinfoobject" />
       </div>
     </div>
   </div>
@@ -85,6 +109,7 @@ for (let i = 0; i < 8; i++) {
 for (let i = 1; i < 4; i++) {
   cardinfoobject.entropyData.avatars[i] = getRandomInt(20)
 }
+cardinfoobject.theme = options[getRandomInt(options.length)]
 cardinfoobject = reactive(cardinfoobject)
 </script>
 <style lang="sass" scoped>

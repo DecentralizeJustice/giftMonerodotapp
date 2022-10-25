@@ -2,7 +2,7 @@
   <div class="text-center">
     <q-card class="bg-secondary text-white text-h6 mobile-only">
       <q-card-section>
-        <div>Getting Wallet Info</div>
+        <div>Loading Wallet Info...</div>
       </q-card-section>
 
       <div class="q-pb-lg">
@@ -27,17 +27,6 @@
       </div>
     </q-card>
   </div>
-
-  <!-- <div
-    class="row justify-center align-center text-center"
-    :class="{'q-my-lg': $q.screen.gt.sm}"
-  >
-    <div
-      class=" justify-center col-12 col-md-8 text-center"
-    >
-      Getting Data!!!!!!!
-    </div>
-  </div> -->
 </template>
 <script setup>
 </script>

@@ -66,6 +66,12 @@
                   class="q-mt-sm"
                   @click="previewCard = true"
                 />
+                <q-btn
+                  label="Download Card"
+                  color="primary"
+                  class="q-mt-sm"
+                  @click="down()"
+                />
               </div>
             </div>
           </q-card-section>
@@ -91,6 +97,8 @@ import fundedActions from '@/components/manage/fundedActions.vue'
 import { ref, watch } from 'vue'
 import { useCardStore } from '@/store/stagenetGiftCards.js'
 import displayCardInfo from '@/components/create/customize/displayCardInfo.vue'
+import download from 'downloadjs'
+import * as htmlToImage from 'html-to-image'
 const previewCard = ref(false)
 const model = ref(0)
 const store = useCardStore()
@@ -104,6 +112,22 @@ if (fundedCards[model.value] !== undefined) { properProp = ref(fundedCards[model
 watch(model, () => {
   properProp.value = fundedCards[model.value]
 })
+async function down () {
+  const element = document.getElementById('printableCard')
+  const imageSettings = { quality: 1 }
+  const url = await htmlToImage.toJpeg(element, imageSettings)
+  const img = document.createElement('img')
+  img.src = url
+  const image = await new Promise((resolve) => {
+    img.onload = () => {
+      htmlToImage.toJpeg(element, imageSettings).then((dataUrl) => {
+        resolve(dataUrl)
+      })
+    }
+  })
+  await download(image, 'giftMonero.png')
+  return true
+}
 </script>
 
 <style lang="sass" scoped>
