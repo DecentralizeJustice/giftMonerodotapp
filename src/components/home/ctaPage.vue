@@ -2,7 +2,7 @@
   <div class="'text-center'">
     <div class="text-center">
       <router-link
-        to="/create"
+        :to="{ name: 'createCard'}"
         style="text-decoration: none; color: inherit;"
       >
         <q-btn

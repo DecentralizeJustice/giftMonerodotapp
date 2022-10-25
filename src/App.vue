@@ -31,23 +31,35 @@
                 v-for="(item, index) in options"
                 :key="index"
                 clickable
-                @click="test(item.value)"
+                class="text-center justify-center align-center items-center"
               >
-                <q-item-section>{{ options[index].label }}</q-item-section>
+                <router-link
+                  :to="{ name: options[index].value}"
+                  style="text-decoration: none;color: inherit;"
+                  class="text-center justify-center align-center items-center"
+                >
+                  <q-item-section class="text-center justify-center align-center items-center">
+                    {{ options[index].label }}
+                  </q-item-section>
+                </router-link>
               </q-item>
             </q-list>
           </q-menu>
         </q-btn>
-        <q-btn-toggle
-          v-model="model"
-          flat
-          stretch
-          color="white"
-          toggle-color="white"
-          :options="options"
+        <router-link
+          v-for="(item, index) in options"
+          :key="index"
           class="desktop-only"
-          @update:model-value="test"
-        />
+          :to="{ name: options[index].value}"
+          style="text-decoration: none; color: inherit;"
+        >
+          <q-btn
+            flat
+            :label="options[index].label"
+            class="q-mx-xs"
+            :class="{ 'highlightButton' : options[index].value === 'createCard'}"
+          />
+        </router-link>
       </q-toolbar>
 
       <!-- <q-tabs align="left">
@@ -66,19 +78,20 @@
   </q-layout>
 </template>
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-const router = useRouter()
-const model = ref(window.location.pathname)
+// import { ref } from 'vue'
+/* import { useRouter } from 'vue-router'
+const router = useRouter() */
+// const model = ref(window.location.pathname)
 
-function test (newRoute) {
-  router.push(newRoute)
-}
+/* function test (newRoute) {
+  console.log(newRoute)
+  router.push({ name: newRoute })
+} */
 const options = [
-  { label: 'Home', value: '/' },
-  { label: 'Create', value: '/create' },
-  { label: 'Manage', value: '/manage' },
-  { label: 'Redeem', value: '/redeem' }
+  { label: 'Home', value: 'landingPage' },
+  { label: 'Create', value: 'createCard' },
+  { label: 'Manage', value: 'manageCards' },
+  { label: 'Redeem', value: 'redeem' }
   // { label: 'Faq', value: 'five' }
 ]
 </script>
@@ -87,4 +100,6 @@ const options = [
   background: #4c4c4c !important
 .ntp
   padding-top: 60px !important
+.highlightButton
+  color: $primary
 </style>

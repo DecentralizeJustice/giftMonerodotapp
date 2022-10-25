@@ -10,4 +10,4 @@ import quasarUserOptions from './quasar-user-options'
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
 
-createApp(App).use(Quasar, quasarUserOptions).use(router).use(pinia).mount('#app')
+createApp(App).use(Quasar, quasarUserOptions).use(pinia).use(router).mount('#app')
