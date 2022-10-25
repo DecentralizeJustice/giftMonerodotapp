@@ -21,8 +21,8 @@ function caredEntered (entropyParam, themeParam) {
   entropy.value = entropyParam
   theme.value = themeParam
 }
-function gotCardData (params) {
-  console.log(params)
+function gotCardData (paramst) {
+  console.log(paramst)
 }
 </script>
 

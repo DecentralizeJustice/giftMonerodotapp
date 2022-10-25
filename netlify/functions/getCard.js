@@ -11,7 +11,7 @@ exports.handler = async (event, context) => {
   const params = event.body
   const parsed = JSON.parse(params)
   const bucket = parsed.bucket
-  // check for correct param
+  // check for correct param test
   if (bucket === undefined) {
     return { statusCode: 406, body: 'Not Valid Bucket' }
   }
