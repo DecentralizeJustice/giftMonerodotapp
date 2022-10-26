@@ -17,7 +17,7 @@
                   class="text-h2 text-weight-regular"
                   style="line-height: 120%;font-weight: 400;"
                 >
-                  Create Fun and Simple Monero Giftcards
+                  Custom Fun and Simple Monero Giftcards
                 </div>
               </q-card-section>
             </q-card>
@@ -54,7 +54,7 @@
                       </div>
                       <div class="col">
                         Step 3.
-                        <br> They claim the Monero!
+                        <br> They claim the Monero
                         <br><img
                           :src="working"
                           class="q-mt-md"
