@@ -1,5 +1,5 @@
 <template>
-  <div class="'text-center'">
+  <div class="text-center q-mt-xl">
     <div class="text-center">
       <router-link
         :to="{ name: 'createCard'}"
@@ -8,6 +8,9 @@
         <q-btn
           color="secondary"
           label="Create Card!"
+          size="lg"
+          style="color: white;"
+          padding="md"
         />
       </router-link>
     </div>

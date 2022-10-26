@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="q-mt-xl">
     <!-- Stack the columns on mobile by making one full-width and the other half-width -->
     <div class="row justify-evenly">
       <div class="col col-md-6 justify-evenly">
@@ -9,16 +9,16 @@
         >
           <div class="row">
             <q-card
-              class="my-card text-center col-12"
-              style=""
+              class="text-center col-12"
+              style="background: white; color:#303030;"
             >
               <q-card-section>
-                <div class="text-h2">
-                  A Easy and Fun Way To Gift Monero Without KYC
+                <div
+                  class="text-h2 text-weight-regular"
+                  style="line-height: 120%;font-weight: 400;"
+                >
+                  Create Fun and Simple Monero Giftcards
                 </div>
-                <!--             <div class="text-subtitle1">
-                                          My Web app lets you gift monero in a way that will make your friends and family happy to recive it!
-                                        </div> -->
               </q-card-section>
             </q-card>
           </div>
@@ -37,29 +37,29 @@
                       <div class="col">
                         Step 1.
                         <br> Create and Fund Gift Card
-                        <br><br><q-icon
-                          name="payments"
-                          color="primary"
-                          size="70px"
-                        />
+                        <img
+                          :src="web"
+                          class="q-mt-md"
+                          style="width: 60%"
+                        >
                       </div>
                       <div class="col">
                         Step 2.
-                        <br> Give the Monero Gift Card
-                        <br><br><q-icon
-                          name="send"
-                          color="primary"
-                          size="70px"
-                        />
+                        <br> Send the Monero Gift Card
+                        <br><img
+                          :src="mail"
+                          class="q-mt-md"
+                          style="width: 60%"
+                        >
                       </div>
                       <div class="col">
                         Step 3.
                         <br> They claim the Monero!
-                        <br><br><q-icon
-                          name="redeem"
-                          color="primary"
-                          size="70px"
-                        />
+                        <br><img
+                          :src="working"
+                          class="q-mt-md"
+                          style="width: 60%"
+                        >
                       </div>
                     </div>
                   </div>
@@ -78,6 +78,9 @@
 <script setup>
 import displayCardInfo from '@/components/create/customize/displayCardInfo.vue'
 import { reactive } from 'vue'
+import web from '@/assets/svgs/web.svg'
+import mail from '@/assets/svgs/mail.svg'
+import working from '@/assets/svgs/working.svg'
 const options = ['Halloween', 'People', 'Christmas']
 let cardinfoobject = {
   to: 'Satoshi',
@@ -116,4 +119,6 @@ cardinfoobject = reactive(cardinfoobject)
 .my-card
     background: $secondary
     color: white
+.icons
+  width: 100%
 </style>
