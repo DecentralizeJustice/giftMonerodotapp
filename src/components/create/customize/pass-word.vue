@@ -2,7 +2,7 @@
   <div class="col-12">
     <q-card
       class="text-white text-center q-ma-sm q-pa-md"
-      style="background: black"
+      style="background: #282828"
     >
       <div class="q-mb-md desktop-only">
         <q-chip
