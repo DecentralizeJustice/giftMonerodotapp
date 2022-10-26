@@ -36,7 +36,7 @@
                     <div class="row">
                       <div class="col">
                         Step 1.
-                        <br> Create and Fund Gift Card
+                        <br> Create and Fund Gift Card With Monero
                         <img
                           :src="web"
                           class="q-mt-md"
