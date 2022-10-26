@@ -10,7 +10,7 @@
           label="Create Card!"
           size="lg"
           style="color: white;"
-          padding="md"
+          padding="sm"
         />
       </router-link>
     </div>

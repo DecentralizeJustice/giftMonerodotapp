@@ -3,6 +3,7 @@ import createCardView from '../views/createCardView.vue'
 import manageCardView from '../views/manageView.vue'
 import redeemCardView from '../views/redeemView.vue'
 import landingPageView from '../views/landingPageView.vue'
+import faqView from '../views/faqView.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/redeem',
     name: 'redeem',
     component: redeemCardView
+  },
+  {
+    path: '/faq',
+    name: 'questions',
+    component: faqView
   }
   // {
   //   path: '/about',

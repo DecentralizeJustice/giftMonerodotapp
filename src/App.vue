@@ -75,6 +75,11 @@
     >
       <router-view />
     </q-page-container>
+<!--     <q-footer class="headerCustomStyle">
+      <q-toolbar>
+        <q-toolbar-title>@Copyright 2022</q-toolbar-title>
+      </q-toolbar>
+    </q-footer> -->
   </q-layout>
 </template>
 <script setup>
@@ -91,8 +96,8 @@ const options = [
   { label: 'Home', value: 'landingPage' },
   { label: 'Create', value: 'createCard' },
   { label: 'Manage', value: 'manageCards' },
-  { label: 'Redeem', value: 'redeem' }
-  // { label: 'Faq', value: 'five' }
+  { label: 'Redeem', value: 'redeem' },
+  { label: 'Faq', value: 'questions' }
 ]
 </script>
 <style lang="sass" scoped>
